@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'host_metrics'
+    static_configs:
+      - targets:
+          - '127.0.0.1:8081'    # cAdvisor
+          - '127.0.0.1:9100'    # Node Exporter
+          - '127.0.0.1:8123'    # Home Assistant
+          - '127.0.0.1:3002'    # Grafana
+          - '127.0.0.1:19550'   # faster-whisper

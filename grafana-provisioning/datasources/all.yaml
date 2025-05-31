@@ -1,0 +1,33 @@
+#---------------------------------------------------------------------
+#                                                                    |
+#                       DATA SOURCES                               |
+#                                                                    |
+#---------------------------------------------------------------------
+
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      timeInterval: "5s"
+
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    isDefault: false
+    editable: true
+    database: jcore
+    user: mbxxvii
+    password: 6wk44!ez#MS2Qhhw
+    # if you prefer the 2.x API replace the above 4 lines with:
+    # version: Flux
+    # org: jia
+    # bucket: jcore
+    # secureJsonData:
+    #   token: <your-influxdb-v2-token>
