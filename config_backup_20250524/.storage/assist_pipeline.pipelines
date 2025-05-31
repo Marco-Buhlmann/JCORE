@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "minor_version": 2,
+  "key": "assist_pipeline.pipelines",
+  "data": {
+    "items": [
+      {
+        "conversation_engine": "conversation.chatgpt",
+        "conversation_language": "*",
+        "id": "01jtsbwnd09fdamvd41crvg8as",
+        "language": "en",
+        "name": "JIA",
+        "stt_engine": "stt.faster_whisper",
+        "stt_language": "en",
+        "tts_engine": "tts.piper",
+        "tts_language": "en_US",
+        "tts_voice": "en_US-amy-low",
+        "wake_word_entity": "wake_word.openwakeword",
+        "wake_word_id": "jia_wake_word_v1",
+        "prefer_local_intents": true
+      }
+    ],
+    "preferred_item": "01jtsbwnd09fdamvd41crvg8as"
+  }
+}

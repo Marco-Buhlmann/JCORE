@@ -1,0 +1,35 @@
+force_poweroff_hetzner:
+  alias: "Force Power Off Hetzner Server"
+  sequence:
+    - service: rest_command.hetzner_poweroff_server
+      data:
+        server_id: "61655748"
+        api_token: "nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+    - service: notify.persistent_notification
+      data:
+        message: "Hetzner server forced power off"
+        title: "Server Control"
+
+graceful_shutdown_hetzner:
+  alias: "Gracefully Shutdown Hetzner Server"
+  sequence:
+    - service: rest_command.hetzner_shutdown_server
+      data:
+        server_id: "61655748"
+        api_token: "nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+    - service: notify.persistent_notification
+      data:
+        message: "Hetzner server shutdown initiated"
+        title: "Server Control"
+
+poweron_hetzner:
+  alias: "Power On Hetzner Server"
+  sequence:
+    - service: rest_command.hetzner_poweron_server
+      data:
+        server_id: "61655748"
+        api_token: "nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+    - service: notify.persistent_notification
+      data:
+        message: "Hetzner server power on initiated"
+        title: "Server Control"

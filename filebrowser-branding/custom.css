@@ -1,0 +1,114 @@
+/* Override everything */
+body * {
+  transition: none !important;
+}
+
+:root {
+  --primary: #000000 !important;
+  --primary-dark: #000000 !important;
+}
+
+#header {
+  background-color: #000000 !important;
+}
+
+.button.button--primary {
+  background-color: #000000 !important;
+}
+
+/* Hide the original logo */
+.logo img {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Replace with our custom logo */
+.logo {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.logo::before {
+  content: "" !important;
+  background-image: url('/branding/img/logo.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 120px !important; /* Adjust width as needed */
+  height: 32px !important; /* Adjust height as needed */
+  display: block !important;
+}
+
+/* Ensure original logo and icons are hidden */
+[src*="logo"], [src*="icon"], img[alt="logo"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Apply styles to any elements that might contain the logo */
+header, .header, #header, .logo, .brand, .navbar-brand, .site-logo {
+  position: relative !important;
+}
+
+/* Force our styles on key elements */
+button, .button, input[type="button"], input[type="submit"] {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+a, a:hover, a:focus, a:active {
+  color: #000000 !important;
+}
+
+/* Secondary buttons */
+.button.button--flat {
+  color: #000000 !important;
+}
+
+/* Active navigation items */
+.navigation__item.active {
+  color: #000000 !important;
+}
+
+/* Checkboxes and other form elements */
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* Selection highlight color */
+::selection {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Progress bars and loading indicators */
+.progress-bar, .loading {
+  background-color: #000000 !important;
+}
+
+/* Dropdown menus */
+.dropdown__menu {
+  border-color: #000000 !important;
+}
+
+/* Dialog/modal headers */
+.card__header, .dialog__header {
+  background-color: #000000 !important;
+  color: white !important;
+}
+
+/* File browser specific elements */
+#listing .item:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+#listing .item.selected {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}

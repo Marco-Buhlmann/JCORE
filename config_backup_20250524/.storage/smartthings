@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "smartthings",
+  "data": {
+    "instance_id": "a7ca5119-b1bd-4a98-b49f-8efc6f9721c2",
+    "webhook_id": "6dd94555942b3a55b1da1f53c3fe12a5927a8a7ac9ea8e38e7d4fffe4e6b37a4",
+    "cloudhook_url": null
+  }
+}

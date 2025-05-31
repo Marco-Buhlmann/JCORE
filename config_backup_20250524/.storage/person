@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "marco",
+        "name": "Marco",
+        "user_id": "a866c36c3563470b8bbd5ccc1483e12b",
+        "device_trackers": [
+          "device_tracker.mbxxvii"
+        ],
+        "picture": "/api/image/serve/b056a5f46e5531be5cb3f9cbc9d1c0a1/512x512"
+      }
+    ]
+  }
+}
