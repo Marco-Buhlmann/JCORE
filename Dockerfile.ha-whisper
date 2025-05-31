@@ -1,21 +1,15 @@
-#############################################
-# Dockerfile.ha-whisper
-#
-# Extends the official Home Assistant image
-# to install system libs + faster-whisper at build time.
-#############################################
-
 ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
-
 FROM ${HA_BASE_IMAGE}
 
 # We need root to install apt packages
 USER root
 
-# Install the Debian/Ubuntu packages that PyAV needs to compile
-# (FFmpeg runtime + dev headers + pkg-config)
-RUN apt-get update && \
+# Use a more robust apt-get installation
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get update -o Acquire::ForceHash=yes && \
     apt-get install -y --no-install-recommends \
+      ca-certificates \
       pkg-config \
       ffmpeg \
       libavcodec-dev \
@@ -26,10 +20,11 @@ RUN apt-get update && \
       libavresample-dev \
       libswresample-dev \
       libswscale-dev \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install faster-whisper (and its dependencies) into Home Assistant's venv
 RUN pip install --no-cache-dir faster-whisper>=0.8.0
 
-# Switch back to the default HA user (typically 'homeassistant')
-USER homeassistant
+# Switch back to the default HA user
+USER root
