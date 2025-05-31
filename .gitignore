@@ -1,0 +1,26 @@
+# Ignore Home Assistant database & log files
+config/*.db
+config/home-assistant_v2.db
+config/.storage/
+home-assistant.log*
+# Ignore backup and temp files
+docker-compose.yml.backup*
+Dockerfile.backup*
+# Ignore any leftover artifact folder
+/root/old-homeassistant-artifacts/
+# Ignore Docker volume directories (actual data) if they appear here by bind-mount
+data/
+mosquitto/data/
+mosquitto/log/
+mariadb/
+mariadb-config/  # If this directory contains runtime data (only include static configs below)
+loki-data/
+filebrowser-data/
+filebrowser_db/
+piper-data/
+whisper-data/
+# Ignore cert directories (letsencrypt) or other secrets if you do NOT want them in Git
+letsencrypt/
+# macOS/editor swap files
+.DS_Store
+*~
