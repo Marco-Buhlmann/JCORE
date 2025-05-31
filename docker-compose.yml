@@ -1,35 +1,24 @@
-#-------------------------------------------------------------------------------------------------------
-#                                                                                                      |
-#                                           DOCKER COMPOSE                                             |
-#                                                                                                      |
-#-------------------------------------------------------------------------------------------------------
-
-
-#!!!!!!!NO LONGER IN USE!!!!!!!
-#>>>Managed by Portainer<<<
-
 version: "3.8"
-#services:
 
-  # SQL Database
-#  mariadb:
-#    container_name: mariadb
-#    image: mariadb:10.11
+services:
+
+  mariadb:
+    container_name: jcore_mariadb
+    image: mariadb:10.11
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: mb415%
-      MYSQL_DATABASE: JCORE
-      MYSQL_USER: mbxxvii
-      MYSQL_PASSWORD: 6wk44!ez#MS2Qhhw
+      MYSQL_ROOT_PASSWORD: "mb415%"
+      MYSQL_DATABASE: "JCORE"
+      MYSQL_USER: "mbxxvii"
+      MYSQL_PASSWORD: "6wk44!ez#MS2Qhhw"
     volumes:
       - ./mariadb:/var/lib/mysql
     ports:
       - "3307:3306"
 
-  # TIME-SERIES DATABASE
-#  influxdb:
-#    container_name: influxdb
-#    image: influxdb:2.7
+  influxdb:
+    container_name: jcore_influxdb
+    image: influxdb:2.7
     restart: unless-stopped
     ports:
       - "8086:8086"
@@ -37,72 +26,72 @@ version: "3.8"
       - influxdb-storage:/var/lib/influxdb2
       - influxdb-config:/etc/influxdb2
     environment:
-      DOCKER_INFLUXDB_INIT_MODE: setup
-      DOCKER_INFLUXDB_INIT_USERNAME: mbxxvii
-      DOCKER_INFLUXDB_INIT_PASSWORD: 6wk44!ez#MS2Qhhw
-      DOCKER_INFLUXDB_INIT_ORG: jia
-      DOCKER_INFLUXDB_INIT_BUCKET: jcore
-      DOCKER_INFLUXDB_INIT_RETENTION: 90d
+      DOCKER_INFLUXDB_INIT_MODE: "setup"
+      DOCKER_INFLUXDB_INIT_USERNAME: "mbxxvii"
+      DOCKER_INFLUXDB_INIT_PASSWORD: "6wk44!ez#MS2Qhhw"
+      DOCKER_INFLUXDB_INIT_ORG: "jia"
+      DOCKER_INFLUXDB_INIT_BUCKET: "jcore"
+      DOCKER_INFLUXDB_INIT_RETENTION: "90d"
 
-  # PROMQL MONITORING
-#  prometheus:
-#    container_name: prometheus
-#    image: prom/prometheus:latest
-    network_mode: host
+  prometheus:
+    container_name: jcore_prometheus
+    image: prom/prometheus:latest
     restart: unless-stopped
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /opt/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
 
-  # LOKI LOG AGGREGATOR
-#  jia-loki:
-#    container_name: jia-loki
-#    image: grafana/loki:2.9.1
+  jia-loki:
+    container_name: jcore_loki
+    image: grafana/loki:2.9.1
     user: "0:0"
-    volumes:
-      - /mnt/docker-data/homeassistant/loki/config/config.yaml:/etc/loki/config.yaml
-      - /mnt/docker-data/homeassistant/loki/data:/loki/data
-    ports:
-      - "3100:3100"
-      - "9095:9095"
-    command: 
+    restart: unless-stopped
+    command:
       - "-config.file=/etc/loki/config.yaml"
       - "-log.level=debug"
       - "-target=all"
       - "-config.expand-env=true"
-    restart: unless-stopped
+    ports:
+      - "3100:3100"
+      - "9095:9095"
+    volumes:
+      - /mnt/docker-data/homeassistant/loki/config/config.yaml:/etc/loki/config.yaml
+      - /mnt/docker-data/homeassistant/loki/data:/loki/data
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3100/ready || exit 1"]
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3100/ready || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
 
-  # HOME ASSISTANT
-#  homeassistant:
-#    container_name: homeassistant
-#    image: ghcr.io/home-assistant/home-assistant:stable
-    network_mode: host
+  homeassistant:
+    container_name: jcore_ha
+    build:
+      context: .
+      dockerfile: Dockerfile.ha-whisper
+    image: custom/home-assistant-whisper:latest
     restart: unless-stopped
+    ports:
+      - "8123:8123"
     environment:
-      TZ: Etc/UTC
+      TZ: "Etc/UTC"
     volumes:
-      - ./config:/config
+      - /mnt/docker-data/homeassistant/config:/config
       - /etc/localtime:/etc/localtime:ro
     depends_on:
       - mariadb
       - influxdb
 
-  # ESPHOME DASHBOARD
-#  esphome:
-#    container_name: esphome
-#    image: ghcr.io/esphome/esphome:2025.5.0b4
-    network_mode: host
+  esphome:
+    container_name: jcore_esp
+    image: ghcr.io/esphome/esphome:2025.5.0b4
     privileged: true
     restart: unless-stopped
     environment:
-      - TZ=Etc/UTC
+      TZ: "Etc/UTC"
     volumes:
       - ./esphome:/config
       - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "6052:6052"
     command: >
       dashboard /config
       --address 0.0.0.0
@@ -110,10 +99,9 @@ version: "3.8"
       --username mbxxvii
       --password mb415%
 
-  # MOSQUITTO MQTT
-#  mosquitto:
-#    container_name: mosquitto
-#    image: eclipse-mosquitto:latest
+  mosquitto:
+    container_name: jcore_mosquitto
+    image: eclipse-mosquitto:latest
     restart: unless-stopped
     ports:
       - "1883:1883"
@@ -123,49 +111,47 @@ version: "3.8"
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
 
-  # WATCHTOWER
-#  watchtower:
-#    container_name: watchtower
-#    image: containrrr/watchtower:latest
+  watchtower:
+    container_name: jcore_watchtower
+    image: containrrr/watchtower:latest
     restart: unless-stopped
     command: --cleanup --interval 3600
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  # PIPER TTS
-#  wyoming-piper:
-#    container_name: wyoming-piper
-#    image: rhasspy/wyoming-piper:latest
+  wyoming-piper:
+    container_name: jcore_wyoming
+    image: rhasspy/wyoming-piper:latest
     restart: unless-stopped
     ports:
       - "10200:10200"
     volumes:
       - ./piper-data:/data
-    command: >
-      --voice en_US-lessac-medium
-      --uri tcp://0.0.0.0:10200
+    command:
+      - --voice
+      - en_US-lessac-medium
+      - --uri
+      - tcp://0.0.0.0:10200
 
-  # FASTER-WHISPER STT
-#  faster-whisper:
-#    container_name: faster-whisper
-#    image: lscr.io/linuxserver/faster-whisper:latest
+  faster-whisper:
+    container_name: jcore_whisper
+    image: lscr.io/linuxserver/faster-whisper:latest
     restart: unless-stopped
     ports:
       - "19550:19550"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - WHISPER_MODEL=medium-int8
-      - WHISPER_LANG=en
-      - WHISPER_BEAM=5
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Etc/UTC"
+      WHISPER_MODEL: "medium-int8"
+      WHISPER_LANG: "en"
+      WHISPER_BEAM: "5"
     volumes:
       - ./faster-whisper:/config
 
-  # TERMINAL (ttyd)
-#  terminal:
-#    container_name: terminal
-#    image: tsl0922/ttyd:latest
+  terminal:
+    container_name: jcore_terminal
+    image: tsl0922/ttyd:latest
     restart: unless-stopped
     ports:
       - "7681:7681"
@@ -177,61 +163,54 @@ version: "3.8"
       - "7681"
       - bash
 
-  # FILE BROWSER
-#  filebrowser:
-#    container_name: filebrowser
-#    image: filebrowser/filebrowser:latest
+  filebrowser:
+    container_name: jcore_filebrowser
+    image: filebrowser/filebrowser:latest
     restart: unless-stopped
     ports:
       - "8080:80"
     environment:
-      - FB_BASEURL=/
-      - HOME=/config
+      FB_BASEURL: "/"
+      HOME: "/config"
     volumes:
-      - /mnt/docker-data/homeassistant/filebrowser_data:/srv
+      - /mnt/docker-data/homeassistant/config:/srv
       - /mnt/docker-data/homeassistant/filebrowser_config:/config
     command:
       - --root
       - /srv
 
-  # NGINX PROXY MANAGER
-#  npm:
-#    container_name: npm
-#    image: jc21/nginx-proxy-manager:2.11.1
+  npm:
+    container_name: jcore_npm
+    image: jc21/nginx-proxy-manager:2.11.1
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
       - "81:81"
+      - "443:443"
       - "4443:4443"
     volumes:
       - ./npm/data:/data
       - ./npm/letsencrypt:/etc/letsencrypt
-    networks:
-      - proxy
 
-  # UPTIME KUMA
-#  uptime-kuma:
-#    container_name: uptime-kuma
-#    image: louislam/uptime-kuma:1.23.15-alpine
+  uptime-kuma:
+    container_name: jcore_kuma
+    image: louislam/uptime-kuma:1.23.15-alpine
     restart: unless-stopped
     ports:
       - "3001:3001"
     volumes:
       - uptime-kuma-data:/app/data
 
-  # GRAFANA RENDERER
-#  grafana-renderer:
-#    container_name: grafana-renderer
-#    image: grafana/grafana-image-renderer:latest
+  grafana-renderer:
+    container_name: jcore_grafana_rdr
+    image: grafana/grafana-image-renderer:latest
     restart: unless-stopped
     ports:
       - "8082:8081"
 
-  # GRAFANA
-#  grafana:
-#    container_name: grafana
-#    image: grafana/grafana:latest
+  grafana:
+    image: grafana/grafana:latest
+    container_name: jcore_grafana
     restart: unless-stopped
     ports:
       - "3002:3000"
@@ -241,36 +220,20 @@ version: "3.8"
     depends_on:
       - influxdb
     environment:
-      - GF_SECURITY_ADMIN_USER=mbxxvii
-      - GF_SECURITY_ADMIN_PASSWORD=mb415%
-      - GF_USERS_ALLOW_SIGN_UP=false
-      - GF_SERVER_DOMAIN=grafana.dreammachine.casa
-      - GF_SERVER_ROOT_URL=https://grafana.dreammachine.casa
-      - GF_SERVER_SERVE_FROM_SUB_PATH=false
-      - GF_RENDERING_SERVER_URL=http://grafana-renderer:8081
+      GF_SECURITY_ADMIN_USER: "mbxxvii"
+      GF_SECURITY_ADMIN_PASSWORD: "mb415%"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_DOMAIN: "grafana.dreammachine.casa"
+      GF_SERVER_ROOT_URL: "https://grafana.dreammachine.casa"
+      GF_SERVER_SERVE_FROM_SUB_PATH: "false"
+      GF_RENDERING_SERVER_URL: "http://grafana-renderer:8081"
 
-  # PORTAINER UI & API
-#  portainer:
-#    container_name: portainer
-#    image: portainer/portainer-ce:latest
-    restart: unless-stopped
-    ports:
-      - "9000:9000"
-      - "9443:9443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - portainer_data:/data
-    networks:
-      - proxy
-
-#networks:
+networks:
   proxy:
     external: true
 
-#volumes:
+volumes:
   influxdb-storage:
   influxdb-config:
   grafana-storage:
   uptime-kuma-data:
-  loki-data:
-  portainer_data:
