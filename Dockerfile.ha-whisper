@@ -4,9 +4,14 @@ FROM ${HA_BASE_IMAGE}
 # We need root to install apt packages
 USER root
 
-# Use a more defensive apt-get approach
-RUN set -ex; \
-    apt-get update; \
+# Use a more robust apt-get installation
+RUN \
+    # Update package lists and install required dependencies
+    apt-get update -y || \
+    (echo "First apt-get update failed" && \
+     mkdir -p /etc/apt/sources.list.d && \
+     sed -i 's/^deb /deb [trusted=yes] /' /etc/apt/sources.list) && \
+    apt-get update -y && \
     apt-get install -y --no-install-recommends \
       ca-certificates \
       apt-transport-https \
@@ -21,8 +26,10 @@ RUN set -ex; \
       libavfilter-dev \
       libavresample-dev \
       libswresample-dev \
-      libswscale-dev; \
-    rm -rf /var/lib/apt/lists/*
+      libswscale-dev && \
+    # Cleanup
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install faster-whisper (and its dependencies) into Home Assistant's venv
 RUN pip install --no-cache-dir faster-whisper>=0.8.0
