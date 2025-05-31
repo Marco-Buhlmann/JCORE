@@ -1,6 +1,9 @@
 ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
 FROM ${HA_BASE_IMAGE}
 
+# Explicitly use bash and set strict error handling
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
+
 # We need root to install packages
 USER root
 
