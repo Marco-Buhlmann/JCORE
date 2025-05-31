@@ -1,43 +1,21 @@
 ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
 FROM ${HA_BASE_IMAGE}
 
-# We need root to install apt packages
+# We need root to install packages
 USER root
 
-# Comprehensive package installation with extensive error handling
+# Minimal package installation
 RUN \
-    # Ensure clean slate and basic tools
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get update -y || true && \
-    apt-get install -y --no-install-recommends \
+    apt-get update && \
+    apt-get install -y \
       ca-certificates \
-      apt-transport-https \
-      gnupg \
-      wget \
-      curl \
-      software-properties-common && \
-    # Add additional repositories if needed
-    apt-get update -y && \
-    apt-get install -y --no-install-recommends \
-      pkg-config \
       ffmpeg \
       libavcodec-dev \
-      libavformat-dev \
-      libavdevice-dev \
-      libavutil-dev \
-      libavfilter-dev \
-      libavresample-dev \
-      libswresample-dev \
-      libswscale-dev || \
-    (echo "Package installation failed" && exit 1) && \
-    # Cleanup
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      libavformat-dev && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install faster-whisper with error handling
-RUN pip install --no-cache-dir faster-whisper>=0.8.0 || \
-    (echo "Pip installation failed" && exit 1)
+# Install faster-whisper
+RUN pip install faster-whisper>=0.8.0
 
 # Ensure correct permissions
 USER root
