@@ -4,20 +4,21 @@ FROM ${HA_BASE_IMAGE}
 # We need root to install apt packages
 USER root
 
-# Use a multi-stage approach to package installation
-RUN set -ex; \
-    # Ensure we have the latest package lists and basic tools
+# Comprehensive package installation with extensive error handling
+RUN \
+    # Ensure clean slate and basic tools
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    apt-get update -qq && \
+    apt-get update -y || true && \
     apt-get install -y --no-install-recommends \
       ca-certificates \
       apt-transport-https \
       gnupg \
-      curl \
       wget \
-    && \
-    # Install specific packages 
+      curl \
+      software-properties-common && \
+    # Add additional repositories if needed
+    apt-get update -y && \
     apt-get install -y --no-install-recommends \
       pkg-config \
       ffmpeg \
@@ -28,13 +29,15 @@ RUN set -ex; \
       libavfilter-dev \
       libavresample-dev \
       libswresample-dev \
-      libswscale-dev \
-    # Cleanup in the same layer to reduce image size
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      libswscale-dev || \
+    (echo "Package installation failed" && exit 1) && \
+    # Cleanup
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install faster-whisper (and its dependencies) into Home Assistant's venv
-RUN pip install --no-cache-dir faster-whisper>=0.8.0
+# Install faster-whisper with error handling
+RUN pip install --no-cache-dir faster-whisper>=0.8.0 || \
+    (echo "Pip installation failed" && exit 1)
 
 # Ensure correct permissions
 USER root
