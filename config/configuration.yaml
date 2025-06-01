@@ -130,7 +130,8 @@ template:
           {% endif %}
 
 # Speech-to-Text Configuration
-  stt:
-    - platform: faster_whisper_stt
-      model: small
-      default_language: en
+stt:
+  - platform: faster_whisper_stt
+    uri: http://172.19.0.10:19550
+    model: small
+    default_language: en
