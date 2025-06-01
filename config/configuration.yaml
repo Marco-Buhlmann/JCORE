@@ -129,9 +129,8 @@ template:
             mdi:server-off
           {% endif %}
 
-# Speech-to-Text Configuration (Optional)
-# Uncomment and modify as needed
-# stt:
-#   - platform: faster_whisper_stt
-#     model: small
-#     default_language: en
+# Speech-to-Text Configuration
+  stt:
+    - platform: faster_whisper_stt
+      model: small
+      default_language: en
