@@ -132,6 +132,5 @@ template:
 # Speech-to-Text Configuration
 stt:
   - platform: faster_whisper_stt
-    uri: tcp://172.19.0.10:10300
     model: small
     default_language: en
