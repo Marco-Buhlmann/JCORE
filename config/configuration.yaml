@@ -138,3 +138,5 @@ stt:
     model: gpt-4o-mini-transcribe
     prompt: ""
     temperature: 0
+    host: 127.19.0.3
+    port: 8123
