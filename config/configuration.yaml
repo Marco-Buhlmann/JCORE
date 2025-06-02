@@ -20,6 +20,15 @@ http:
 # Loads default set of integrations. Do not remove.
 default_config:
 
+cloud:
+  disabled: true
+
+go2rtc:
+  disabled: true
+
+mobile_app:
+  disabled: true
+
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
