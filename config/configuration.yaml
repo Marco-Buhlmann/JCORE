@@ -26,9 +26,6 @@ cloud:
 go2rtc:
   disabled: true
 
-mobile_app:
-  disabled: true
-
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
@@ -70,7 +67,7 @@ recorder:
 # InfluxDB Configuration
 influxdb:
   api_version: 2
-  host: 172.18.0.1
+  host: 172.19.0.14
   port: 8086
   token: GeSG7eAFlxlCI65sjmFa2Y2hWZuq0OCWgfzne8SXnv-iTj6_lAszKXYpgey2hDqMBuGx9CZOvxsymdGuTXDpxA==
   organization: jia
