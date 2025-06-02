@@ -7,6 +7,7 @@ scrape_configs:
       - targets:
           - '127.0.0.1:8081'    # cAdvisor
           - '127.0.0.1:9100'    # Node Exporter
-          - '127.0.0.1:8123'    # Home Assistant
+          - '127.0.0.1:8123'    # JCORE
           - '127.0.0.1:3002'    # Grafana
           - '127.0.0.1:19550'   # faster-whisper
+          - '5.9.20.78:9100'    # Jia NLP Server
