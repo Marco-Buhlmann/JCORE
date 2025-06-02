@@ -11,3 +11,12 @@ scrape_configs:
           - '127.0.0.1:3002'    # Grafana
           - '127.0.0.1:19550'   # faster-whisper
           - '5.9.20.78:9100'    # Jia NLP Server
+
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: '$1'
+      - source_labels: [__address__]
+        regex: '5.9.20.78:9100'
+        target_label: job
+        replacement: 'nlp_server'
