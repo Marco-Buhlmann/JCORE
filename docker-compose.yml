@@ -139,22 +139,6 @@ services:
       - --uri
       - tcp://0.0.0.0:10200
 
-faster-whisper:
-  container_name: jcore_whisper
-  image: lscr.io/linuxserver/faster-whisper:latest
-  restart: unless-stopped
-  ports:
-    - "19550:19550"
-  environment:
-    PUID: 1000
-    PGID: 1000
-    TZ: Etc/UTC
-    WHISPER_MODEL: medium-int8
-    WHISPER_LANG: en
-    WHISPER_BEAM: 5
-  volumes:
-    - ./faster-whisper:/config
-
   terminal:
     container_name: jcore_terminal
     image: tsl0922/ttyd:latest
