@@ -51,31 +51,26 @@ RUN pip3 install --upgrade \
     setuptools \
     wheel
 
-# Install core dependencies with verbose logging
-RUN pip3 install \
-    --no-cache-dir \
-    --verbose \
-    --log /tmp/pip_install.log \
-    --extra-index-url https://download.pytorch.org/whl/cpu \
-    torch==2.1.0 \
-    transformers==4.35.0 \
-    tokenizers==0.14.0 \
-    ctranslate2==3.20.0 \
-    numpy==1.24.3 \
-    || (cat /tmp/pip_install.log && exit 1)
+# Install packages one by one with error handling
+RUN pip3 install --no-cache-dir torch==2.1.0 || exit 1
+RUN pip3 install --no-cache-dir transformers==4.35.0 || exit 1
+RUN pip3 install --no-cache-dir tokenizers==0.14.0 || exit 1
+RUN pip3 install --no-cache-dir ctranslate2==3.20.0 || exit 1
+RUN pip3 install --no-cache-dir numpy==1.24.3 || exit 1
 
-# Verify Python and pip versions
-RUN python3 --version && pip3 --version
+# Verify package installations
+RUN python3 -c "import torch; print('Torch imported')"
+RUN python3 -c "import transformers; print('Transformers imported')"
+RUN python3 -c "import tokenizers; print('Tokenizers imported')"
+RUN python3 -c "import ctranslate2; print('CTranslate2 imported')"
+RUN python3 -c "import numpy; print('NumPy imported')"
 
-# Additional diagnostic step
-RUN pip3 list
-
-# Additional utility installations (if needed)
+# Additional utility installations
 RUN pip3 install --no-cache-dir \
     soundfile \
     librosa
 
-# Clean up unnecessary files
+# Clean up
 RUN \
     pip3 cache purge && \
     find /usr/local/lib/python3.*/site-packages -type d -name "__pycache__" -exec rm -rf {} + && \
