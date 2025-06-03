@@ -72,7 +72,7 @@ services:
     container_name: jcore_ha
     build:
       context: .
-      dockerfile: Dockerfile.ha-whisper
+      dockerfile: Dockerfile.jcore-ha
     image: custom/home-assistant-whisper:latest
     restart: unless-stopped
     ports:
