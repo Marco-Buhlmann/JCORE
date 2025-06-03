@@ -148,7 +148,13 @@ services:
     image: alpine:latest
     stdin_open: true
     tty: true
+    restart: unless-stopped
+    ports:
+      - "7681:7681"
+    volumes:
+      - ./config:/config
     command: /bin/sh
+    
 
   filebrowser:
     container_name: jcore_filebrowser
