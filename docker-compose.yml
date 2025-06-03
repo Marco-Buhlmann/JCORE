@@ -143,21 +143,12 @@ services:
       - --uri
       - tcp://0.0.0.0:10200
 
-  terminal:
+terminal:
     container_name: jcore_terminal
-    image: tsl0922/ttyd:latest
+    image: alpine:latest
     stdin_open: true
     tty: true
-    restart: unless-stopped
-    ports:
-      - "7681:7681"
-    volumes:
-      - ./config:/config
-    command:
-      - ttyd
-      - -p
-      - "7681"
-      - bash
+    command: /bin/sh
 
   filebrowser:
     container_name: jcore_filebrowser
