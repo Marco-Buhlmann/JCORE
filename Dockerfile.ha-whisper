@@ -83,3 +83,8 @@ RUN chown -R root:root /config
 
 # Switch back to default Home Assistant user
 USER root
+
+RUN apk add --no-cache \
+    py3-numpy \
+    py3-scipy \
+    openblas-dev
