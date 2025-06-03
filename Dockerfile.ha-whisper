@@ -3,10 +3,7 @@
 #                                           WHISPER STT                                                |
 #                                                                                                      |
 #-------------------------------------------------------------------------------------------------------
-
-
 # JCORE Faster Whisper Integration Dockerfile
-
 ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
 FROM ${HA_BASE_IMAGE}
 
@@ -17,17 +14,28 @@ SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 USER root
 
 # Install comprehensive build dependencies
-RUN apk add --no-cache \
-    python3-dev \
-    py3-pip \
-    build-base \
-    gcc \
-    musl-dev \
-    linux-headers \
-    cmake \
-    openblas-dev \
-    py3-numpy \
-    py3-scipy
+RUN \
+    apk update && \
+    apk add --no-cache \
+      ca-certificates \
+      ffmpeg \
+      ffmpeg-dev \
+      build-base \
+      python3-dev \
+      py3-pip \
+      gcc \
+      g++ \
+      musl-dev \
+      linux-headers \
+      cmake \
+      make \
+      rust \
+      cargo \
+      openblas-dev \
+      py3-numpy \
+      py3-scipy \
+    && \
+    rm -rf /var/cache/apk/*
 
 # Upgrade pip and setuptools
 RUN pip3 install --upgrade \
@@ -36,8 +44,6 @@ RUN pip3 install --upgrade \
     wheel
 
 # Install core dependencies with robust error handling
-RUN pip3 install --upgrade pip setuptools wheel
-
 RUN pip3 install --no-cache-dir \
     --extra-index-url https://download.pytorch.org/whl/cpu \
     torch==2.1.0 \
@@ -45,7 +51,19 @@ RUN pip3 install --no-cache-dir \
     tokenizers==0.14.0 \
     ctranslate2==3.20.0 \
     numpy==1.24.3 \
-    && python3 -c "import torch; import transformers; import tokenizers; import ctranslate2; import numpy; print('All packages installed successfully')"
+    && python3 -c "
+import torch; 
+import transformers; 
+import tokenizers; 
+import ctranslate2; 
+import numpy; 
+print('Torch version:', torch.__version__);
+print('Transformers version:', transformers.__version__);
+print('Tokenizers version:', tokenizers.__version__);
+print('CTranslate2 version:', ctranslate2.__version__);
+print('NumPy version:', numpy.__version__);
+print('All packages installed successfully')
+" || (echo "Package installation failed" && exit 1)
 
 # Install Faster Whisper with specific version and verbose logging
 RUN pip3 install --no-cache-dir \
@@ -79,8 +97,3 @@ RUN chown -R root:root /config
 
 # Switch back to default Home Assistant user
 USER root
-
-RUN apk add --no-cache \
-    py3-numpy \
-    py3-scipy \
-    openblas-dev
