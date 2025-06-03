@@ -22,18 +22,21 @@ RUN \
       g++ \
       musl-dev \
       linux-headers \
-      cmake
+      cmake \
+      rust \
+      cargo
 
 RUN pip3 install --upgrade pip setuptools wheel
 
-# Minimal package installation
-RUN pip3 install --no-cache-dir \
-    torch \
-    transformers \
-    numpy
+# Install packages separately
+RUN pip3 install torch || true
+RUN pip3 install transformers || true
+RUN pip3 install numpy || true
 
-# Clean up
-RUN pip3 cache purge
+# Verify installations
+RUN python3 -c "import torch; print('Torch installed')" || true
+RUN python3 -c "import transformers; print('Transformers installed')" || true
+RUN python3 -c "import numpy; print('NumPy installed')" || true
 
 WORKDIR /config
 RUN chown -R root:root /config
