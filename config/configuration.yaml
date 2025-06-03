@@ -20,11 +20,11 @@ http:
 # Loads default set of integrations. Do not remove.
 default_config:
 
-cloud:
-  disabled: true
+#cloud:
+  #disabled: true
 
-go2rtc:
-  disabled: true
+#go2rtc:
+  #disabled: true
 
 # Load frontend themes from the themes folder
 frontend:
@@ -67,12 +67,14 @@ recorder:
 # InfluxDB Configuration
 influxdb:
   api_version: 2
-  host: 172.19.0.14
+  host: 172.19.0.8
   port: 8086
-  token: GeSG7eAFlxlCI65sjmFa2Y2hWZuq0OCWgfzne8SXnv-iTj6_lAszKXYpgey2hDqMBuGx9CZOvxsymdGuTXDpxA==
+  token: rg50f03E-budPzePfKWBnnyNpf-pUa8KXEJaE2j4i5WjNHTPEdw8X2UPiwYu6slYentJA8QV63yfqGBz5Hd3dQ==
   organization: jia
   bucket: jcore
   default_measurement: state
+  ssl: false
+  verify_ssl: false
 
 # Input text helpers
 input_text:
