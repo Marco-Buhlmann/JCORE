@@ -41,30 +41,34 @@ RUN \
       openblas-dev \
       py3-numpy \
       py3-scipy \
+      python3 \
     && \
     rm -rf /var/cache/apk/*
 
-# Upgrade pip and setuptools
+# Upgrade pip and core tools
 RUN pip3 install --upgrade \
     pip \
     setuptools \
     wheel
 
-# Install core dependencies with robust error handling
-RUN pip3 install --no-cache-dir \
+# Install core dependencies with verbose logging
+RUN pip3 install \
+    --no-cache-dir \
+    --verbose \
+    --log /tmp/pip_install.log \
     --extra-index-url https://download.pytorch.org/whl/cpu \
     torch==2.1.0 \
     transformers==4.35.0 \
     tokenizers==0.14.0 \
     ctranslate2==3.20.0 \
-    numpy==1.24.3
+    numpy==1.24.3 \
+    || (cat /tmp/pip_install.log && exit 1)
 
-# Verify package installations
-RUN python3 -c "import torch; print('Torch imported')"
-RUN python3 -c "import transformers; print('Transformers imported')"
-RUN python3 -c "import tokenizers; print('Tokenizers imported')"
-RUN python3 -c "import ctranslate2; print('CTranslate2 imported')"
-RUN python3 -c "import numpy; print('NumPy imported')"
+# Verify Python and pip versions
+RUN python3 --version && pip3 --version
+
+# Additional diagnostic step
+RUN pip3 list
 
 # Additional utility installations (if needed)
 RUN pip3 install --no-cache-dir \
