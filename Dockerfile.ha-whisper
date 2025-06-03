@@ -45,13 +45,11 @@ RUN pip3 install --upgrade \
 
 # Install core dependencies with robust error handling
 RUN pip3 install --no-cache-dir \
-    --verbose \
-    --log /tmp/pip_install.log \
-    torch \
-    transformers \
-    tokenizers \
-    ctranslate2 \
-    numpy || (cat /tmp/pip_install.log && exit 1)
+    torch==2.1.0 \
+    transformers==4.35.0 \
+    tokenizers==0.14.0 \
+    ctranslate2==3.20.0 \
+    numpy==1.24.3
 
 # Install Faster Whisper with specific version and verbose logging
 RUN pip3 install --no-cache-dir \
