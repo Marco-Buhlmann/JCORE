@@ -134,15 +134,3 @@ template:
           {% else %}
             mdi:server-off
           {% endif %}
-
-# Speech-to-Text Configuration
-stt:
-  - platform: openai_stt
-    api_key: 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
-    #  Optional parameters
-    api_url: https://api.openai.com/v1
-    model: gpt-4o-mini-transcribe
-    prompt: ""
-    temperature: 0
-    host: 172.17.0.1
-    port: 8123
