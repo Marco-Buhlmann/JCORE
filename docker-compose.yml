@@ -235,8 +235,6 @@ services:
 networks:
   proxy:
     external: true
-  jcore_master_default:
-    external: true
 
 volumes:
   influxdb-storage:
