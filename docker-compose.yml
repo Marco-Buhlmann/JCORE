@@ -145,7 +145,7 @@ services:
 
   terminal:
     container_name: jcore_terminal
-    image: alpine:latest
+    image: tsl0922/ttyd:latest
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -153,7 +153,11 @@ services:
       - "7681:7681"
     volumes:
       - ./config:/config
-    command: /bin/sh
+    command:
+      - ttyd
+      - -p
+      - "7681"
+      - bash
     
 
   filebrowser:
