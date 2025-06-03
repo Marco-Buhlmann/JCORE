@@ -33,8 +33,6 @@ services:
     container_name: jcore_influxdb
     image: influxdb:2.7
     restart: unless-stopped
-    networks:
-      - jcore_master_default
     ports:
       - "8086:8086"
     volumes:
@@ -78,8 +76,6 @@ services:
       retries: 3
 
   homeassistant:
-    networks:
-      - jcore_master_default
     container_name: jcore_ha
     build:
       context: .
