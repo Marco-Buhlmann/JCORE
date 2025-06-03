@@ -1,9 +1,10 @@
 #-------------------------------------------------------------------------------------------------------
 #                                                                                                      |
-#                                           WHISPER STT                                                |
+#                                           JCORE DOCKER                                               |
 #                                                                                                      |
 #-------------------------------------------------------------------------------------------------------
-# JCORE Faster Whisper Integration Dockerfile
+
+# JCORE Home Assistant Custom Image
 ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
 FROM ${HA_BASE_IMAGE}
 
@@ -50,23 +51,18 @@ RUN pip3 install --no-cache-dir \
     transformers==4.35.0 \
     tokenizers==0.14.0 \
     ctranslate2==3.20.0 \
-    numpy==1.24.3
+    numpy==1.24.3 \
+    && python3 -c "
+import torch;
+import transformers;
+import tokenizers;
+import ctranslate2;
+import numpy;
+print('Packages installed successfully')
+" || (echo "Package installation failed" && exit 1)
 
-# Verify package installations
-RUN python3 -c "print('Checking Python packages')" && \
-    python3 -c "import torch; print('Torch imported')" && \
-    python3 -c "import transformers; print('Transformers imported')" && \
-    python3 -c "import tokenizers; print('Tokenizers imported')" && \
-    python3 -c "import ctranslate2; print('CTranslate2 imported')" && \
-    python3 -c "import numpy; print('NumPy imported')"
-
-# Install Faster Whisper with specific version
+# Additional utility installations (if needed)
 RUN pip3 install --no-cache-dir \
-    faster-whisper==1.1.1
-
-# Additional language model and utility installations
-RUN pip3 install --no-cache-dir \
-    openai-whisper \
     soundfile \
     librosa
 
