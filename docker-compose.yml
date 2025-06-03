@@ -146,6 +146,8 @@ services:
   terminal:
     container_name: jcore_terminal
     image: tsl0922/ttyd:latest
+    stdin_open: true
+    tty: true
     restart: unless-stopped
     ports:
       - "7681:7681"
