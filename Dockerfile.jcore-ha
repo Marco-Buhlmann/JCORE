@@ -4,91 +4,38 @@
 #                                                                                                      |
 #-------------------------------------------------------------------------------------------------------
 
-#-------------------------------------------------------------------------------------------------------
-#                                                                                                      |
-#                                           JCORE HOME ASSISTANT                                       |
-#                                                                                                      |
-#-------------------------------------------------------------------------------------------------------
 # JCORE Home Assistant Custom Image
 ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
 FROM ${HA_BASE_IMAGE}
 
-# Use bash for more robust shell scripting
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 
-# Switch to root for installation
 USER root
 
-# Install comprehensive build dependencies
 RUN \
     apk update && \
     apk add --no-cache \
-      ca-certificates \
-      ffmpeg \
-      ffmpeg-dev \
-      build-base \
       python3-dev \
       py3-pip \
+      build-base \
       gcc \
       g++ \
       musl-dev \
       linux-headers \
-      cmake \
-      make \
-      rust \
-      cargo \
-      openblas-dev \
-      py3-numpy \
-      py3-scipy \
-      python3 \
-      py3-wheel \
-    && \
-    rm -rf /var/cache/apk/*
+      cmake
 
-# Upgrade pip and core tools
-RUN pip3 install --upgrade \
-    pip \
-    setuptools \
-    wheel
+RUN pip3 install --upgrade pip setuptools wheel
 
-# Install torch with specific considerations for Alpine
-RUN pip3 install \
-    --no-cache-dir \
-    --extra-index-url https://download.pytorch.org/whl/cpu \
-    torch==2.1.0 \
-    torchvision \
-    torchaudio
-
-# Install other dependencies
+# Minimal package installation
 RUN pip3 install --no-cache-dir \
-    transformers==4.35.0 \
-    tokenizers==0.14.0 \
-    ctranslate2==3.20.0 \
-    numpy==1.24.3
-
-# Verify package installations
-RUN python3 -c "import torch; print('Torch version:', torch.__version__)"
-RUN python3 -c "import transformers; print('Transformers imported')"
-RUN python3 -c "import tokenizers; print('Tokenizers imported')"
-RUN python3 -c "import ctranslate2; print('CTranslate2 imported')"
-RUN python3 -c "import numpy; print('NumPy imported')"
-
-# Additional utility installations
-RUN pip3 install --no-cache-dir \
-    soundfile \
-    librosa
+    torch \
+    transformers \
+    numpy
 
 # Clean up
-RUN \
-    pip3 cache purge && \
-    find /usr/local/lib/python3.*/site-packages -type d -name "__pycache__" -exec rm -rf {} + && \
-    find /usr/local/lib/python3.*/site-packages -type f -name "*.pyc" -delete
+RUN pip3 cache purge
 
-# Set working directory
 WORKDIR /config
-
-# Ensure correct permissions
 RUN chown -R root:root /config
 
-# Switch back to default Home Assistant user
 USER root
