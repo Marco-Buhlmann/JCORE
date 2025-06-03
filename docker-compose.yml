@@ -8,6 +8,13 @@ version: "3.8"
 
 services:
 
+dbuilder:
+  build:
+     context: .
+     dockerfile: Dockerfile
+  environment:
+    - DOCKER_BUILDKIT=0
+
   mariadb:
     container_name: jcore_mariadb
     image: mariadb:10.11
