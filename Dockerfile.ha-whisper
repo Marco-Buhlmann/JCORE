@@ -17,25 +17,17 @@ SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 USER root
 
 # Install comprehensive build dependencies
-RUN \
-    apk update && \
-    apk add --no-cache \
-      ca-certificates \
-      ffmpeg \
-      ffmpeg-dev \
-      build-base \
-      python3-dev \
-      py3-pip \
-      gcc \
-      musl-dev \
-      linux-headers \
-      cmake \
-      make \
-      g++ \
-      rust \
-      cargo \
-    && \
-    rm -rf /var/cache/apk/*
+RUN apk add --no-cache \
+    python3-dev \
+    py3-pip \
+    build-base \
+    gcc \
+    musl-dev \
+    linux-headers \
+    cmake \
+    openblas-dev \
+    py3-numpy \
+    py3-scipy
 
 # Upgrade pip and setuptools
 RUN pip3 install --upgrade \
@@ -44,12 +36,16 @@ RUN pip3 install --upgrade \
     wheel
 
 # Install core dependencies with robust error handling
+RUN pip3 install --upgrade pip setuptools wheel
+
 RUN pip3 install --no-cache-dir \
+    --extra-index-url https://download.pytorch.org/whl/cpu \
     torch==2.1.0 \
     transformers==4.35.0 \
     tokenizers==0.14.0 \
     ctranslate2==3.20.0 \
-    numpy==1.24.3
+    numpy==1.24.3 \
+    && python3 -c "import torch; import transformers; import tokenizers; import ctranslate2; import numpy; print('All packages installed successfully')"
 
 # Install Faster Whisper with specific version and verbose logging
 RUN pip3 install --no-cache-dir \
