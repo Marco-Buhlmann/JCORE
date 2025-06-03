@@ -53,35 +53,22 @@ RUN pip3 install --no-cache-dir \
     numpy==1.24.3
 
 # Verify package installations
-RUN python3 -c "
-import torch
-import transformers
-import tokenizers
-import ctranslate2
-import numpy
-print('Torch version:', torch.__version__)
-print('Transformers version:', transformers.__version__)
-print('Tokenizers version:', tokenizers.__version__)
-print('CTranslate2 version:', ctranslate2.__version__)
-print('NumPy version:', numpy.__version__)
-print('All packages installed successfully')
-"
+RUN python3 -c "print('Checking Python packages')" && \
+    python3 -c "import torch; print('Torch imported')" && \
+    python3 -c "import transformers; print('Transformers imported')" && \
+    python3 -c "import tokenizers; print('Tokenizers imported')" && \
+    python3 -c "import ctranslate2; print('CTranslate2 imported')" && \
+    python3 -c "import numpy; print('NumPy imported')"
 
-# Install Faster Whisper with specific version and verbose logging
+# Install Faster Whisper with specific version
 RUN pip3 install --no-cache-dir \
-    faster-whisper==1.1.1 \
-    && python3 -c "import faster_whisper; print('Faster Whisper Version:', faster_whisper.__version__)"
+    faster-whisper==1.1.1
 
 # Additional language model and utility installations
 RUN pip3 install --no-cache-dir \
     openai-whisper \
     soundfile \
     librosa
-
-# Verify installations
-RUN \
-    python3 -c "import faster_whisper; print('Faster Whisper successfully imported')" && \
-    python3 -c "import torch; print('Torch version:', torch.__version__)"
 
 # Clean up unnecessary files
 RUN \
