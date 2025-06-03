@@ -20,11 +20,11 @@ http:
 # Loads default set of integrations. Do not remove.
 default_config:
 
-#cloud:
-  #disabled: true
+cloud:
+  disabled: true
 
-#go2rtc:
-  #disabled: true
+go2rtc:
+  disabled: true
 
 # Load frontend themes from the themes folder
 frontend:
