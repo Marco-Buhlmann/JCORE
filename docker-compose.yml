@@ -4,6 +4,7 @@
 #                                                                                                      |
 #-------------------------------------------------------------------------------------------------------
 
+services:
   mariadb:
     container_name: jcore_mariadb
     image: mariadb:10.11
@@ -75,6 +76,7 @@
       - "8123:8123"
     environment:
       TZ: "Etc/UTC"
+      DOCKER_BUILDKIT: "0"
     volumes:
       - /mnt/docker-data/homeassistant/config:/config
       - /etc/localtime:/etc/localtime:ro
