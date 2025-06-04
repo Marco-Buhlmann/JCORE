@@ -6,13 +6,6 @@
 
 version: "3.8"
 
-services:
-
-  dbuilder:
-    build:
-       context: .
-       dockerfile: Dockerfile
-
   mariadb:
     container_name: jcore_mariadb
     image: mariadb:10.11
@@ -160,7 +153,6 @@ services:
       - "7681"
       - bash
     
-
   filebrowser:
     container_name: jcore_filebrowser
     image: filebrowser/filebrowser:latest
