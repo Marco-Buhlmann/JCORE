@@ -1,3 +1,21 @@
+#-------------------------------------------------------------------------------------------------------
+#                                                                                                      |
+#                                           JCORE CONFIG                                               |
+#                                                                                                      |
+#-------------------------------------------------------------------------------------------------------
+
+
+# Enable reverse proxy support
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
+    - 172.0.0.0/8
+    - 172.18.0.3  
+    - 172.18.0.0/16
+    - 192.168.0.0/16
+    - 10.0.0.0/8
 
 # Loads default set of integrations. Do not remove.
 default_config:
@@ -5,7 +23,112 @@ default_config:
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /mnt/docker-data/homeassistant/config/www/community/lovelace-card-mod/card-mod.js
+    - /local/grafana-persistent.js
 
+# Automations
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+# Custom Dashboard
+lovelace:
+  mode: storage
+  dashboards:
+    mac-dashboard:
+      mode: yaml
+      title: macOS Dashboard
+      icon: mdi:apple
+      show_in_sidebar: true
+      filename: mac-dashboard.yaml
+
+# MariaDB
+recorder:
+  db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@mariadb:3306/JCORE?charset=utf8
+  purge_keep_days: 30
+  commit_interval: 5
+  exclude:
+    domains:
+      - automation
+      - updater
+    entity_globs:
+      - sensor.last_boot
+      - sensor.date*
+    entities:
+      - sun.sun
+
+# InfluxDB Configuration
+influxdb:
+  host: jcore_influxdb 
+  port: 8086
+  api_version: 2
+  host: 172.18.0.1
+  port: 8086
+  token: nI038AxmbjIRHy_2k6OdXBUHeQ5No8ObtEnUpYKt9_Wn0ckgphrx1jhVJHLn40q7B7bkP0jXkZ30_Lej3rRjTw==
+  organization: jia
+  bucket: jcore
+  default_measurement: state
+  ssl: false
+  verify_ssl: false
+
+# Input text helpers
+input_text:
+  hetzner_server_id:
+    name: Hetzner Server ID
+    initial: !secret hetzner_server_id
+    mode: password
+  hetzner_api_token:
+    name: Hetzner API Token  
+    initial: !secret hetzner_api_token
+    mode: password
+
+# Rest Commands
+rest_command:
+  hetzner_shutdown_server:
+    url: "https://api.hetzner.cloud/v1/servers/{{ server_id }}/actions/shutdown"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ api_token }}"
+      Content-Type: "application/json"
+    payload: '{}'
+  
+  hetzner_poweroff_server:
+    url: "https://api.hetzner.cloud/v1/servers/{{ server_id }}/actions/poweroff"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ api_token }}"
+      Content-Type: "application/json"
+    payload: '{}'
+
+  hetzner_poweron_server:
+    url: "https://api.hetzner.cloud/v1/servers/{{ server_id }}/actions/poweron"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ api_token }}"
+      Content-Type: "application/json"
+    payload: '{}'
+
+# Sensors
+sensor:
+  - platform: rest
+    name: "Hetzner Server Direct"
+    resource: "https://api.hetzner.cloud/v1/servers/61655748"
+    headers:
+      Authorization: "Bearer nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+    value_template: "{{ value_json.server.status }}"
+    json_attributes:
+      - server
+    scan_interval: 60
+
+# Template Sensors
+template:
+  - sensor:
+      - name: "Hetzner Server Simple Status"
+        state: "{{ states('sensor.hetzner_server_direct') }}"
+        icon: >
+          {% if states('sensor.hetzner_server_direct') == 'running' %}
+            mdi:server
+          {% else %}
+            mdi:server-off
+          {% endif %}

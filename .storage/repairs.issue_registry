@@ -3,6 +3,14 @@
   "minor_version": 2,
   "key": "repairs.issue_registry",
   "data": {
-    "issues": []
+    "issues": [
+      {
+        "created": "2025-06-02T20:03:16.476756+00:00",
+        "dismissed_version": "2025.5.3",
+        "domain": "homeassistant",
+        "is_persistent": false,
+        "issue_id": "config_entry_only_version"
+      }
+    ]
   }
 }

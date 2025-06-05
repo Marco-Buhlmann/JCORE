@@ -1,1 +1,9 @@
-[]
+- alias: Set macOS Theme at Startup
+  id: set_macos_theme_at_startup
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: frontend.set_theme
+      data:
+        name: macOS Theme

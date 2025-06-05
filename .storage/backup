@@ -5,31 +5,84 @@
   "data": {
     "backups": [
       {
-        "backup_id": "2e721f5e",
+        "backup_id": "d114d0a0",
         "failed_agent_ids": []
+      },
+      {
+        "backup_id": "772328d2",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
+      },
+      {
+        "backup_id": "5d7467d0",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
+      },
+      {
+        "backup_id": "8ced8213",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
+      },
+      {
+        "backup_id": "0c68f44d",
+        "failed_agent_ids": []
+      },
+      {
+        "backup_id": "a5334bcf",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
+      },
+      {
+        "backup_id": "2e721f5e",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
+      },
+      {
+        "backup_id": "efd231e5",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
+      },
+      {
+        "backup_id": "a3940ebf",
+        "failed_agent_ids": []
+      },
+      {
+        "backup_id": "61816013",
+        "failed_agent_ids": [
+          "cloud.cloud"
+        ]
       }
     ],
     "config": {
       "agents": {},
-      "automatic_backups_configured": false,
+      "automatic_backups_configured": true,
       "create_backup": {
-        "agent_ids": [],
+        "agent_ids": [
+          "backup.local",
+          "cloud.cloud"
+        ],
         "include_addons": null,
         "include_all_addons": false,
         "include_database": true,
         "include_folders": null,
         "name": null,
-        "password": null
+        "password": "TYAZ-P4KL-C39B-QAGG-BSVL-E3AZ-4LLC"
       },
-      "last_attempted_automatic_backup": null,
+      "last_attempted_automatic_backup": "2025-06-02T05:30:47.001321+00:00",
       "last_completed_automatic_backup": null,
       "retention": {
-        "copies": null,
+        "copies": 3,
         "days": null
       },
       "schedule": {
         "days": [],
-        "recurrence": "never",
+        "recurrence": "daily",
         "state": "never",
         "time": null
       }

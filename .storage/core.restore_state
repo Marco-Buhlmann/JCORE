@@ -4,19 +4,288 @@
   "key": "core.restore_state",
   "data": [
     {
-      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-06-05T07:34:12.203471+00:00","last_reported":"2025-06-05T07:34:12.203471+00:00","last_updated":"2025-06-05T07:34:12.203471+00:00","context":{"id":"01JWZG61FBQE57CYE2TNS12XKB","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-06-05T15:38:38.215542+00:00","last_reported":"2025-06-05T15:38:38.215542+00:00","last_updated":"2025-06-05T15:38:38.215542+00:00","context":{"id":"01JX0BX2874GNBHE14WDA061TY","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T07:34:12.834797+00:00"
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
     },
     {
-      "state": {"entity_id":"person.marco_buhlmann","state":"unknown","attributes":{"editable":true,"id":"marco_buhlmann","device_trackers":[],"source":"person.marco_buhlmann","user_id":"3307850131f7413bbfbe12699d6d594e","friendly_name":"Marco Buhlmann"},"last_changed":"2025-06-05T07:34:12.523027+00:00","last_reported":"2025-06-05T07:34:12.523027+00:00","last_updated":"2025-06-05T07:34:12.523027+00:00","context":{"id":"01JWZG61SBT53R4KZEGT34YJGQ","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.force_poweroff_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Force Power Off Hetzner Server"},"last_changed":"2025-06-05T15:38:39.681559+00:00","last_reported":"2025-06-05T15:38:39.681559+00:00","last_updated":"2025-06-05T15:38:39.681559+00:00","context":{"id":"01JX0BX3P1PHQGBBH18BK3DCP5","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T07:34:12.834797+00:00"
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
     },
     {
-      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-05T07:34:12.788156+00:00","last_reported":"2025-06-05T07:34:12.788156+00:00","last_updated":"2025-06-05T07:34:12.788156+00:00","context":{"id":"01JWZG621MBV3P0PQFA2CFWA6P","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.graceful_shutdown_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Gracefully Shutdown Hetzner Server"},"last_changed":"2025-06-05T15:38:39.681683+00:00","last_reported":"2025-06-05T15:38:39.681683+00:00","last_updated":"2025-06-05T15:38:39.681683+00:00","context":{"id":"01JX0BX3P1SZGH8CDNJQSVD6AH","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T07:34:12.834797+00:00"
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+    },
+    {
+      "state": {"entity_id":"script.poweron_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Power On Hetzner Server"},"last_changed":"2025-06-05T15:38:39.681767+00:00","last_reported":"2025-06-05T15:38:39.681767+00:00","last_updated":"2025-06-05T15:38:39.681767+00:00","context":{"id":"01JX0BX3P114FJXRRAZPH61HD9","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+    },
+    {
+      "state": {"entity_id":"input_text.hetzner_server_id","state":"61655748","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner Server ID"},"last_changed":"2025-06-05T15:38:42.728434+00:00","last_reported":"2025-06-05T15:38:42.728434+00:00","last_updated":"2025-06-05T15:38:42.728434+00:00","context":{"id":"01JX0BX6N84QNX54Z2X0141F3W","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+    },
+    {
+      "state": {"entity_id":"input_text.hetzner_api_token","state":"nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner API Token"},"last_changed":"2025-06-05T15:38:42.728826+00:00","last_reported":"2025-06-05T15:38:42.728826+00:00","last_updated":"2025-06-05T15:38:42.728826+00:00","context":{"id":"01JX0BX6N8GPG7N78ZHX97SCZT","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+    },
+    {
+      "state": {"entity_id":"automation.set_macos_theme_at_startup","state":"on","attributes":{"id":"set_macos_theme_at_startup","last_triggered":"2025-06-05T15:38:52.677516+00:00","mode":"single","current":0,"friendly_name":"Set macOS Theme at Startup"},"last_changed":"2025-06-05T15:38:42.731947+00:00","last_reported":"2025-06-05T15:38:52.677996+00:00","last_updated":"2025-06-05T15:38:52.677895+00:00","context":{"id":"01JX0BXGC5KM4BY2WVYYPBXR7S","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+    },
+    {
+      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-05T15:38:42.795381+00:00","last_reported":"2025-06-05T15:38:42.795381+00:00","last_updated":"2025-06-05T15:38:42.795381+00:00","context":{"id":"01JX0BX6QBRTRCHB7QQREMFFBD","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+    },
+    {
+      "state": {"entity_id":"person.marco","state":"not_home","attributes":{"editable":true,"id":"marco","device_trackers":["device_tracker.mbxxvii","device_tracker.mbxxvii_macair"],"latitude":52.52389881635807,"longitude":13.39468594067379,"gps_accuracy":35,"source":"device_tracker.mbxxvii_macair","user_id":"a866c36c3563470b8bbd5ccc1483e12b","entity_picture":"/api/image/serve/b056a5f46e5531be5cb3f9cbc9d1c0a1/512x512","friendly_name":"Marco"},"last_changed":"2025-06-02T02:10:56.251999+00:00","last_reported":"2025-06-02T02:10:56.251999+00:00","last_updated":"2025-06-02T02:10:56.251999+00:00","context":{"id":"01JWQ6FZ3V2GV19EY66YGHHJ45","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"binary_sensor.mbxxvii_macair_camera_in_use","state":"off","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Camera In Use"},"last_changed":"2025-06-02T02:10:56.094207+00:00","last_reported":"2025-06-02T02:10:56.094207+00:00","last_updated":"2025-06-02T02:10:56.094207+00:00","context":{"id":"01JWQ6FYYYEET02GZRWDA40CM7","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"binary_sensor.mbxxvii_macair_audio_input_in_use","state":"off","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Audio Input In Use"},"last_changed":"2025-06-02T02:10:56.094380+00:00","last_reported":"2025-06-02T02:10:56.094380+00:00","last_updated":"2025-06-02T02:10:56.094380+00:00","context":{"id":"01JWQ6FYYY4RJDV7XS8GZSKN6Q","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"binary_sensor.mbxxvii_macair_audio_output_in_use","state":"off","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Audio Output In Use"},"last_changed":"2025-06-02T02:10:56.094526+00:00","last_reported":"2025-06-02T02:10:56.094526+00:00","last_updated":"2025-06-02T02:10:56.094526+00:00","context":{"id":"01JWQ6FYYYV37H59RZB5RAVNY1","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"binary_sensor.mbxxvii_macair_active","state":"off","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Active"},"last_changed":"2025-06-02T02:10:56.094963+00:00","last_reported":"2025-06-02T02:10:56.094963+00:00","last_updated":"2025-06-02T02:10:56.094963+00:00","context":{"id":"01JWQ6FYYYZP9V1G8Z9HJPPWDT","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"device_tracker.mbxxvii_macair","state":"not_home","attributes":{"source_type":"gps","battery_level":100,"latitude":52.52389881635807,"longitude":13.39468594067379,"gps_accuracy":35,"altitude":0.0,"friendly_name":"MBXXVII MacAir"},"last_changed":"2025-06-02T02:10:56.095931+00:00","last_reported":"2025-06-02T02:10:56.095931+00:00","last_updated":"2025-06-02T02:10:56.095931+00:00","context":{"id":"01JWQ6FYYZH1J1RTD8DRWP97CT","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_connection_type","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Connection Type"},"last_changed":"2025-06-02T02:10:56.096483+00:00","last_reported":"2025-06-02T02:10:56.096483+00:00","last_updated":"2025-06-02T02:10:56.096483+00:00","context":{"id":"01JWQ6FYZ0ZB65R4QDPNEHC3ZR","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_bssid","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir BSSID"},"last_changed":"2025-06-02T02:10:56.096658+00:00","last_reported":"2025-06-02T02:10:56.096658+00:00","last_updated":"2025-06-02T02:10:56.096658+00:00","context":{"id":"01JWQ6FYZ0SKM8FRDX12E8WD43","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_ssid","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir SSID"},"last_changed":"2025-06-02T02:10:56.096789+00:00","last_reported":"2025-06-02T02:10:56.096789+00:00","last_updated":"2025-06-02T02:10:56.096789+00:00","context":{"id":"01JWQ6FYZ0P7GNN3956R90CABT","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_internal_battery_state","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Internal Battery State"},"last_changed":"2025-06-02T02:10:56.096920+00:00","last_reported":"2025-06-02T02:10:56.096920+00:00","last_updated":"2025-06-02T02:10:56.096920+00:00","context":{"id":"01JWQ6FYZ0KQAYKH7XDBERVFJV","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_geocoded_location","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Geocoded Location"},"last_changed":"2025-06-02T02:10:56.097039+00:00","last_reported":"2025-06-02T02:10:56.097039+00:00","last_updated":"2025-06-02T02:10:56.097039+00:00","context":{"id":"01JWQ6FYZ1XJ1RM6PS2RDDA6YQ","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_storage","state":"unavailable","attributes":{"unit_of_measurement":"% available","icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Storage"},"last_changed":"2025-06-02T02:10:56.097165+00:00","last_reported":"2025-06-02T02:10:56.097165+00:00","last_updated":"2025-06-02T02:10:56.097165+00:00","context":{"id":"01JWQ6FYZ12M1ZMK8QGS0NBPP2","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": "% available"
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_internal_battery_level","state":"unavailable","attributes":{"unit_of_measurement":"%","device_class":"battery","icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Internal Battery Level"},"last_changed":"2025-06-02T02:10:56.097301+00:00","last_reported":"2025-06-02T02:10:56.097301+00:00","last_updated":"2025-06-02T02:10:56.097301+00:00","context":{"id":"01JWQ6FYZ1284DVW6N41E7T3GC","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": "%"
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_active_camera","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Active Camera"},"last_changed":"2025-06-02T02:10:56.097835+00:00","last_reported":"2025-06-02T02:10:56.097835+00:00","last_updated":"2025-06-02T02:10:56.097835+00:00","context":{"id":"01JWQ6FYZ1A3XJDW6G6HGYN38N","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_active_audio_input","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Active Audio Input"},"last_changed":"2025-06-02T02:10:56.097997+00:00","last_reported":"2025-06-02T02:10:56.097997+00:00","last_updated":"2025-06-02T02:10:56.097997+00:00","context":{"id":"01JWQ6FYZ1XW4YTEWJPDQEZ055","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_displays","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Displays"},"last_changed":"2025-06-02T02:10:56.098125+00:00","last_reported":"2025-06-02T02:10:56.098125+00:00","last_updated":"2025-06-02T02:10:56.098125+00:00","context":{"id":"01JWQ6FYZ2E2W2NQJYEKZA2F6M","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_active_audio_output","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Active Audio Output"},"last_changed":"2025-06-02T02:10:56.098283+00:00","last_reported":"2025-06-02T02:10:56.098283+00:00","last_updated":"2025-06-02T02:10:56.098283+00:00","context":{"id":"01JWQ6FYZ2MBZKQQSXTP56ZXS5","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_primary_display_name","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Primary Display Name"},"last_changed":"2025-06-02T02:10:56.098428+00:00","last_reported":"2025-06-02T02:10:56.098428+00:00","last_updated":"2025-06-02T02:10:56.098428+00:00","context":{"id":"01JWQ6FYZ221FS1S7R2X76SRJS","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_primary_display_id","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Primary Display ID"},"last_changed":"2025-06-02T02:10:56.098563+00:00","last_reported":"2025-06-02T02:10:56.098563+00:00","last_updated":"2025-06-02T02:10:56.098563+00:00","context":{"id":"01JWQ6FYZ2GT6Y5GAMJPA49S04","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_last_update_trigger","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Last Update Trigger"},"last_changed":"2025-06-02T02:10:56.098682+00:00","last_reported":"2025-06-02T02:10:56.098682+00:00","last_updated":"2025-06-02T02:10:56.098682+00:00","context":{"id":"01JWQ6FYZ2M4471Z1KF42ZVZVH","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_frontmost_app","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Frontmost App"},"last_changed":"2025-06-02T02:10:56.098795+00:00","last_reported":"2025-06-02T02:10:56.098795+00:00","last_updated":"2025-06-02T02:10:56.098795+00:00","context":{"id":"01JWQ6FYZ2KQ1NKEKVFHE4SGYW","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_app_version","state":"2025.5","attributes":{"icon":"mdi:cellphone","friendly_name":"MBXXVII MacAir App Version"},"last_changed":"2025-06-02T02:10:56.098917+00:00","last_reported":"2025-06-02T02:10:56.098917+00:00","last_updated":"2025-06-02T02:10:56.098917+00:00","context":{"id":"01JWQ6FYZ24YAKDZ7MXV8ZYB24","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "2025.5",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_location_permission","state":"Authorized Always","attributes":{"icon":"mdi:map","friendly_name":"MBXXVII MacAir Location permission"},"last_changed":"2025-06-02T02:10:56.099064+00:00","last_reported":"2025-06-02T02:10:56.099064+00:00","last_updated":"2025-06-02T02:10:56.099064+00:00","context":{"id":"01JWQ6FYZ3SJRJ7S1N68M3YWAY","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "Authorized Always",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"sensor.mbxxvii_macair_audio_output","state":"unavailable","attributes":{"icon":"mdi:dots-square","friendly_name":"MBXXVII MacAir Audio Output"},"last_changed":"2025-06-02T02:10:56.099187+00:00","last_reported":"2025-06-02T02:10:56.099187+00:00","last_updated":"2025-06-02T02:10:56.099187+00:00","context":{"id":"01JWQ6FYZ3712EQW92H3QFKF82","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_value": "unavailable",
+        "native_unit_of_measurement": null
+      },
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"conversation.openai_conversation","state":"unknown","attributes":{"friendly_name":"OpenAI Conversation","supported_features":1},"last_changed":"2025-06-02T02:10:56.220093+00:00","last_reported":"2025-06-02T02:10:56.220093+00:00","last_updated":"2025-06-02T02:10:56.220093+00:00","context":{"id":"01JWQ6FZ2WY5RJJ1842R4V7T2S","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.openai_whisper_api_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.1.0","in_progress":false,"latest_version":"v1.1.0","release_summary":null,"release_url":"https://github.com/einToast/openai_stt_ha/releases/v1.1.0","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/openai_stt/icon.png","friendly_name":"OpenAI Whisper API update","supported_features":23},"last_changed":"2025-06-02T02:10:56.227412+00:00","last_reported":"2025-06-02T02:10:56.227412+00:00","last_updated":"2025-06-02T02:10:56.227412+00:00","context":{"id":"01JWQ6FZ33TTE29Y8SRJB9SPZB","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.google_home_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.13.0","in_progress":false,"latest_version":"v1.13.0","release_summary":null,"release_url":"https://github.com/leikoilja/ha-google-home/releases/v1.13.0","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/google_home/icon.png","friendly_name":"Google Home update","supported_features":23},"last_changed":"2025-06-02T02:10:56.227598+00:00","last_reported":"2025-06-02T02:10:56.227598+00:00","last_updated":"2025-06-02T02:10:56.227598+00:00","context":{"id":"01JWQ6FZ33YVVD7QHZV70WZBQC","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.browser_mod_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v2.3.8","in_progress":false,"latest_version":"v2.3.8","release_summary":null,"release_url":"https://github.com/thomasloven/hass-browser_mod","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/browser_mod/icon.png","friendly_name":"browser_mod update","supported_features":23},"last_changed":"2025-06-02T02:10:56.227762+00:00","last_reported":"2025-06-02T02:10:56.227762+00:00","last_updated":"2025-06-02T02:10:56.227762+00:00","context":{"id":"01JWQ6FZ33EZ70EXFAJED6S5HM","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.hacs_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"2.0.5","in_progress":false,"latest_version":"2.0.5","release_summary":null,"release_url":"https://github.com/hacs/integration/releases/2.0.5","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/hacs/icon.png","friendly_name":"HACS update","supported_features":23},"last_changed":"2025-06-02T02:10:56.227890+00:00","last_reported":"2025-06-02T02:10:56.227890+00:00","last_updated":"2025-06-02T02:10:56.227890+00:00","context":{"id":"01JWQ6FZ33EQFC9VQ17T5FKQ5T","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.lovelace_html_card_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.0.0","in_progress":false,"latest_version":"v1.0.0","release_summary":null,"release_url":"https://github.com/PiotrMachowski/lovelace-html-card/releases/v1.0.0","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"Lovelace Html Card update","supported_features":23},"last_changed":"2025-06-02T02:10:56.228012+00:00","last_reported":"2025-06-02T02:10:56.228012+00:00","last_updated":"2025-06-02T02:10:56.228012+00:00","context":{"id":"01JWQ6FZ34AV0S78SW9H9ERCPF","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.card_mod_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v3.4.4","in_progress":false,"latest_version":"v3.4.4","release_summary":null,"release_url":"https://github.com/thomasloven/lovelace-card-mod/releases/v3.4.4","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"card-mod update","supported_features":23},"last_changed":"2025-06-02T02:10:56.228123+00:00","last_reported":"2025-06-02T02:10:56.228123+00:00","last_updated":"2025-06-02T02:10:56.228123+00:00","context":{"id":"01JWQ6FZ34YSC46SCPBAE9GXS8","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"update.macos_theme_based_on_the_system_wide_light_and_dark_mode_ui_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.4","in_progress":false,"latest_version":"v1.4","release_summary":null,"release_url":"https://github.com/JuanMTech/macOS-Theme/releases/v1.4","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"macOS Theme - Based on the system-wide light and dark mode UI update","supported_features":23},"last_changed":"2025-06-02T02:10:56.228238+00:00","last_reported":"2025-06-02T02:10:56.228238+00:00","last_updated":"2025-06-02T02:10:56.228238+00:00","context":{"id":"01JWQ6FZ34AT88RJVENBZAN7HS","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"tts.piper","state":"unknown","attributes":{"friendly_name":"piper"},"last_changed":"2025-06-02T02:10:56.234766+00:00","last_reported":"2025-06-02T02:10:56.234766+00:00","last_updated":"2025-06-02T02:10:56.234766+00:00","context":{"id":"01JWQ6FZ3A1SJV63AD4NFYD6PS","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"conversation.claude","state":"unknown","attributes":{"friendly_name":"Claude","supported_features":1},"last_changed":"2025-06-02T02:10:56.235800+00:00","last_reported":"2025-06-02T02:10:56.235800+00:00","last_updated":"2025-06-02T02:10:56.235800+00:00","context":{"id":"01JWQ6FZ3BJNJER70K99K0WAP1","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"select.jia_sat_i_assist_pipeline","state":"JIA","attributes":{"options":["preferred","JIA"],"friendly_name":"JIA SAT-I Assistant"},"last_changed":"2025-06-02T02:10:56.243382+00:00","last_reported":"2025-06-02T02:10:56.243382+00:00","last_updated":"2025-06-02T02:10:56.243382+00:00","context":{"id":"01JWQ6FZ3KH9WE8Q48T7CD7SFT","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"select.jia_sat_i_finished_speaking_detection","state":"relaxed","attributes":{"options":["default","relaxed","aggressive"],"friendly_name":"JIA SAT-I Finished speaking detection"},"last_changed":"2025-06-02T02:10:56.243565+00:00","last_reported":"2025-06-02T02:10:56.243565+00:00","last_updated":"2025-06-02T02:10:56.243565+00:00","context":{"id":"01JWQ6FZ3KS3XK9HK85GHQ772X","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"select.jia_sat_i_wake_word","state":"unavailable","attributes":{"options":[],"friendly_name":"JIA SAT-I Wake word"},"last_changed":"2025-06-02T02:10:56.243728+00:00","last_reported":"2025-06-02T02:10:56.243728+00:00","last_updated":"2025-06-02T02:10:56.243728+00:00","context":{"id":"01JWQ6FZ3KQP7026X13WM64BD1","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T20:03:07.844460+00:00"
+    },
+    {
+      "state": {"entity_id":"tts.piper_2","state":"unknown","attributes":{"friendly_name":"piper"},"last_changed":"2025-06-02T01:57:14.841306+00:00","last_reported":"2025-06-02T01:57:14.841491+00:00","last_updated":"2025-06-02T01:57:14.841306+00:00","context":{"id":"01JWQ5PWYSKTKGDJWYWTTJ181T","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-06-02T01:58:23.397016+00:00"
     }
   ]
 }

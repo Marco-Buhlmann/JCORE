@@ -1,0 +1,759 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.dashboard_jia",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": " JCORE 1.1.5",
+          "type": "sections",
+          "icon": "mdi:brain",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "JIA STATUS",
+                  "heading_style": "title",
+                  "icon": "mdi:robot-love-outline"
+                },
+                {
+                  "type": "tile",
+                  "entity": "select.jia_sat_i_assist_pipeline",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "state_content": "state",
+                  "name": "Model",
+                  "icon": "mdi:brain",
+                  "color": "pink"
+                },
+                {
+                  "type": "tile",
+                  "entity": "assist_satellite.jia_sat_i_assist_satellite",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "name": "Satelite Status",
+                  "icon": "mdi:satellite-uplink",
+                  "color": "pink",
+                  "state_content": "state"
+                },
+                {
+                  "type": "tile",
+                  "entity": "select.jia_sat_i_finished_speaking_detection",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "name": "Mode",
+                  "color": "light-green",
+                  "icon": "mdi:emoticon-outline"
+                },
+                {
+                  "type": "tile",
+                  "entity": "wake_word.openwakeword",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "name": "OWW Active",
+                  "state_content": "last_changed",
+                  "color": "pink"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.jia_sat_1_jia_volume",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "state_content": "state",
+                  "color": "light-green",
+                  "name": "Sat-I Current"
+                },
+                {
+                  "type": "tile",
+                  "entity": "light.jia_sat_1_jia_led_ring",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "state_content": "state",
+                  "color": "light-blue",
+                  "icon": "mdi:checkbox-blank-circle-outline",
+                  "name": "Sat-I LED"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.backup_last_successful_automatic_backup",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "color": "pink",
+                  "state_content": "last_changed",
+                  "name": "Last Backup",
+                  "icon": "mdi:check-outline"
+                },
+                {
+                  "type": "tile",
+                  "features_position": "bottom",
+                  "vertical": false,
+                  "icon": "mdi:backup-restore",
+                  "color": "lime",
+                  "entity": "sensor.backup_next_scheduled_automatic_backup",
+                  "name": "Next Backup",
+                  "state_content": "state"
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:wifi-settings",
+                  "heading_style": "title",
+                  "heading": "JIA SAT WiFi"
+                },
+                {
+                  "chart_type": "line",
+                  "period": "5minute",
+                  "type": "statistics-graph",
+                  "entities": [
+                    "sensor.jia_sat_1_wifi_signal_strength"
+                  ],
+                  "stat_types": [
+                    "mean",
+                    "min",
+                    "max"
+                  ],
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 3
+                  },
+                  "days_to_show": 3,
+                  "hide_legend": false,
+                  "logarithmic_scale": false
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:lan-connect",
+                  "heading_style": "title",
+                  "heading": "JIA  LOCAL DEVICE NETWORK"
+                },
+                {
+                  "type": "iframe",
+                  "url": "https://grafana.dreammachine.casa/d-solo/d351478f-c755-4390-b0ee-f07b9a9081e1/jia-cloud-servers-and-load-balancers?panelId=10&refresh=30s&theme=dark",
+                  "height": 250
+                },
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "icon": "mdi:note-multiple-outline",
+                  "heading": "LOGS"
+                },
+                {
+                  "type": "logbook",
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 7
+                  },
+                  "target": {
+                    "entity_id": [
+                      "conversation.chatgpt",
+                      "stt.faster_whisper",
+                      "assist_satellite.home_assistant_voice_09813a_assist_satellite",
+                      "light.jia_sat_1_jia_led_ring",
+                      "tts.piper",
+                      "select.home_assistant_voice_09813a_wake_word",
+                      "select.home_assistant_voice_09813a_finished_speaking_detection",
+                      "sensor.hetzner_server_direct",
+                      "select.home_assistant_voice_09813a_assistant"
+                    ],
+                    "area_id": "toda_la_casa"
+                  },
+                  "theme": "macOS Theme"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 8
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "",
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 8
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:server",
+                  "heading_style": "title",
+                  "heading": "CLOUD SERVER",
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 1
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:server",
+                  "heading_style": "title",
+                  "heading": "NLP SERVER",
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 1
+                  }
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.hetzner_server_direct",
+                      "name": "Server Status",
+                      "icon": "mdi:server",
+                      "theme": "macOS Theme",
+                      "state_color": true
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "running"
+                        }
+                      ],
+                      "card": {
+                        "type": "horizontal-stack",
+                        "cards": [
+                          {
+                            "type": "button",
+                            "tap_action": {
+                              "action": "call-service",
+                              "service": "script.force_poweroff_hetzner",
+                              "confirmation": {
+                                "text": "Force power off?"
+                              }
+                            },
+                            "name": "KILL SWITCH",
+                            "icon": "mdi:alert",
+                            "card_mod": {
+                              "style": "ha-card {\n  background-color: #ff3333;\n}  \n"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "off"
+                        }
+                      ],
+                      "card": {
+                        "type": "button",
+                        "tap_action": {
+                          "action": "call-service",
+                          "service": "script.poweron_hetzner"
+                        },
+                        "name": "REBOOT",
+                        "icon": "mdi:power",
+                        "card_mod": {
+                          "style": "ha-card {\n  background-color: #8bc34b;\n} \n"
+                        }
+                      }
+                    }
+                  ],
+                  "grid_options": {
+                    "rows": 2,
+                    "columns": 12
+                  }
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.hetzner_server_direct",
+                      "name": "Server Status",
+                      "icon": "mdi:server",
+                      "theme": "macOS Theme",
+                      "state_color": true
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "running"
+                        }
+                      ],
+                      "card": {
+                        "type": "horizontal-stack",
+                        "cards": [
+                          {
+                            "type": "button",
+                            "tap_action": {
+                              "action": "call-service",
+                              "service": "script.force_poweroff_hetzner",
+                              "confirmation": {
+                                "text": "Force power off?"
+                              }
+                            },
+                            "name": "KILL SWITCH",
+                            "icon": "mdi:alert",
+                            "card_mod": {
+                              "style": "ha-card {\n  background-color: #ff3333;\n}  \n"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "off"
+                        }
+                      ],
+                      "card": {
+                        "type": "button",
+                        "tap_action": {
+                          "action": "call-service",
+                          "service": "script.poweron_hetzner"
+                        },
+                        "name": "REBOOT",
+                        "icon": "mdi:power",
+                        "card_mod": {
+                          "style": "ha-card {\n  background-color: #8bc34b;\n} \n"
+                        }
+                      }
+                    }
+                  ],
+                  "grid_options": {
+                    "rows": 2,
+                    "columns": 12
+                  }
+                }
+              ],
+              "column_span": 2
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "icon": "mdi:restart",
+                  "heading_style": "title",
+                  "heading": "JIA SYSTEMS"
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "icon": "mdi:restart",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "homeassistant.restart",
+                        "confirmation": {
+                          "text": "Restart Home Assistant?"
+                        }
+                      },
+                      "theme": "macOS Theme",
+                      "show_state": false,
+                      "name": "RESTART JCORE",
+                      "icon_height": "50px",
+                      "card_mod": null
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "icon": "mdi:restart",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "button.press",
+                        "target": {
+                          "entity_id": "button.your_esphome_device_restart"
+                        },
+                        "confirmation": {
+                          "text": "Restart ESPHome device?"
+                        }
+                      },
+                      "name": "RESTART JIA SAT-I",
+                      "icon_height": "50px"
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 2
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "",
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": 6,
+                    "rows": 2
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:layers-triple",
+                  "heading_style": "title",
+                  "heading": "INFRA"
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "icon": "mdi:server",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://console.hetzner.cloud/projects"
+                          },
+                          "icon_height": "50px",
+                          "name": "JCORE"
+                        },
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "name": "NLP",
+                          "icon": "mdi:server",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://dash.cloudflare.com/"
+                          },
+                          "icon_height": "50px"
+                        }
+                      ]
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "icon": "mdi:server",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://console.hetzner.cloud/projects"
+                          },
+                          "icon_height": "50px",
+                          "name": "HETZNER"
+                        },
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "name": "CLOUDFLARE",
+                          "icon": "mdi:cloud",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://dash.cloudflare.com/"
+                          },
+                          "icon_height": "50px"
+                        }
+                      ]
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "name": "NGINX PXY",
+                          "icon": "mdi:arrow-decision",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://npm.dreammachine.casa"
+                          },
+                          "icon_height": "50px"
+                        },
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "icon": "mdi:docker",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://port.dreammachine.casa"
+                          },
+                          "icon_height": "50px",
+                          "name": "PORTAINER"
+                        }
+                      ]
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "horizontal-stack",
+                      "cards": [
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "name": "HA CONSOLE",
+                          "icon": "mdi:console-line",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://console.dreammachine.casa"
+                          },
+                          "icon_height": "50px"
+                        },
+                        {
+                          "show_name": true,
+                          "show_icon": true,
+                          "type": "button",
+                          "name": "File Editor",
+                          "icon": "mdi:file-arrow-left-right",
+                          "tap_action": {
+                            "action": "url",
+                            "url_path": "https://files.dreammachine.casa"
+                          },
+                          "icon_height": "50px"
+                        }
+                      ]
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:database-search",
+                  "heading_style": "title",
+                  "heading": "DATA SOURCE HEALTH CHECK",
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 1
+                  }
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "icon": "mdi:database-search",
+                  "tap_action": {
+                    "action": "url",
+                    "url_path": "http://116.203.14.235:9090/targets"
+                  },
+                  "grid_options": {
+                    "columns": 12,
+                    "rows": 2
+                  },
+                  "theme": "macOS Theme",
+                  "name": "DSN CHECK",
+                  "card_mod": {
+                    "style": "ha-card {\n  background-color: #cbfcc9;\n  color: black !important;\n  }\nha-icon {\n  color: black !important;\n}\n"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:satellite-uplink",
+                  "heading": "SATELITE LED CTRL",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "light",
+                  "entity": "light.jia_sat_1_jia_led_ring",
+                  "name": "LED CTRL",
+                  "icon": "mdi:checkbox-blank-circle-outline",
+                  "theme": "macOS Theme"
+                }
+              ],
+              "column_span": 1
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 1
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "card_mod": {
+                "style": {
+                  ".": "ha-card {\n  background-color: rgba(0, 0, 0, 0.1);\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n"
+                }
+              },
+              "cards": [
+                {
+                  "type": "iframe",
+                  "url": "https://esp.dreammachine.casa",
+                  "aspect_ratio": "100%",
+                  "grid_options": {
+                    "rows": 6,
+                    "columns": "full"
+                  },
+                  "title": "...",
+                  "card_mod": {
+                    "style": "iframe {\n  height: calc(100vh - 200px) !important;\n}\nha-card {\n  background-color: #fe3df4;\n}              \n"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "icon": "mdi:nodejs",
+                  "heading_style": "title",
+                  "heading": "MODEL ACTIVITY",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 2
+                  }
+                }
+              ],
+              "column_span": 4
+            },
+            {
+              "type": "custom:mod-card",
+              "card_mod": {
+                "style": "ha-card {\n  background-color: #1a1a1a !important;\n  padding: 70px;\n  border-radius: 50px;\n}\n"
+              },
+              "card": {
+                "type": "vertical-stack",
+                "columns": 4,
+                "rows": 1,
+                "cards": [
+                  {
+                    "type": "history-graph",
+                    "entities": [
+                      {
+                        "entity": "wake_word.openwakeword"
+                      }
+                    ],
+                    "card_mod": {
+                      "style": "ha-card {\n  background-color: #141415;\n}\n"
+                    }
+                  },
+                  {
+                    "type": "history-graph",
+                    "entities": [
+                      {
+                        "entity": "stt.faster_whisper"
+                      }
+                    ],
+                    "card_mod": {
+                      "style": "ha-card {\n  background-color: #141415;\n}   \n"
+                    }
+                  },
+                  {
+                    "type": "history-graph",
+                    "entities": [
+                      {
+                        "entity": "tts.piper"
+                      }
+                    ],
+                    "card_mod": {
+                      "style": "ha-card {\n  background-color: #141415;\n}\n"
+                    }
+                  },
+                  {
+                    "type": "history-graph",
+                    "entities": [
+                      {
+                        "entity": "conversation.openai_conversation",
+                        "color": "pink",
+                        "state_content": "last_changed"
+                      }
+                    ],
+                    "card_mod": {
+                      "style": "ha-card {\n  background-color: #141415;\n}\n"
+                    }
+                  }
+                ]
+              },
+              "column_span": 4
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "heading": "JCORE SYSTEM MONITORING",
+                  "icon": "mdi:monitor-dashboard"
+                },
+                {
+                  "type": "iframe",
+                  "url": "https://grafana.dreammachine.casa/public-dashboards/43e5223015d84579a920f19b7ce9cfeb",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 30
+                  }
+                }
+              ],
+              "column_span": 4
+            }
+          ],
+          "header": {
+            "card": {
+              "type": "markdown",
+              "content": "  <div style=\"text-align: center;\">\n    <img \n      src=\"/local/images/jlogo.png\" \n      alt=\"Your Logo\" \n      style=\"\n        width: 150px;         /* Fixed width */\n        max-width: 100%;      /* Responsive */\n        height: auto;         /* Maintain aspect ratio */\n        max-height: 100px;    /* Maximum height */\n    \">\n  </div>",
+              "text_only": true
+            }
+          },
+          "badges": [],
+          "background": {
+            "opacity": 100,
+            "alignment": "top center",
+            "size": "contain",
+            "repeat": "repeat",
+            "attachment": "scroll",
+            "image": "/api/image/serve/34ca939c810147508bf978a25bd24e9e/original"
+          },
+          "cards": []
+        }
+      ]
+    }
+  }
+}
