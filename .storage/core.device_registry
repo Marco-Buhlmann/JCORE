@@ -4,9 +4,12 @@
   "key": "core.device_registry",
   "data": {
     "devices": [
-      {"area_id":null,"config_entries":["01JWYWMTGSD9RQP3NK87WCNH6C"],"config_entries_subentries":{"01JWYWMTGSD9RQP3NK87WCNH6C":[null]},"configuration_url":null,"connections":[],"created_at":"2025-06-05T01:52:45.083143+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"6228d9ba368870ec8d8cce1bd8b736a2","identifiers":[["sun","01JWYWMTGSD9RQP3NK87WCNH6C"]],"labels":[],"manufacturer":null,"model":null,"model_id":null,"modified_at":"2025-06-05T01:52:45.083177+00:00","name_by_user":null,"name":"Sun","primary_config_entry":"01JWYWMTGSD9RQP3NK87WCNH6C","serial_number":null,"sw_version":null,"via_device_id":null},
       {"area_id":null,"config_entries":["01JWYWMTR945QD8FW183MT1DDN"],"config_entries_subentries":{"01JWYWMTR945QD8FW183MT1DDN":[null]},"configuration_url":"homeassistant://config/backup","connections":[],"created_at":"2025-06-05T01:52:45.327553+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"79eb8b1538f1d8ba725f1b0d1e890fae","identifiers":[["backup","backup_manager"]],"labels":[],"manufacturer":"Home Assistant","model":"Home Assistant Backup","model_id":null,"modified_at":"2025-06-05T01:52:45.327599+00:00","name_by_user":null,"name":"Backup","primary_config_entry":"01JWYWMTR945QD8FW183MT1DDN","serial_number":null,"sw_version":"2025.5.3","via_device_id":null}
     ],
-    "deleted_devices": []
+    "deleted_devices": [
+      {"config_entries":[],"config_entries_subentries":{},"connections":[],"created_at":"2025-06-05T01:52:45.083143+00:00","identifiers":[["sun","01JWYWMTGSD9RQP3NK87WCNH6C"]],"id":"6228d9ba368870ec8d8cce1bd8b736a2","orphaned_timestamp":1749106478.7502756,"modified_at":"2025-06-05T06:54:38.750313+00:00"},
+      {"config_entries":[],"config_entries_subentries":{},"connections":[],"created_at":"2025-06-05T04:12:34.137480+00:00","identifiers":[["met","01JWZ4MTSHBMZCNYH96455P9SB"]],"id":"feb824c2eba4c43fcf1e0fbdb627d650","orphaned_timestamp":1749106512.3434732,"modified_at":"2025-06-05T06:55:12.343524+00:00"},
+      {"config_entries":[],"config_entries_subentries":{},"connections":[],"created_at":"2025-06-05T07:00:10.285744+00:00","identifiers":[["sun","01JWZE7QDBQ6HJC6HT00WR0TM1"]],"id":"9fd43015ef21e8e9be767004e64677d7","orphaned_timestamp":1749106917.5847397,"modified_at":"2025-06-05T07:01:57.584779+00:00"}
+    ]
   }
 }

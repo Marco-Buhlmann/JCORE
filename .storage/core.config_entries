@@ -4,9 +4,10 @@
   "key": "core.config_entries",
   "data": {
     "entries": [
-      {"created_at":"2025-06-05T01:52:45.081686+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"sun","entry_id":"01JWYWMTGSD9RQP3NK87WCNH6C","minor_version":1,"modified_at":"2025-06-05T01:52:45.081689+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"import","subentries":[],"title":"Sun","unique_id":null,"version":1},
       {"created_at":"2025-06-05T01:52:45.267282+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"go2rtc","entry_id":"01JWYWMTPKD1CNKSWY49GQZSBK","minor_version":1,"modified_at":"2025-06-05T01:52:45.267285+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"go2rtc","unique_id":null,"version":1},
-      {"created_at":"2025-06-05T01:52:45.321023+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"backup","entry_id":"01JWYWMTR945QD8FW183MT1DDN","minor_version":1,"modified_at":"2025-06-05T01:52:45.321027+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"Backup","unique_id":null,"version":1}
+      {"created_at":"2025-06-05T01:52:45.321023+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"backup","entry_id":"01JWYWMTR945QD8FW183MT1DDN","minor_version":1,"modified_at":"2025-06-05T01:52:45.321027+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"Backup","unique_id":null,"version":1},
+      {"created_at":"2025-06-05T04:12:33.861922+00:00","data":{"language":"en","tld":"com"},"disabled_by":null,"discovery_keys":{},"domain":"google_translate","entry_id":"01JWZ4MTP58P2R9REP3GH8NY6S","minor_version":1,"modified_at":"2025-06-05T04:12:33.861926+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"onboarding","subentries":[],"title":"Google Translate text-to-speech","unique_id":null,"version":1},
+      {"created_at":"2025-06-05T05:17:59.877745+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"ios","entry_id":"01JWZ8CMP5NS99EMZRE31D0877","minor_version":1,"modified_at":"2025-06-05T05:17:59.877746+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"user","subentries":[],"title":"Home Assistant iOS","unique_id":"ios","version":1}
     ]
   }
 }

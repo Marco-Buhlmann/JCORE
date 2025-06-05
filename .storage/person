@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "marco_buhlmann",
+        "name": "Marco Buhlmann",
+        "user_id": "3307850131f7413bbfbe12699d6d594e",
+        "device_trackers": []
+      }
+    ]
+  }
+}
