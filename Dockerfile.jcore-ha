@@ -1,0 +1,44 @@
+#-------------------------------------------------------------------------------------------------------
+#                                                                                                      |
+#                                 JCORE Home Assistant Custom Image                                    |
+#                                                                                                      |
+#-------------------------------------------------------------------------------------------------------
+
+# JCORE Home Assistant Custom Image
+ARG HA_BASE_IMAGE=ghcr.io/home-assistant/home-assistant:stable
+FROM ${HA_BASE_IMAGE}
+
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
+
+USER root
+
+RUN \
+    apk update && \
+    apk add --no-cache \
+      python3-dev \
+      py3-pip \
+      build-base \
+      gcc \
+      g++ \
+      musl-dev \
+      linux-headers \
+      cmake \
+      rust \
+      cargo
+
+RUN pip3 install --upgrade pip setuptools wheel
+
+# Install packages separately
+RUN pip3 install torch || true
+RUN pip3 install transformers || true
+RUN pip3 install numpy || true
+
+# Verify installations
+RUN python3 -c "import torch; print('Torch installed')" || true
+RUN python3 -c "import transformers; print('Transformers installed')" || true
+RUN python3 -c "import numpy; print('NumPy installed')" || true
+
+WORKDIR /config
+RUN chown -R root:root /config
+
+USER root

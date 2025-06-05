@@ -1,0 +1,9 @@
+{
+    "domain": "openai_stt",
+    "name": "OpenAI STT",
+    "documentation": "https://github.com/your-repo/openai-stt",
+    "dependencies": [],
+    "codeowners": ["@your-username"],
+    "requirements": ["openai"],
+    "iot_class": "cloud_polling"
+}

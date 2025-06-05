@@ -1,0 +1,135 @@
+# -------------------------------------
+#|      JIA AI Satellite Config        |
+# -------------------------------------
+
+# Platform
+esphome:
+  name: jia
+  friendly_name: JIA
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+# Logging
+logger:
+  level: DEBUG
+  logs:
+    voice_assistant: DEBUG
+    i2s_audio: DEBUG
+  hardware_uart: USB_CDC
+
+# API config
+api:
+  port: 6053 
+  reboot_timeout: 30s
+
+ota:
+  - platform: esphome
+    password: "1d4570a0d1dcf3e3105933da3086afa3"
+
+# WiFi with static IP
+wifi:
+  ssid: "DreamMachine-Jia"
+  password: "22aramisMB83!7082024"
+  manual_ip:
+    static_ip: 192.168.50.76
+    gateway: 192.168.50.1
+    subnet: 255.255.255.0
+    dns1: 192.168.50.1
+  fast_connect: true
+  power_save_mode: none
+  output_power: 20dB
+
+  ap:
+    ssid: "Jia Fallback Hotspot"
+    password: "iWvHjKuYYAGL"
+
+captive_portal:
+
+# Audio components configuration
+i2s_audio:
+  id: i2s_bus
+  i2s_lrclk_pin: GPIO14
+  i2s_bclk_pin: GPIO13
+
+# Microphone configuration
+microphone:
+  - platform: i2s_audio
+    id: mic_id
+    i2s_audio_id: i2s_bus
+    i2s_din_pin: GPIO15
+    adc_type: external
+    pdm: False
+    bits_per_sample: 32bit
+
+# Speaker configuration
+speaker:
+  - platform: i2s_audio
+    id: speaker_id
+    i2s_audio_id: i2s_bus
+    dac_type: external
+    i2s_dout_pin: GPIO10
+
+# Voice assistant with minimal config
+voice_assistant:
+  microphone: mic_id
+  speaker: speaker_id
+  
+  on_listening:
+    - light.turn_on:
+        id: led_ring
+        effect: "Rainbow"
+  on_idle:
+    - light.turn_off: led_ring
+
+# LED configuration for visual feedback
+light:
+  - platform: neopixelbus
+    id: led_ring
+    type: GRB
+    variant: WS2812
+    pin: GPIO18
+    num_leds: 12
+    name: "JIA LED Ring"
+    effects:
+      - addressable_rainbow:
+          name: "Rainbow"
+          speed: 10
+          width: 50
+
+# Button configuration - changed from GPIO0 to GPIO21 to avoid strapping pin warning
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: GPIO21  # Changed from GPIO0
+      mode: INPUT_PULLUP
+    name: "JIA Button"
+    id: button
+    filters:
+      - delayed_on: 10ms
+    on_press:
+      - voice_assistant.start
+    on_release:
+      - voice_assistant.stop
+
+# Volume control dial - removed unsupported action
+sensor:
+  - platform: adc
+    pin: GPIO1
+    name: "JIA Volume"
+    id: volume_knob
+    update_interval: 250ms
+    attenuation: 11db
+    filters:
+      - multiply: 100
+    # Removed the unsupported action
+  - platform: wifi_signal
+    name: "WiFi Signal Strength"
+    update_interval: 60s
+
+# Status LED
+status_led:
+  pin:
+    number: GPIO5

@@ -1,0 +1,178 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /config/www/community/lovelace-card-mod/card-mod.js
+
+# Automations
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Enable reverse proxy support
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
+    - 172.0.0.0/8  # This should cover all Docker networks
+    - 192.168.0.0/16
+    - 10.0.0.0/8
+
+# Custom Dashboard
+lovelace:
+  dashboards:
+    mac-dashboard:
+      mode: yaml
+      title: macOS Dashboard
+      icon: mdi:apple
+      show_in_sidebar: true
+      filename: mac-dashboard.yaml
+
+# MariaDB
+recorder:
+  db_url: !secret db_url
+  purge_keep_days: 30
+  commit_interval: 5
+  exclude:
+    domains:
+      - automation
+      - updater
+    entity_globs:
+      - sensor.last_boot
+      - sensor.date*
+    entities:
+      - sun.sun
+
+# InfluxDB Configuration
+influxdb:
+  host: localhost
+  port: 8086
+  api_version: 2
+  ssl: false
+  token: !secret influxdb_token
+  organization: jia
+  bucket: jcore
+  tags:
+    source: HomeAssistant
+  tags_attributes:
+    - friendly_name
+  exclude:
+    entities:
+      - sensor.date
+      - sensor.time
+    domains:
+      - persistent_notification
+      - person
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - climate
+      - switch
+      - light
+      - temperature
+      - humidity
+
+# Grafana
+grafana:
+  host: !secret grafana_host
+
+# Rest Commands
+rest_command:
+  hetzner_shutdown_server:
+    url: "https://api.hetzner.cloud/v1/servers/{{ 61655748 }}/actions/shutdown"
+    method: POST
+    headers:
+      Authorization: "Bearer !secret hetzner_api_tokenSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+      Content-Type: "application/json"
+    payload: '{}'
+  
+  hetzner_poweroff_server:
+    url: "https://api.hetzner.cloud/v1/servers/{{ 61655748 }}/actions/poweroff"
+    method: POST
+    headers:
+      Authorization: "Bearer !secret hetzner_api_tokenSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+      Content-Type: "application/json"
+    payload: '{}'
+  
+  hetzner_poweron_server:
+    url: "https://api.hetzner.cloud/v1/servers/{{ 61655748 }}/actions/poweron"
+    method: POST
+    headers:
+      Authorization: "Bearer !secret hetzner_api_tokenSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+      Content-Type: "application/json"
+    payload: '{}'
+
+# Scripts
+script:
+  graceful_shutdown_hetzner:
+    alias: "Gracefully Shutdown Hetzner Server"
+    sequence:
+      - service: rest_command.hetzner_shutdown_server
+        data:
+          server_id: "61655748"
+      - service: notify.persistent_notification
+        data:
+          message: "Hetzner server shutdown initiated"
+          title: "Server Control"
+  
+  force_poweroff_hetzner:
+    alias: "Force Power Off Hetzner Server"
+    sequence:
+      - service: rest_command.hetzner_poweroff_server
+        data:
+          server_id: "61655748"
+      - service: notify.persistent_notification
+        data:
+          message: "Hetzner server forced power off"
+          title: "Server Control"
+  
+  poweron_hetzner:
+    alias: "Power On Hetzner Server"
+    sequence:
+      - service: rest_command.hetzner_poweron_server
+        data:
+          server_id: "61655748"
+      - service: notify.persistent_notification
+        data:
+          message: "Hetzner server power on initiated"
+          title: "Server Control"
+
+# Sensors
+sensor:
+  - platform: rest
+    name: "Hetzner Server Status"
+    resource: "https://api.hetzner.cloud/v1/servers/!secret hetzner_server_id"
+    headers:
+      Authorization: "Bearer !secret hetzner_api_tokenSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E"
+    value_template: "{{ value_json.server.status }}"
+    json_attributes:
+      - server
+    scan_interval: 60
+
+template:
+  - sensor:
+      - name: "Hetzner Server Power State"
+        state: >
+          {% set status = states('sensor.hetzner_server_status') %}
+          {% if status == 'running' %}
+            on
+          {% elif status == 'off' %}
+            off
+          {% else %}
+            {{ status }}
+          {% endif %}
+        icon: >
+          {% set status = states('sensor.hetzner_server_status') %}
+          {% if status == 'running' %}
+            mdi:server
+          {% elif status == 'off' %}
+            mdi:server-off
+          {% else %}
+            mdi:server-network-off
+          {% endif %}

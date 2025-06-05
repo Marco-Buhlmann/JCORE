@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "esphome.ce2ddcd614ff2e96123b3859024e156c",
+  "data": {
+    "device_info": {
+      "uses_password": false,
+      "name": "jia_sat_1",
+      "friendly_name": "JIA SAT-I",
+      "mac_address": "20:F8:3B:09:81:3A",
+      "compilation_time": "May 12 2025, 02:57:54",
+      "model": "esp32-s3-devkitc-1",
+      "manufacturer": "Espressif",
+      "has_deep_sleep": false,
+      "esphome_version": "2025.4.2",
+      "project_name": "",
+      "project_version": "",
+      "webserver_port": 0,
+      "voice_assistant_version": 2,
+      "legacy_bluetooth_proxy_version": 0,
+      "bluetooth_proxy_feature_flags": 0,
+      "suggested_area": ""
+    },
+    "services": [],
+    "api_version": {
+      "major": 1,
+      "minor": 10
+    },
+    "light": [
+      {
+        "object_id": "jia_led_ring",
+        "key": 2926791010,
+        "name": "JIA LED Ring",
+        "unique_id": "jia_sat_1lightjia_led_ring",
+        "disabled_by_default": false,
+        "icon": "",
+        "entity_category": 0,
+        "supported_color_modes": [
+          35
+        ],
+        "min_mireds": 0.0,
+        "max_mireds": 0.0,
+        "effects": [
+          "None",
+          "Rainbow"
+        ],
+        "legacy_supports_brightness": true,
+        "legacy_supports_rgb": true,
+        "legacy_supports_white_value": false,
+        "legacy_supports_color_temperature": false
+      }
+    ],
+    "select": [],
+    "binary_sensor": [
+      {
+        "object_id": "jia_button",
+        "key": 2868824334,
+        "name": "JIA Button",
+        "unique_id": "jia_sat_1binary_sensorjia_button",
+        "disabled_by_default": false,
+        "icon": "",
+        "entity_category": 0,
+        "device_class": "",
+        "is_status_binary_sensor": false
+      }
+    ],
+    "sensor": [
+      {
+        "object_id": "jia_volume",
+        "key": 566620428,
+        "name": "JIA Volume",
+        "unique_id": "jia_sat_1sensorjia_volume",
+        "disabled_by_default": false,
+        "icon": "",
+        "entity_category": 0,
+        "device_class": "voltage",
+        "unit_of_measurement": "V",
+        "accuracy_decimals": 2,
+        "force_update": false,
+        "state_class": 1,
+        "last_reset_type": 0
+      },
+      {
+        "object_id": "wifi_signal_strength",
+        "key": 890054251,
+        "name": "WiFi Signal Strength",
+        "unique_id": "20f83b09813a-wifisignal",
+        "disabled_by_default": false,
+        "icon": "",
+        "entity_category": 2,
+        "device_class": "signal_strength",
+        "unit_of_measurement": "dBm",
+        "accuracy_decimals": 0,
+        "force_update": false,
+        "state_class": 1,
+        "last_reset_type": 0
+      }
+    ],
+    "text_sensor": []
+  }
+}

@@ -1,0 +1,34 @@
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  grpc_listen_port: 9095
+
+storage_config:
+  boltdb:
+    directory: /loki/boltdb-index
+
+  filesystem:
+    directory: /loki/chunks
+
+schema_config:
+  configs:
+    - from: 2024-01-01
+      store: boltdb
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+
+compactor:
+  working_directory: /loki/compactor
+  retention_enabled: true
+  retention_delete_delay: 2h
+
+limits_config:
+  retention_period: 744h  # 31 days
+
+table_manager:
+  retention_deletes_enabled: true
+  retention_period: 744h

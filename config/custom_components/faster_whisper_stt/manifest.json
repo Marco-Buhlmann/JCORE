@@ -1,0 +1,9 @@
+{
+    "domain": "faster_whisper_stt",
+    "name": "Faster Whisper STT",
+    "documentation": "https://github.com/your-repo/faster-whisper-stt",
+    "dependencies": [],
+    "codeowners": ["@your-username"],
+    "requirements": ["faster-whisper"],
+    "iot_class": "local_polling"
+}

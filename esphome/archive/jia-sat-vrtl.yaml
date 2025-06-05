@@ -1,0 +1,21 @@
+esphome:
+  name: virtual-device
+  friendly_name: Virtual Device
+
+# Specify this is running on your computer, not an ESP device
+host:
+  # This tells ESPHome to run on your computer rather than trying to flash a device
+
+# Add the demo component
+demo:
+
+# Optional: Add a logger to see what's happening
+logger:
+  level: DEBUG
+
+# Optional: Enable the web server to interact with it
+web_server:
+  port: 8080
+
+# Optional: Add API component if you want to connect from Home Assistant
+api:
