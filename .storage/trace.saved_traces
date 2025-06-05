@@ -7,12 +7,12 @@
       {
         "extended_dict": {
           "last_step": "action/0",
-          "run_id": "cac1e2957321da41829aa76ef5e69540",
+          "run_id": "e4343951eb8b9ef1791a5bc06dabbea9",
           "state": "stopped",
           "script_execution": "finished",
           "timestamp": {
-            "start": "2025-06-05T15:38:52.677383+00:00",
-            "finish": "2025-06-05T15:38:52.677944+00:00"
+            "start": "2025-06-05T23:30:23.585050+00:00",
+            "finish": "2025-06-05T23:30:23.585588+00:00"
           },
           "domain": "automation",
           "item_id": "set_macos_theme_at_startup",
@@ -21,23 +21,23 @@
             "trigger/0": [
               {
                 "path": "trigger/0",
-                "timestamp": "2025-06-05T15:38:52.677425+00:00",
+                "timestamp": "2025-06-05T23:30:23.585089+00:00",
                 "changed_variables": {
                   "this": {
                     "entity_id": "automation.set_macos_theme_at_startup",
                     "state": "on",
                     "attributes": {
                       "id": "set_macos_theme_at_startup",
-                      "last_triggered": "2025-06-05T01:45:15.709231+00:00",
+                      "last_triggered": "2025-06-05T23:24:12.861869+00:00",
                       "mode": "single",
                       "current": 0,
                       "friendly_name": "Set macOS Theme at Startup"
                     },
-                    "last_changed": "2025-06-05T15:38:42.731947+00:00",
-                    "last_reported": "2025-06-05T15:38:42.731947+00:00",
-                    "last_updated": "2025-06-05T15:38:42.731947+00:00",
+                    "last_changed": "2025-06-05T23:30:13.681127+00:00",
+                    "last_reported": "2025-06-05T23:30:13.681127+00:00",
+                    "last_updated": "2025-06-05T23:30:13.681127+00:00",
                     "context": {
-                      "id": "01JX0BX6NBM3DE1TF3RC2P8XCA",
+                      "id": "01JX16WJHHXN5MK9ZBMAFF0RBF",
                       "parent_id": null,
                       "user_id": null
                     }
@@ -56,10 +56,10 @@
             "action/0": [
               {
                 "path": "action/0",
-                "timestamp": "2025-06-05T15:38:52.677623+00:00",
+                "timestamp": "2025-06-05T23:30:23.585265+00:00",
                 "changed_variables": {
                   "context": {
-                    "id": "01JX0BXGC5KM4BY2WVYYPBXR7S",
+                    "id": "01JX16WW71718HR5TQMYYRXWTG",
                     "parent_id": null,
                     "user_id": null
                   }
@@ -98,19 +98,19 @@
           },
           "blueprint_inputs": null,
           "context": {
-            "id": "01JX0BXGC5KM4BY2WVYYPBXR7S",
+            "id": "01JX16WW71718HR5TQMYYRXWTG",
             "parent_id": null,
             "user_id": null
           }
         },
         "short_dict": {
           "last_step": "action/0",
-          "run_id": "cac1e2957321da41829aa76ef5e69540",
+          "run_id": "e4343951eb8b9ef1791a5bc06dabbea9",
           "state": "stopped",
           "script_execution": "finished",
           "timestamp": {
-            "start": "2025-06-05T15:38:52.677383+00:00",
-            "finish": "2025-06-05T15:38:52.677944+00:00"
+            "start": "2025-06-05T23:30:23.585050+00:00",
+            "finish": "2025-06-05T23:30:23.585588+00:00"
           },
           "domain": "automation",
           "item_id": "set_macos_theme_at_startup",
