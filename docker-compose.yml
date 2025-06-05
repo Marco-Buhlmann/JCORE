@@ -73,6 +73,9 @@ services:
       dockerfile: Dockerfile.jcore-ha
     image: custom/home-assistant-whisper:latest
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     ports:
       - "8123:8123"
     environment:
