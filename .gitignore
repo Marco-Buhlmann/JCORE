@@ -1,0 +1,8 @@
+# Do not commit Home Assistant’s SQLite DB
+home-assistant_v2.db
+
+# Do not commit secrets file
+secrets.yaml
+
+# Node red or other add-on data
+addon_data/
