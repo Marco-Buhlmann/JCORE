@@ -68,9 +68,6 @@ services:
 
   homeassistant:
     container_name: jcore_ha
-    build:
-      context: .
-      dockerfile: Dockerfile.jcore-ha
     image: custom/home-assistant-whisper:latest
     restart: unless-stopped
     dns:
