@@ -1,0 +1,25 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+    Drop-In: /etc/systemd/system/docker.service.d
+             └─disable-buildkit.conf
+     Active: [0;1;32mactive (running)[0m since Thu 2025-06-05 03:09:55 UTC; 17h ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 1876482 (dockerd)
+      Tasks: 66
+     Memory: 80.3M
+     CGroup: /system.slice/docker.service
+             ├─1876482 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+             ├─2913764 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 9001 -container-ip 172.17.0.2 -container-port 9001 -use-listen-fd
+             └─2913770 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 9001 -container-ip 172.17.0.2 -container-port 9001 -use-listen-fd
+
+Jun 05 20:30:08 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:30:08.594571642Z" level=info msg="ignoring event" container=a18831102eb3601b74c15715b45afbe3b2f3e01a5766a0b6ec5cf49d227ba2c5 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 05 20:30:08 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:30:08.619537050Z" level=warning msg="ShouldRestart failed, container will not be restarted" container=a18831102eb3601b74c15715b45afbe3b2f3e01a5766a0b6ec5cf49d227ba2c5 daemonShuttingDown=false error="restart canceled" execDuration=4h41m31.049033969s exitStatus="{2 2025-06-05 20:30:08.585239971 +0000 UTC}" hasBeenManuallyStopped=true restartCount=0
+Jun 05 20:35:34 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:35:34.509740861Z" level=info msg="ignoring event" container=c3ce7d3703644c2e2d65e789b08ccfc87307d346badc571efb8db921f7386474 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 05 20:35:34 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:35:34.531527860Z" level=warning msg="ShouldRestart failed, container will not be restarted" container=c3ce7d3703644c2e2d65e789b08ccfc87307d346badc571efb8db921f7386474 daemonShuttingDown=false error="restart canceled" execDuration=5m6.691911514s exitStatus="{2 2025-06-05 20:35:34.501240218 +0000 UTC}" hasBeenManuallyStopped=true restartCount=0
+Jun 05 20:41:06 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:41:06.754847814Z" level=info msg="ignoring event" container=7e8e6e06a403e282ba71b0df649a68ca2214b730c81caaa5a56561b26eac5121 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 05 20:41:06 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:41:06.779829823Z" level=warning msg="ShouldRestart failed, container will not be restarted" container=7e8e6e06a403e282ba71b0df649a68ca2214b730c81caaa5a56561b26eac5121 daemonShuttingDown=false error="restart canceled" execDuration=5m15.536275392s exitStatus="{2 2025-06-05 20:41:06.745202811 +0000 UTC}" hasBeenManuallyStopped=true restartCount=0
+Jun 05 20:44:05 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:44:05.862643945Z" level=info msg="ignoring event" container=8ae1119098a517e0d9700bb0cf1362d23477bdcfbe916263077147b33b57182f module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 05 20:44:34 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:44:34.155390255Z" level=info msg="ignoring event" container=8ae1119098a517e0d9700bb0cf1362d23477bdcfbe916263077147b33b57182f module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 05 20:44:41 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:44:41.327293949Z" level=info msg="ignoring event" container=8ae1119098a517e0d9700bb0cf1362d23477bdcfbe916263077147b33b57182f module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+Jun 05 20:44:46 Jia-Cloud dockerd[1876482]: time="2025-06-05T20:44:46.116114850Z" level=info msg="ignoring event" container=8ae1119098a517e0d9700bb0cf1362d23477bdcfbe916263077147b33b57182f module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"

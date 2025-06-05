@@ -4,44 +4,44 @@
   "key": "core.restore_state",
   "data": [
     {
-      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-06-05T15:38:38.215542+00:00","last_reported":"2025-06-05T15:38:38.215542+00:00","last_updated":"2025-06-05T15:38:38.215542+00:00","context":{"id":"01JX0BX2874GNBHE14WDA061TY","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-06-05T22:09:21.805210+00:00","last_reported":"2025-06-05T22:09:21.805210+00:00","last_updated":"2025-06-05T22:09:21.805210+00:00","context":{"id":"01JX128GCDYDM84T3DNGN8BTSG","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"script.force_poweroff_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Force Power Off Hetzner Server"},"last_changed":"2025-06-05T15:38:39.681559+00:00","last_reported":"2025-06-05T15:38:39.681559+00:00","last_updated":"2025-06-05T15:38:39.681559+00:00","context":{"id":"01JX0BX3P1PHQGBBH18BK3DCP5","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.force_poweroff_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Force Power Off Hetzner Server"},"last_changed":"2025-06-05T22:09:23.643271+00:00","last_reported":"2025-06-05T22:09:23.643271+00:00","last_updated":"2025-06-05T22:09:23.643271+00:00","context":{"id":"01JX128J5VSASM431FJ8SNWS2S","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"script.graceful_shutdown_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Gracefully Shutdown Hetzner Server"},"last_changed":"2025-06-05T15:38:39.681683+00:00","last_reported":"2025-06-05T15:38:39.681683+00:00","last_updated":"2025-06-05T15:38:39.681683+00:00","context":{"id":"01JX0BX3P1SZGH8CDNJQSVD6AH","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.graceful_shutdown_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Gracefully Shutdown Hetzner Server"},"last_changed":"2025-06-05T22:09:23.643386+00:00","last_reported":"2025-06-05T22:09:23.643386+00:00","last_updated":"2025-06-05T22:09:23.643386+00:00","context":{"id":"01JX128J5V2HPCSTA1Y44EMSV7","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"script.poweron_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Power On Hetzner Server"},"last_changed":"2025-06-05T15:38:39.681767+00:00","last_reported":"2025-06-05T15:38:39.681767+00:00","last_updated":"2025-06-05T15:38:39.681767+00:00","context":{"id":"01JX0BX3P114FJXRRAZPH61HD9","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.poweron_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Power On Hetzner Server"},"last_changed":"2025-06-05T22:09:23.643479+00:00","last_reported":"2025-06-05T22:09:23.643479+00:00","last_updated":"2025-06-05T22:09:23.643479+00:00","context":{"id":"01JX128J5VMYS09515CHFRT436","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"input_text.hetzner_server_id","state":"61655748","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner Server ID"},"last_changed":"2025-06-05T15:38:42.728434+00:00","last_reported":"2025-06-05T15:38:42.728434+00:00","last_updated":"2025-06-05T15:38:42.728434+00:00","context":{"id":"01JX0BX6N84QNX54Z2X0141F3W","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"input_text.hetzner_server_id","state":"61655748","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner Server ID"},"last_changed":"2025-06-05T22:09:23.725797+00:00","last_reported":"2025-06-05T22:09:23.725797+00:00","last_updated":"2025-06-05T22:09:23.725797+00:00","context":{"id":"01JX128J8DDK2F8MGE8PHVCBMF","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"input_text.hetzner_api_token","state":"nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner API Token"},"last_changed":"2025-06-05T15:38:42.728826+00:00","last_reported":"2025-06-05T15:38:42.728826+00:00","last_updated":"2025-06-05T15:38:42.728826+00:00","context":{"id":"01JX0BX6N8GPG7N78ZHX97SCZT","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"input_text.hetzner_api_token","state":"nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner API Token"},"last_changed":"2025-06-05T22:09:23.725895+00:00","last_reported":"2025-06-05T22:09:23.725895+00:00","last_updated":"2025-06-05T22:09:23.725895+00:00","context":{"id":"01JX128J8DWPJ79KTP0N7ZWP16","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"automation.set_macos_theme_at_startup","state":"on","attributes":{"id":"set_macos_theme_at_startup","last_triggered":"2025-06-05T15:38:52.677516+00:00","mode":"single","current":0,"friendly_name":"Set macOS Theme at Startup"},"last_changed":"2025-06-05T15:38:42.731947+00:00","last_reported":"2025-06-05T15:38:52.677996+00:00","last_updated":"2025-06-05T15:38:52.677895+00:00","context":{"id":"01JX0BXGC5KM4BY2WVYYPBXR7S","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"automation.set_macos_theme_at_startup","state":"on","attributes":{"id":"set_macos_theme_at_startup","last_triggered":"2025-06-05T15:38:52.677516+00:00","mode":"single","current":0,"friendly_name":"Set macOS Theme at Startup"},"last_changed":"2025-06-05T22:09:26.696326+00:00","last_reported":"2025-06-05T22:09:26.696326+00:00","last_updated":"2025-06-05T22:09:26.696326+00:00","context":{"id":"01JX128N58NEATC3DYB1C1ADX5","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
-      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-05T15:38:42.795381+00:00","last_reported":"2025-06-05T15:38:42.795381+00:00","last_updated":"2025-06-05T15:38:42.795381+00:00","context":{"id":"01JX0BX6QBRTRCHB7QQREMFFBD","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-05T22:09:26.762742+00:00","last_reported":"2025-06-05T22:09:26.762742+00:00","last_updated":"2025-06-05T22:09:26.762742+00:00","context":{"id":"01JX128N7AAF1J1KWW6V9FH3VH","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-05T15:42:44.265783+00:00"
+      "last_seen": "2025-06-05T22:09:26.764110+00:00"
     },
     {
       "state": {"entity_id":"person.marco","state":"not_home","attributes":{"editable":true,"id":"marco","device_trackers":["device_tracker.mbxxvii","device_tracker.mbxxvii_macair"],"latitude":52.52389881635807,"longitude":13.39468594067379,"gps_accuracy":35,"source":"device_tracker.mbxxvii_macair","user_id":"a866c36c3563470b8bbd5ccc1483e12b","entity_picture":"/api/image/serve/b056a5f46e5531be5cb3f9cbc9d1c0a1/512x512","friendly_name":"Marco"},"last_changed":"2025-06-02T02:10:56.251999+00:00","last_reported":"2025-06-02T02:10:56.251999+00:00","last_updated":"2025-06-02T02:10:56.251999+00:00","context":{"id":"01JWQ6FZ3V2GV19EY66YGHHJ45","parent_id":null,"user_id":null}},
