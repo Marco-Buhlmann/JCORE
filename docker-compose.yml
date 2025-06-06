@@ -68,7 +68,7 @@ services:
 
   homeassistant:
     container_name: jcore_ha
-    image: custom/home-assistant-whisper:latest
+    image: custom-jcore-ha
     restart: unless-stopped
     ports:
       - "8123:8123"
