@@ -215,11 +215,12 @@ services:
     restart: unless-stopped
     ports:
       - "3002:3000"
+    
     volumes:
       - grafana-storage:/var/lib/grafana
       - ./grafana-provisioning:/etc/grafana/provisioning
-    depends_on:
-      - influxdb
+      - /mnt/docker-data/jcore/grafana-custom.ini:/etc/grafana/grafana.ini:ro
+    
     environment:
       GF_SECURITY_ADMIN_USER: "mbxxvii"
       GF_SECURITY_ADMIN_PASSWORD: "mb415%"
@@ -228,6 +229,14 @@ services:
       GF_SERVER_ROOT_URL: "https://grafana.dreammachine.casa"
       GF_SERVER_SERVE_FROM_SUB_PATH: "false"
       GF_RENDERING_SERVER_URL: "http://grafana-renderer:8081"
+    
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: "*"
+      GF_PLUGINS_ENABLE_ALPHA: "true"
+
+      GF_FEATURE_UPLOAD_PLUGIN_ENABLED: "true"
+
+    depends_on:
+      - influxdb
 
 networks:
   proxy:
