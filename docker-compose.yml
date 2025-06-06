@@ -68,7 +68,7 @@ services:
 
   homeassistant:
     container_name: jcore_ha
-    image: custom-jcore-ha
+    image: homeassistant/home-assistant:stable
     restart: unless-stopped
     ports:
       - "8123:8123"
