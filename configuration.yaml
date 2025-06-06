@@ -27,6 +27,14 @@ frontend:
     - /mnt/docker-data/homeassistant/config/www/community/lovelace-card-mod/card-mod.js
     - /local/grafana-persistent.js
 
+# HACS integrations dashboard
+hacs:
+  token: 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
+
+homeassistant:
+  packages: !include_dir_named packages
+  allowlist_external_dirs:
+
 # Automations
 automation: !include automations.yaml
 script: !include scripts.yaml
