@@ -66,6 +66,17 @@ services:
       timeout: 10s
       retries: 3
 
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    ports:
+      - "8081:8080"  #
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    restart: unless-stopped
+
   homeassistant:
     container_name: jcore_ha
     image: homeassistant/home-assistant:stable
