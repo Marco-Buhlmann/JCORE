@@ -54,7 +54,7 @@ lovelace:
 # MariaDB
 recorder:
   db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@mariadb:3306/JCORE?charset=utf8
-  purge_keep_days: 30
+  purge_keep_days: 10
   commit_interval: 5
   exclude:
     domains:
