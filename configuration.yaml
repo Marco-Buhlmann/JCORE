@@ -71,7 +71,7 @@ influxdb:
   host: 172.18.0.1 
   port: 8086
   api_version: 2
-  token: DrS6yNDrW0Wft-vlnHbWCnqQ8RdQrSofz5c8x7zexGnX8xbSER1keC4CxgDJoGeUhxhWXQpkktWTWPwt0_goxA==
+  token: yKetXhtpyszZ7DLg4omRT7nr96InN6SSzgbQG5k9iyhGdP3ZMoks3U00Hvz134c7b7iYfEMTGLqNHLEgGOEpWw==
   organization: jia
   bucket: jcore
   default_measurement: state
