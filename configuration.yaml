@@ -53,7 +53,7 @@ lovelace:
 
 # MariaDB
 recorder:
-  db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@mariadb:3306/JCORE?charset=utf8
+  db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@127.0.0.1:3306/JCORE?charset=utf8
   purge_keep_days: 10
   commit_interval: 5
   exclude:
@@ -68,7 +68,7 @@ recorder:
 
 # InfluxDB Configuration
 influxdb:
-  host: 172.18.0.13 
+  host: 127.0.0.1 
   port: 8086
   api_version: 2
   token: yKetXhtpyszZ7DLg4omRT7nr96InN6SSzgbQG5k9iyhGdP3ZMoks3U00Hvz134c7b7iYfEMTGLqNHLEgGOEpWw==
