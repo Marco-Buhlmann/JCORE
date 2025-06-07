@@ -9,6 +9,7 @@ services:
   mariadb:
     container_name: jcore_mariadb
     image: mariadb:10.11
+    network_mode: host
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: "mb415%"
@@ -23,6 +24,7 @@ services:
   influxdb:
     container_name: jcore_influxdb
     image: influxdb:2.7
+    network_mode: host
     restart: unless-stopped
     ports:
       - "8086:8086"
@@ -80,6 +82,7 @@ services:
   homeassistant:
     container_name: jcore_ha
     image: homeassistant/home-assistant:stable
+    network_mode: host
     restart: unless-stopped
     ports:
       - "8123:8123"
