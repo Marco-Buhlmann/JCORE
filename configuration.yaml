@@ -72,8 +72,8 @@ influxdb:
   port: 8086
   api_version: 2
   token: yKetXhtpyszZ7DLg4omRT7nr96InN6SSzgbQG5k9iyhGdP3ZMoks3U00Hvz134c7b7iYfEMTGLqNHLEgGOEpWw==
-  organization: jia
-  bucket: a3a457155edbb91d
+  organization: a3a457155edbb91d
+  bucket: jcore
   default_measurement: state
   ssl: false
   verify_ssl: false
