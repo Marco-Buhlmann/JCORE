@@ -1,0 +1,3 @@
+resources:
+  - url: /local/custom_lovelace/html_card/html-card.js
+    type: js

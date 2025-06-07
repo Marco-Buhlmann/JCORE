@@ -19,10 +19,10 @@
     ],
     "alexa_entity_configs": {},
     "alexa_settings_version": 3,
-    "cloud_user": "0b169cdbde694e68a2dbba25199223eb",
+    "cloud_user": "49d72ffd1f104fc89ff4f95432efddbd",
     "cloudhooks": {},
-    "alexa_enabled": true,
-    "google_enabled": true,
+    "alexa_enabled": false,
+    "google_enabled": false,
     "remote_enabled": false,
     "cloud_ice_servers_enabled": true,
     "google_connected": false,
@@ -42,11 +42,11 @@
     ],
     "google_entity_configs": {},
     "google_settings_version": 3,
-    "google_local_webhook_id": "045e2441f5aad130191f7fd8cde2f8363bd91b0326bd53e4a25a6775fc6ef099",
-    "instance_id": "6de77eda46e34c77810ee4657c37c89c",
+    "google_local_webhook_id": "1ffcda90621fcfef83e339a0e88c831e67bd04e98978ddb5203200a2a36c7c0c",
+    "instance_id": "e6ca021e91e34f2ba398dae3ed1b947b",
     "google_secure_devices_pin": null,
-    "remote_domain": null,
+    "remote_domain": "4khwxbqzyfsxrtm4ib5bjcd5yveoqsml.ui.nabu.casa",
     "remote_allow_remote_enable": true,
-    "username": ""
+    "username": "08d3e684-8441-4732-a783-d6da9b5f21da"
   }
 }

@@ -10,6 +10,13 @@
         "domain": "homeassistant",
         "is_persistent": false,
         "issue_id": "config_entry_only_version"
+      },
+      {
+        "created": "2025-06-07T04:23:47.165423+00:00",
+        "dismissed_version": "2025.5.3",
+        "domain": "homeassistant",
+        "is_persistent": false,
+        "issue_id": "config_entry_only_hacs"
       }
     ]
   }

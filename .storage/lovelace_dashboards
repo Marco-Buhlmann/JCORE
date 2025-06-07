@@ -12,6 +12,15 @@
         "mode": "storage",
         "show_in_sidebar": true,
         "require_admin": false
+      },
+      {
+        "id": "dashboard_jcore",
+        "show_in_sidebar": true,
+        "icon": "mdi:soccer",
+        "title": "JCORE 1.1.5",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "dashboard-jcore"
       }
     ]
   }

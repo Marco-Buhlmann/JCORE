@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "id": "08019b8cd8f14e758e56ff0c0dfe9a5e",
+        "url": "/hacsfiles/status-card/status-card.js?hacstag=878557286211",
+        "type": "module"
+      },
+      {
+        "id": "f01d0bbe9996456ea71be2b8d1109a5e",
+        "url": "/browser_mod.js?automatically-added&2.3.8",
+        "type": "module"
+      }
+    ]
+  }
+}

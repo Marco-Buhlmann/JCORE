@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "minor_version": 2,
+  "key": "core.label_registry",
+  "data": {
+    "labels": [
+      {
+        "color": "lime",
+        "description": null,
+        "icon": "mdi:clock",
+        "label_id": "next_backup",
+        "name": "Next Backup",
+        "created_at": "2025-06-07T17:22:39.229429+00:00",
+        "modified_at": "2025-06-07T17:22:39.229434+00:00"
+      }
+    ]
+  }
+}

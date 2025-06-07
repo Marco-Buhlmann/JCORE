@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "image",
+  "data": {
+    "items": [
+      {
+        "id": "2678c60fc7abbc94da1723f5cf8b1a85",
+        "filesize": 13070,
+        "content_type": "image/jpeg",
+        "name": "Space_Cadet_50kb.jpeg",
+        "uploaded_at": "2025-06-07T04:53:01.896488+00:00"
+      },
+      {
+        "id": "de724500a8d49225e3acf87271f13259",
+        "filesize": 3537807,
+        "content_type": "image/png",
+        "name": "jia_dashboard_xxl.png",
+        "uploaded_at": "2025-06-07T05:00:19.822595+00:00"
+      },
+      {
+        "id": "079bdae040b3e5aa34e700e476ee8603",
+        "filesize": 3537807,
+        "content_type": "image/png",
+        "name": "jia_dashboard_xxl.png",
+        "uploaded_at": "2025-06-07T05:01:37.967967+00:00"
+      }
+    ]
+  }
+}

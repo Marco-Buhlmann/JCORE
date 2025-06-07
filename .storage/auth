@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "auth",
+  "data": {
+    "users": [
+      {
+        "id": "1faf4c826c264c4fafbd8b768f4f9ce5",
+        "group_ids": [
+          "system-read-only"
+        ],
+        "is_owner": false,
+        "is_active": true,
+        "name": "Home Assistant Content",
+        "system_generated": true,
+        "local_only": false
+      },
+      {
+        "id": "801f5bbbb013421bbfdcaec74b591308",
+        "group_ids": [
+          "system-admin"
+        ],
+        "is_owner": true,
+        "is_active": true,
+        "name": "Marco Buhlmann",
+        "system_generated": false,
+        "local_only": false
+      },
+      {
+        "id": "49d72ffd1f104fc89ff4f95432efddbd",
+        "group_ids": [
+          "system-admin"
+        ],
+        "is_owner": false,
+        "is_active": true,
+        "name": "Home Assistant Cloud",
+        "system_generated": true,
+        "local_only": true
+      }
+    ],
+    "groups": [
+      {
+        "id": "system-admin",
+        "name": "Administrators"
+      },
+      {
+        "id": "system-users",
+        "name": "Users"
+      },
+      {
+        "id": "system-read-only",
+        "name": "Read Only"
+      }
+    ],
+    "credentials": [
+      {
+        "id": "17af3783f335416cabc1c8dbb54e9ffb",
+        "user_id": "801f5bbbb013421bbfdcaec74b591308",
+        "auth_provider_type": "homeassistant",
+        "auth_provider_id": null,
+        "data": {
+          "username": "mbxxvii"
+        }
+      }
+    ],
+    "refresh_tokens": [
+      {
+        "id": "035215419f6444ffac97049d066a7b62",
+        "user_id": "1faf4c826c264c4fafbd8b768f4f9ce5",
+        "client_id": null,
+        "client_name": null,
+        "client_icon": null,
+        "token_type": "system",
+        "created_at": "2025-06-07T04:23:42.570256+00:00",
+        "access_token_expiration": 1800.0,
+        "token": "4f2e825e975ddccdc295ca30344d744da49a249a666452abb3191086248643516663a0e20074cba13ffe190b8b3937eab4f0e37c35f55b8b75573654c61f4db5",
+        "jwt_key": "9c429ef6a57d99f0e435780b3aa4407c1614e89ff79899268819e86cee026254c330833b55b99f74154b7f3d45679c8736666d518d23f53198a8c7719b9feb20",
+        "last_used_at": null,
+        "last_used_ip": null,
+        "expire_at": null,
+        "credential_id": null,
+        "version": "2025.5.3"
+      },
+      {
+        "id": "0f52ed9f56be4269bfe9259bb9c8b2f0",
+        "user_id": "801f5bbbb013421bbfdcaec74b591308",
+        "client_id": "http://116.203.14.235:8123/",
+        "client_name": null,
+        "client_icon": null,
+        "token_type": "normal",
+        "created_at": "2025-06-07T04:39:32.858931+00:00",
+        "access_token_expiration": 1800.0,
+        "token": "a09097dd1486b4d7cf83125f7c14ef21abf63c618034e29ed4cfc048f1638c52bf7354ce2237e35364169d019f794d4675034ce58d73b77251620046277dbfd2",
+        "jwt_key": "7e69e2ffeef0ea93d3251d0c03e537d8df241357f0bb904cfc786449b5cd8433c84a0052154deca07297ab8098e77ba29bbdee9a14d3875914b3d95c86685119",
+        "last_used_at": "2025-06-07T22:45:16.108575+00:00",
+        "last_used_ip": "85.190.239.232",
+        "expire_at": 1757112316.108575,
+        "credential_id": "17af3783f335416cabc1c8dbb54e9ffb",
+        "version": "2025.5.3"
+      }
+    ]
+  }
+}

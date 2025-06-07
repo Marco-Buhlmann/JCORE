@@ -26,6 +26,8 @@ frontend:
   extra_module_url:
     - /mnt/docker-data/jcore/config/www/community/lovelace-card-mod/card-mod.js
     - /local/grafana-persistent.js
+lovelace:
+  mode: yaml
 
 # HACS integrations dashboard
 hacs:

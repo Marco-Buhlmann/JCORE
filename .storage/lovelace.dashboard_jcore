@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.dashboard_jcore",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "STK",
+          "type": "sections",
+          "max_columns": 4,
+          "icon": "mdi:fire",
+          "theme": "macOS Theme",
+          "dense_section_placement": true,
+          "background": {
+            "opacity": 100,
+            "alignment": "bottom center",
+            "size": "cover",
+            "repeat": "repeat",
+            "attachment": "fixed",
+            "image": "/api/image/serve/de724500a8d49225e3acf87271f13259/original"
+          },
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.hetzner_server_direct",
+                      "name": "Server Status",
+                      "icon": "mdi:server"
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "running"
+                        }
+                      ],
+                      "card": {
+                        "type": "horizontal-stack",
+                        "cards": [
+                          {
+                            "type": "button",
+                            "tap_action": {
+                              "action": "call-service",
+                              "service": "script.graceful_shutdown_hetzner",
+                              "confirmation": {
+                                "text": "Shutdown the server?"
+                              }
+                            },
+                            "name": "Shutdown",
+                            "icon": "mdi:power",
+                            "icon_color": "orange"
+                          },
+                          {
+                            "type": "button",
+                            "tap_action": {
+                              "action": "call-service",
+                              "service": "script.force_poweroff_hetzner",
+                              "confirmation": {
+                                "text": "Force power off?"
+                              }
+                            },
+                            "name": "Force Off",
+                            "icon": "mdi:power-off",
+                            "card_mod": {
+                              "style": "ha-card {\n  background-color: #ff2843;\n}  \n"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "off"
+                        }
+                      ],
+                      "card": {
+                        "type": "button",
+                        "tap_action": {
+                          "action": "call-service",
+                          "service": "script.poweron_hetzner"
+                        },
+                        "name": "Power On",
+                        "icon": "mdi:power",
+                        "icon_color": "green"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "name": "RESTART JCORE",
+                  "icon": "mdi:restart",
+                  "icon_color": "red",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "homeassistant.restart",
+                    "confirmation": {
+                      "text": "Are you sure you want to restart Home As"
+                    }
+                  },
+                  "show_state": false,
+                  "grid_options": {
+                    "columns": 18,
+                    "rows": 2
+                  }
+                }
+              ]
+            }
+          ],
+          "cards": [],
+          "header": {
+            "card": {
+              "type": "markdown",
+              "content": "<div align=\"center\">\n    <img src=\"http://116.203.14.235:8080/api/raw/www/images/jlogo.png?auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJsb2NhbGUiOiJlbiIsInZpZXdNb2RlIjoibGlzdCIsInNpbmdsZUNsaWNrIjpmYWxzZSwicGVybSI6eyJhZG1pbiI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZSwiY3JlYXRlIjp0cnVlLCJyZW5hbWUiOnRydWUsIm1vZGlmeSI6dHJ1ZSwiZGVsZXRlIjp0cnVlLCJzaGFyZSI6dHJ1ZSwiZG93bmxvYWQiOnRydWV9LCJjb21tYW5kcyI6WyJzaCJdLCJsb2NrUGFzc3dvcmQiOmZhbHNlLCJoaWRlRG90ZmlsZXMiOmZhbHNlLCJkYXRlRm9ybWF0IjpmYWxzZX0sImlzcyI6IkZpbGUgQnJvd3NlciIsImV4cCI6MTc0OTMyMzc0NiwiaWF0IjoxNzQ5MzE2NTQ2fQ.1WuimW_pZqcc5JNYiMQXPc-89h6ec81FTS1HvBWCW2c&inline=true\" alt=\"JCore Logo\" style=\"max-width: 100%; height: auto;\">\n  ",
+              "text_only": true
+            }
+          },
+          "badges": [
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "sensor.backup_last_successful_automatic_backup",
+              "name": "Last Backup",
+              "color": "light-green",
+              "state_content": "last_changed"
+            },
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "sensor.backup_next_scheduled_automatic_backup",
+              "name": "Next Backup",
+              "color": "primary"
+            }
+          ]
+        },
+        {
+          "type": "sections",
+          "max_columns": 4,
+          "title": "JIA - VA",
+          "path": "jia-va",
+          "icon": "mdi:robot-excited-outline",
+          "theme": "macOS Theme",
+          "dense_section_placement": true,
+          "background": {
+            "opacity": 100,
+            "alignment": "top center",
+            "size": "cover",
+            "repeat": "repeat",
+            "attachment": "fixed",
+            "image": "/api/image/serve/079bdae040b3e5aa34e700e476ee8603/original"
+          },
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                }
+              ]
+            }
+          ],
+          "cards": [],
+          "header": {
+            "card": {
+              "type": "markdown",
+              "text_only": true,
+              "content": "type: picture\nimage: https://raw.githubusercontent.com/Marco-Buhlmann/jcore-www/main/jlogo.png\ntap_action:\n  action: none"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

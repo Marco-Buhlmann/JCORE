@@ -39,6 +39,106 @@
             "should_expose": false
           }
         }
+      },
+      "todo.shopping_list": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_next_dawn": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_next_dusk": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_next_midnight": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_next_noon": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_next_rising": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_next_setting": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_solar_elevation": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_solar_azimuth": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
+      },
+      "sensor.sun_solar_rising": {
+        "assistants": {
+          "cloud.google_assistant": {
+            "should_expose": false
+          },
+          "cloud.alexa": {
+            "should_expose": false
+          }
+        }
       }
     }
   }
