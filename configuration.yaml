@@ -68,7 +68,7 @@ recorder:
 
 # InfluxDB Configuration
 influxdb:
-  host: 172.18.0.1 
+  host: 172.18.0.13 
   port: 8086
   api_version: 2
   token: yKetXhtpyszZ7DLg4omRT7nr96InN6SSzgbQG5k9iyhGdP3ZMoks3U00Hvz134c7b7iYfEMTGLqNHLEgGOEpWw==
