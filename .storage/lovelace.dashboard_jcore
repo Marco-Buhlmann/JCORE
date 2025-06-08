@@ -210,7 +210,22 @@
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "New section"
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 2
+                  },
+                  "heading": "PI-AP Status",
+                  "icon": "mdi:pi-hole"
+                },
+                {
+                  "type": "iframe",
+                  "url": "https://grafana.dreammachine.casa/d-solo/98ce52e0-7ac8-4e03-8555-1919155bdd9b/custom-panels?orgId=1&panelId=1&from=now-6h&to=now&theme=dark&kiosk=1",
+                  "aspect_ratio": "50%",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 2
+                  }
                 },
                 {
                   "show_name": true,
