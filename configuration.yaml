@@ -129,6 +129,15 @@ sensor:
       - server
     scan_interval: 60
 
+binary_sensor:
+  - platform: rest
+    name: "Metrics Endpoint Running"
+    resource: http://5.9.20.78:9100/metrics
+    method: GET
+    value_template: "{{ value | length > 0 }}"
+    device_class: connectivity
+    scan_interval: 60
+
 # Template Sensors
 template:
   - sensor:
