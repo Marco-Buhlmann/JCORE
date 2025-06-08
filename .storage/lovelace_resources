@@ -13,6 +13,11 @@
         "id": "f01d0bbe9996456ea71be2b8d1109a5e",
         "url": "/browser_mod.js?automatically-added&2.3.8",
         "type": "module"
+      },
+      {
+        "id": "8a24009cfb7840b2b7a443a3f7278402",
+        "url": "/local/community/lovelace-card-mod/card-mod.js",
+        "type": "module"
       }
     ]
   }

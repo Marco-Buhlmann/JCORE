@@ -26,7 +26,13 @@
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "New section"
+                  "heading": "CPU SERVER",
+                  "heading_style": "title",
+                  "icon": "mdi:server",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 2
+                  }
                 },
                 {
                   "type": "vertical-stack",
@@ -35,7 +41,7 @@
                       "type": "entity",
                       "entity": "sensor.hetzner_server_direct",
                       "name": "Server Status",
-                      "icon": "mdi:server"
+                      "icon": "mdi:motion-play-outline"
                     },
                     {
                       "type": "conditional",
@@ -62,6 +68,8 @@
                             "icon_color": "orange"
                           },
                           {
+                            "show_name": true,
+                            "show_icon": true,
                             "type": "button",
                             "tap_action": {
                               "action": "call-service",
@@ -71,9 +79,9 @@
                               }
                             },
                             "name": "Force Off",
-                            "icon": "mdi:power-off",
+                            "icon": "mdi:alert-outline",
                             "card_mod": {
-                              "style": "ha-card {\n  background-color: #fffff;\n}  \n"
+                              "style": "ha-card {\n  background-color: #ff2635;\n}  \n"
                             }
                           }
                         ]
@@ -95,6 +103,101 @@
                         },
                         "name": "Power On",
                         "icon": "mdi:power",
+                        "card_mod": {
+                          "style": "ha-card {\n  background-color: #00cd16;\n}  \n"
+                        },
+                        "icon_color": "green"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "GPU SERVER",
+                  "heading_style": "title",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 2
+                  },
+                  "icon": "mdi:server"
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.hetzner_server_direct",
+                      "name": "Server Status",
+                      "icon": "mdi:motion-play-outline"
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "running"
+                        }
+                      ],
+                      "card": {
+                        "type": "horizontal-stack",
+                        "cards": [
+                          {
+                            "type": "button",
+                            "tap_action": {
+                              "action": "call-service",
+                              "service": "script.graceful_shutdown_hetzner",
+                              "confirmation": {
+                                "text": "Shutdown the server?"
+                              }
+                            },
+                            "name": "Shutdown",
+                            "icon": "mdi:power",
+                            "icon_color": "orange"
+                          },
+                          {
+                            "show_name": true,
+                            "show_icon": true,
+                            "type": "button",
+                            "tap_action": {
+                              "action": "call-service",
+                              "service": "script.force_poweroff_hetzner",
+                              "confirmation": {
+                                "text": "Force power off?"
+                              }
+                            },
+                            "name": "Force Off",
+                            "icon": "mdi:alert-outline",
+                            "card_mod": {
+                              "style": "ha-card {\n  background-color: #ff2635;\n}  \n"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.hetzner_server_direct",
+                          "state": "off"
+                        }
+                      ],
+                      "card": {
+                        "type": "button",
+                        "tap_action": {
+                          "action": "call-service",
+                          "service": "script.poweron_hetzner"
+                        },
+                        "name": "Power On",
+                        "icon": "mdi:power",
+                        "card_mod": {
+                          "style": "ha-card {\n  background-color: #00cd16;\n}  \n"
+                        },
                         "icon_color": "green"
                       }
                     }
@@ -136,7 +239,7 @@
           "header": {
             "card": {
               "type": "markdown",
-              "content": "<div align=\"center\">\n    <img src=\"http://116.203.14.235:8080/api/raw/www/images/jlogo.png?auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJsb2NhbGUiOiJlbiIsInZpZXdNb2RlIjoibGlzdCIsInNpbmdsZUNsaWNrIjpmYWxzZSwicGVybSI6eyJhZG1pbiI6dHJ1ZSwiZXhlY3V0ZSI6dHJ1ZSwiY3JlYXRlIjp0cnVlLCJyZW5hbWUiOnRydWUsIm1vZGlmeSI6dHJ1ZSwiZGVsZXRlIjp0cnVlLCJzaGFyZSI6dHJ1ZSwiZG93bmxvYWQiOnRydWV9LCJjb21tYW5kcyI6WyJzaCJdLCJsb2NrUGFzc3dvcmQiOmZhbHNlLCJoaWRlRG90ZmlsZXMiOmZhbHNlLCJkYXRlRm9ybWF0IjpmYWxzZX0sImlzcyI6IkZpbGUgQnJvd3NlciIsImV4cCI6MTc0OTMyMzc0NiwiaWF0IjoxNzQ5MzE2NTQ2fQ.1WuimW_pZqcc5JNYiMQXPc-89h6ec81FTS1HvBWCW2c&inline=true\" alt=\"JCore Logo\" style=\"max-width: 100%; height: auto;\">\n  ",
+              "content": "<div align=\"center\">\n<img src=\"/local/images/jlogo.png\" style=\"max-width:200px;\">\n  ",
               "text_only": true
             }
           },

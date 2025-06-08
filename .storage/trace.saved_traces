@@ -7,12 +7,12 @@
       {
         "extended_dict": {
           "last_step": "action/0",
-          "run_id": "c83526b1f4b8876b55cb3ae7f6630764",
+          "run_id": "bf81466209bc19551d86f8846d0a42d2",
           "state": "stopped",
           "script_execution": "finished",
           "timestamp": {
-            "start": "2025-06-07T23:45:49.553619+00:00",
-            "finish": "2025-06-07T23:45:49.554324+00:00"
+            "start": "2025-06-08T00:05:17.735253+00:00",
+            "finish": "2025-06-08T00:05:17.735873+00:00"
           },
           "domain": "automation",
           "item_id": "set_macos_theme_at_startup",
@@ -21,23 +21,23 @@
             "trigger/0": [
               {
                 "path": "trigger/0",
-                "timestamp": "2025-06-07T23:45:49.553667+00:00",
+                "timestamp": "2025-06-08T00:05:17.735296+00:00",
                 "changed_variables": {
                   "this": {
                     "entity_id": "automation.set_macos_theme_at_startup",
                     "state": "on",
                     "attributes": {
                       "id": "set_macos_theme_at_startup",
-                      "last_triggered": "2025-06-07T23:45:19.286213+00:00",
+                      "last_triggered": "2025-06-08T00:00:21.186606+00:00",
                       "mode": "single",
                       "current": 0,
                       "friendly_name": "Set macOS Theme at Startup"
                     },
-                    "last_changed": "2025-06-07T23:45:46.187465+00:00",
-                    "last_reported": "2025-06-07T23:45:46.187465+00:00",
-                    "last_updated": "2025-06-07T23:45:46.187465+00:00",
+                    "last_changed": "2025-06-08T00:05:17.369919+00:00",
+                    "last_reported": "2025-06-08T00:05:17.369919+00:00",
+                    "last_updated": "2025-06-08T00:05:17.369919+00:00",
                     "context": {
-                      "id": "01JX6CJF6B12T7TH29EN57AF30",
+                      "id": "01JX6DP6XSD1XMG0YRZ7BXTGJ7",
                       "parent_id": null,
                       "user_id": null
                     }
@@ -56,10 +56,10 @@
             "action/0": [
               {
                 "path": "action/0",
-                "timestamp": "2025-06-07T23:45:49.553930+00:00",
+                "timestamp": "2025-06-08T00:05:17.735529+00:00",
                 "changed_variables": {
                   "context": {
-                    "id": "01JX6CJJFHS2THWVKB70P29QX0",
+                    "id": "01JX6DP797X74H77FAKRQEVJCK",
                     "parent_id": null,
                     "user_id": null
                   }
@@ -98,19 +98,245 @@
           },
           "blueprint_inputs": null,
           "context": {
-            "id": "01JX6CJJFHS2THWVKB70P29QX0",
+            "id": "01JX6DP797X74H77FAKRQEVJCK",
             "parent_id": null,
             "user_id": null
           }
         },
         "short_dict": {
           "last_step": "action/0",
-          "run_id": "c83526b1f4b8876b55cb3ae7f6630764",
+          "run_id": "bf81466209bc19551d86f8846d0a42d2",
           "state": "stopped",
           "script_execution": "finished",
           "timestamp": {
-            "start": "2025-06-07T23:45:49.553619+00:00",
-            "finish": "2025-06-07T23:45:49.554324+00:00"
+            "start": "2025-06-08T00:05:17.735253+00:00",
+            "finish": "2025-06-08T00:05:17.735873+00:00"
+          },
+          "domain": "automation",
+          "item_id": "set_macos_theme_at_startup",
+          "trigger": "Home Assistant starting"
+        }
+      },
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "83962bdb1bf0fd01a3213eca6d380ed5",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2025-06-08T00:15:20.665098+00:00",
+            "finish": "2025-06-08T00:15:20.665828+00:00"
+          },
+          "domain": "automation",
+          "item_id": "set_macos_theme_at_startup",
+          "trigger": "Home Assistant starting",
+          "trace": {
+            "trigger/0": [
+              {
+                "path": "trigger/0",
+                "timestamp": "2025-06-08T00:15:20.665141+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.set_macos_theme_at_startup",
+                    "state": "on",
+                    "attributes": {
+                      "id": "set_macos_theme_at_startup",
+                      "last_triggered": "2025-06-08T00:05:17.735379+00:00",
+                      "mode": "single",
+                      "current": 0,
+                      "friendly_name": "Set macOS Theme at Startup"
+                    },
+                    "last_changed": "2025-06-08T00:15:18.556714+00:00",
+                    "last_reported": "2025-06-08T00:15:18.556714+00:00",
+                    "last_updated": "2025-06-08T00:15:18.556714+00:00",
+                    "context": {
+                      "id": "01JX6E8J0WC53BN9PGF5N7FT0V",
+                      "parent_id": null,
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "0",
+                    "idx": "0",
+                    "alias": null,
+                    "platform": "homeassistant",
+                    "event": "start",
+                    "description": "Home Assistant starting"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2025-06-08T00:15:20.665410+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01JX6E8M2SK7XF4HXZH1AQYHMD",
+                    "parent_id": null,
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "frontend",
+                    "service": "set_theme",
+                    "service_data": {
+                      "name": "macOS Theme"
+                    },
+                    "target": {}
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "alias": "Set macOS Theme at Startup",
+            "id": "set_macos_theme_at_startup",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              }
+            ],
+            "action": [
+              {
+                "data": {
+                  "name": "macOS Theme"
+                },
+                "action": "frontend.set_theme"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01JX6E8M2SK7XF4HXZH1AQYHMD",
+            "parent_id": null,
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "83962bdb1bf0fd01a3213eca6d380ed5",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2025-06-08T00:15:20.665098+00:00",
+            "finish": "2025-06-08T00:15:20.665828+00:00"
+          },
+          "domain": "automation",
+          "item_id": "set_macos_theme_at_startup",
+          "trigger": "Home Assistant starting"
+        }
+      },
+      {
+        "extended_dict": {
+          "last_step": "action/0",
+          "run_id": "22403a13e2198a8aaa8a880c5b9f2112",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2025-06-08T00:30:20.249377+00:00",
+            "finish": "2025-06-08T00:30:20.250058+00:00"
+          },
+          "domain": "automation",
+          "item_id": "set_macos_theme_at_startup",
+          "trigger": "Home Assistant starting",
+          "trace": {
+            "trigger/0": [
+              {
+                "path": "trigger/0",
+                "timestamp": "2025-06-08T00:30:20.249419+00:00",
+                "changed_variables": {
+                  "this": {
+                    "entity_id": "automation.set_macos_theme_at_startup",
+                    "state": "on",
+                    "attributes": {
+                      "id": "set_macos_theme_at_startup",
+                      "last_triggered": "2025-06-08T00:15:20.665226+00:00",
+                      "mode": "single",
+                      "current": 0,
+                      "friendly_name": "Set macOS Theme at Startup"
+                    },
+                    "last_changed": "2025-06-08T00:30:18.217309+00:00",
+                    "last_reported": "2025-06-08T00:30:18.217309+00:00",
+                    "last_updated": "2025-06-08T00:30:18.217309+00:00",
+                    "context": {
+                      "id": "01JX6F40K9WK8CJ23P1G2D3D9P",
+                      "parent_id": null,
+                      "user_id": null
+                    }
+                  },
+                  "trigger": {
+                    "id": "0",
+                    "idx": "0",
+                    "alias": null,
+                    "platform": "homeassistant",
+                    "event": "start",
+                    "description": "Home Assistant starting"
+                  }
+                }
+              }
+            ],
+            "action/0": [
+              {
+                "path": "action/0",
+                "timestamp": "2025-06-08T00:30:20.249655+00:00",
+                "changed_variables": {
+                  "context": {
+                    "id": "01JX6F42JSNHQ7NVJP9GPQMZ2C",
+                    "parent_id": null,
+                    "user_id": null
+                  }
+                },
+                "result": {
+                  "params": {
+                    "domain": "frontend",
+                    "service": "set_theme",
+                    "service_data": {
+                      "name": "macOS Theme"
+                    },
+                    "target": {}
+                  },
+                  "running_script": false
+                }
+              }
+            ]
+          },
+          "config": {
+            "alias": "Set macOS Theme at Startup",
+            "id": "set_macos_theme_at_startup",
+            "trigger": [
+              {
+                "platform": "homeassistant",
+                "event": "start"
+              }
+            ],
+            "action": [
+              {
+                "data": {
+                  "name": "macOS Theme"
+                },
+                "action": "frontend.set_theme"
+              }
+            ]
+          },
+          "blueprint_inputs": null,
+          "context": {
+            "id": "01JX6F42JSNHQ7NVJP9GPQMZ2C",
+            "parent_id": null,
+            "user_id": null
+          }
+        },
+        "short_dict": {
+          "last_step": "action/0",
+          "run_id": "22403a13e2198a8aaa8a880c5b9f2112",
+          "state": "stopped",
+          "script_execution": "finished",
+          "timestamp": {
+            "start": "2025-06-08T00:30:20.249377+00:00",
+            "finish": "2025-06-08T00:30:20.250058+00:00"
           },
           "domain": "automation",
           "item_id": "set_macos_theme_at_startup",
