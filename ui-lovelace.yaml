@@ -1,3 +1,5 @@
 resources:
   - url: /local/custom_lovelace/html_card/html-card.js
     type: js
+  - url: /local/community/lovelace-card-mod/card-mod.js
+    type: module

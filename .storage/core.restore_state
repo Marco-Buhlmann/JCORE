@@ -4,119 +4,119 @@
   "key": "core.restore_state",
   "data": [
     {
-      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-06-07T23:30:15.260430+00:00","last_reported":"2025-06-07T23:30:15.260430+00:00","last_updated":"2025-06-07T23:30:15.260430+00:00","context":{"id":"01JX6BP22W9NTRAX2VZ6QSR9WM","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-06-07T23:47:00.970331+00:00","last_reported":"2025-06-07T23:47:00.970331+00:00","last_updated":"2025-06-07T23:47:00.970331+00:00","context":{"id":"01JX6CMR7A7ZF9SVZVC0983EV6","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"stt.home_assistant_cloud","state":"unknown","attributes":{"friendly_name":"Home Assistant Cloud"},"last_changed":"2025-06-07T23:30:15.973777+00:00","last_reported":"2025-06-07T23:30:15.973777+00:00","last_updated":"2025-06-07T23:30:15.973777+00:00","context":{"id":"01JX6BP2S5WKQ63EMHAAKSQJ14","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"stt.home_assistant_cloud","state":"unknown","attributes":{"friendly_name":"Home Assistant Cloud"},"last_changed":"2025-06-07T23:47:01.391599+00:00","last_reported":"2025-06-07T23:47:01.391599+00:00","last_updated":"2025-06-07T23:47:01.391599+00:00","context":{"id":"01JX6CMRMFQNJQZ437S3G5B3CA","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"tts.home_assistant_cloud","state":"unknown","attributes":{"friendly_name":"Home Assistant Cloud"},"last_changed":"2025-06-07T23:30:15.974102+00:00","last_reported":"2025-06-07T23:30:15.974102+00:00","last_updated":"2025-06-07T23:30:15.974102+00:00","context":{"id":"01JX6BP2S6M3MA9VV9Z9E0CTKW","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.home_assistant_cloud","state":"unknown","attributes":{"friendly_name":"Home Assistant Cloud"},"last_changed":"2025-06-07T23:47:01.391997+00:00","last_reported":"2025-06-07T23:47:01.391997+00:00","last_updated":"2025-06-07T23:47:01.391997+00:00","context":{"id":"01JX6CMRMFHXWN4KFMJX4SMZ6D","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"script.force_poweroff_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Force Power Off Hetzner Server"},"last_changed":"2025-06-07T23:30:16.013032+00:00","last_reported":"2025-06-07T23:30:16.013032+00:00","last_updated":"2025-06-07T23:30:16.013032+00:00","context":{"id":"01JX6BP2TDVGQZSBCX99NZYAYX","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.force_poweroff_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Force Power Off Hetzner Server"},"last_changed":"2025-06-07T23:47:01.401506+00:00","last_reported":"2025-06-07T23:47:01.401506+00:00","last_updated":"2025-06-07T23:47:01.401506+00:00","context":{"id":"01JX6CMRMSCQFVRRM4CYBS9P59","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"script.graceful_shutdown_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Gracefully Shutdown Hetzner Server"},"last_changed":"2025-06-07T23:30:16.013189+00:00","last_reported":"2025-06-07T23:30:16.013189+00:00","last_updated":"2025-06-07T23:30:16.013189+00:00","context":{"id":"01JX6BP2TDYMSP4A6Y7NRQW09H","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.graceful_shutdown_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Gracefully Shutdown Hetzner Server"},"last_changed":"2025-06-07T23:47:01.401697+00:00","last_reported":"2025-06-07T23:47:01.401697+00:00","last_updated":"2025-06-07T23:47:01.401697+00:00","context":{"id":"01JX6CMRMS0ERG0JYNY15JZAE4","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"script.poweron_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Power On Hetzner Server"},"last_changed":"2025-06-07T23:30:16.013284+00:00","last_reported":"2025-06-07T23:30:16.013284+00:00","last_updated":"2025-06-07T23:30:16.013284+00:00","context":{"id":"01JX6BP2TDPMQ690XGTAWNGDMV","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"script.poweron_hetzner","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Power On Hetzner Server"},"last_changed":"2025-06-07T23:47:01.401844+00:00","last_reported":"2025-06-07T23:47:01.401844+00:00","last_updated":"2025-06-07T23:47:01.401844+00:00","context":{"id":"01JX6CMRMS8FRJQ96DMWXV695S","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"person.marco_buhlmann","state":"unknown","attributes":{"editable":true,"id":"marco_buhlmann","device_trackers":[],"source":"person.marco_buhlmann","user_id":"801f5bbbb013421bbfdcaec74b591308","entity_picture":"/api/image/serve/2678c60fc7abbc94da1723f5cf8b1a85/512x512","friendly_name":"Marco Buhlmann"},"last_changed":"2025-06-07T23:30:16.021833+00:00","last_reported":"2025-06-07T23:30:16.021833+00:00","last_updated":"2025-06-07T23:30:16.021833+00:00","context":{"id":"01JX6BP2TNV15VZMT0A6NA7RJ1","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"person.marco_buhlmann","state":"unknown","attributes":{"editable":true,"id":"marco_buhlmann","device_trackers":[],"source":"person.marco_buhlmann","user_id":"801f5bbbb013421bbfdcaec74b591308","entity_picture":"/api/image/serve/2678c60fc7abbc94da1723f5cf8b1a85/512x512","friendly_name":"Marco Buhlmann"},"last_changed":"2025-06-07T23:47:01.418043+00:00","last_reported":"2025-06-07T23:47:01.418043+00:00","last_updated":"2025-06-07T23:47:01.418043+00:00","context":{"id":"01JX6CMRNACVJ8NG2DYGEKHMM8","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"input_text.hetzner_server_id","state":"61655748","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner Server ID"},"last_changed":"2025-06-07T23:30:16.416057+00:00","last_reported":"2025-06-07T23:30:16.416057+00:00","last_updated":"2025-06-07T23:30:16.416057+00:00","context":{"id":"01JX6BP3708BZHEG5HEBRPYF6C","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"input_text.hetzner_server_id","state":"61655748","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner Server ID"},"last_changed":"2025-06-07T23:47:01.746909+00:00","last_reported":"2025-06-07T23:47:01.746909+00:00","last_updated":"2025-06-07T23:47:01.746909+00:00","context":{"id":"01JX6CMRZJEA773BC2MQKFMDJV","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"input_text.hetzner_api_token","state":"nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner API Token"},"last_changed":"2025-06-07T23:30:16.416227+00:00","last_reported":"2025-06-07T23:30:16.416227+00:00","last_updated":"2025-06-07T23:30:16.416227+00:00","context":{"id":"01JX6BP370814MZ5J9P7R2PPS3","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"input_text.hetzner_api_token","state":"nRElzSvzwYxEdL8AJUO4D3hJDVzagqdUndQ8jnvpNXufyyRTDMkClAE7Oq8IgN0E","attributes":{"editable":false,"min":0,"max":100,"pattern":null,"mode":"password","friendly_name":"Hetzner API Token"},"last_changed":"2025-06-07T23:47:01.747027+00:00","last_reported":"2025-06-07T23:47:01.747027+00:00","last_updated":"2025-06-07T23:47:01.747027+00:00","context":{"id":"01JX6CMRZKXPTTXB2H6Y51N2D5","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"automation.set_macos_theme_at_startup","state":"on","attributes":{"id":"set_macos_theme_at_startup","last_triggered":"2025-06-07T23:15:18.268422+00:00","mode":"single","current":0,"friendly_name":"Set macOS Theme at Startup"},"last_changed":"2025-06-07T23:30:18.912205+00:00","last_reported":"2025-06-07T23:30:18.912205+00:00","last_updated":"2025-06-07T23:30:18.912205+00:00","context":{"id":"01JX6BP5N0AH08VY7VYJEM4A31","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-07T23:47:03.514349+00:00","last_reported":"2025-06-07T23:47:03.514349+00:00","last_updated":"2025-06-07T23:47:03.514349+00:00","context":{"id":"01JX6CMTPTWX1WEX6AD76HGJQF","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"conversation.chatgpt","state":"unknown","attributes":{"friendly_name":"ChatGPT","supported_features":1},"last_changed":"2025-06-07T23:30:18.918921+00:00","last_reported":"2025-06-07T23:30:18.918921+00:00","last_updated":"2025-06-07T23:30:18.918921+00:00","context":{"id":"01JX6BP5N64X95BQJ7ZFKDTE3J","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.google_translate_en_com_2","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-07T23:47:03.514875+00:00","last_reported":"2025-06-07T23:47:03.514875+00:00","last_updated":"2025-06-07T23:47:03.514875+00:00","context":{"id":"01JX6CMTPTBMQ7CJEZZASZC3B3","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-07T23:30:18.934387+00:00","last_reported":"2025-06-07T23:30:18.934387+00:00","last_updated":"2025-06-07T23:30:18.934387+00:00","context":{"id":"01JX6BP5NP6YG5K874DKCEK622","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.chatgpt","state":"unknown","attributes":{"friendly_name":"ChatGPT","supported_features":1},"last_changed":"2025-06-07T23:47:03.516635+00:00","last_reported":"2025-06-07T23:47:03.516635+00:00","last_updated":"2025-06-07T23:47:03.516635+00:00","context":{"id":"01JX6CMTPWGPXWMFYRZY2NDSZA","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"tts.google_translate_en_com_2","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-06-07T23:30:18.934855+00:00","last_reported":"2025-06-07T23:30:18.934855+00:00","last_updated":"2025-06-07T23:30:18.934855+00:00","context":{"id":"01JX6BP5NP0KET0QMQGSQC2F21","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"automation.set_macos_theme_at_startup","state":"on","attributes":{"id":"set_macos_theme_at_startup","last_triggered":"2025-06-07T23:45:49.553751+00:00","mode":"single","current":0,"friendly_name":"Set macOS Theme at Startup"},"last_changed":"2025-06-07T23:47:03.567137+00:00","last_reported":"2025-06-07T23:47:03.567137+00:00","last_updated":"2025-06-07T23:47:03.567137+00:00","context":{"id":"01JX6CMTRFFEFFRT1DM6X2HH6K","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.openai_whisper_api_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.1.0","in_progress":false,"latest_version":"v1.1.0","release_summary":null,"release_url":"https://github.com/einToast/openai_stt_ha/releases/v1.1.0","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/openai_stt/icon.png","friendly_name":"OpenAI Whisper API update","supported_features":23},"last_changed":"2025-06-07T23:30:18.944056+00:00","last_reported":"2025-06-07T23:30:18.944056+00:00","last_updated":"2025-06-07T23:30:18.944056+00:00","context":{"id":"01JX6BP5P0FWHA5W4QZ4KTVEE3","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.browser_mod_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v2.3.8","in_progress":false,"latest_version":"v2.3.8","release_summary":null,"release_url":"https://github.com/thomasloven/hass-browser_mod/releases/v2.3.8","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/browser_mod/icon.png","friendly_name":"browser_mod update","supported_features":23},"last_changed":"2025-06-07T23:47:03.580675+00:00","last_reported":"2025-06-07T23:47:03.580675+00:00","last_updated":"2025-06-07T23:47:03.580675+00:00","context":{"id":"01JX6CMTRW65TGHPNM2Z9TTZPF","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.browser_mod_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v2.3.8","in_progress":false,"latest_version":"v2.3.8","release_summary":null,"release_url":"https://github.com/thomasloven/hass-browser_mod/releases/v2.3.8","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/browser_mod/icon.png","friendly_name":"browser_mod update","supported_features":23},"last_changed":"2025-06-07T23:30:18.944457+00:00","last_reported":"2025-06-07T23:30:18.944457+00:00","last_updated":"2025-06-07T23:30:18.944457+00:00","context":{"id":"01JX6BP5P03V716VANM664KQQR","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.status_card_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v2.11","in_progress":false,"latest_version":"v2.11","release_summary":null,"release_url":"https://github.com/xBourner/status-card/releases/v2.11","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"status-card update","supported_features":23},"last_changed":"2025-06-07T23:47:03.580933+00:00","last_reported":"2025-06-07T23:47:03.580933+00:00","last_updated":"2025-06-07T23:47:03.580933+00:00","context":{"id":"01JX6CMTRWPMZNVH4MNTYV544V","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.card_mod_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v3.4.4","in_progress":false,"latest_version":"v3.4.4","release_summary":null,"release_url":"https://github.com/thomasloven/lovelace-card-mod/releases/v3.4.4","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"card-mod update","supported_features":23},"last_changed":"2025-06-07T23:30:18.944707+00:00","last_reported":"2025-06-07T23:30:18.944707+00:00","last_updated":"2025-06-07T23:30:18.944707+00:00","context":{"id":"01JX6BP5P0P5X0KYVAQ0B0G2WW","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.google_home_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.13.0","in_progress":false,"latest_version":"v1.13.0","release_summary":null,"release_url":"https://github.com/leikoilja/ha-google-home/releases/v1.13.0","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/google_home/icon.png","friendly_name":"Google Home update","supported_features":23},"last_changed":"2025-06-07T23:47:03.581144+00:00","last_reported":"2025-06-07T23:47:03.581144+00:00","last_updated":"2025-06-07T23:47:03.581144+00:00","context":{"id":"01JX6CMTRXG2ZH9D70CSXQXZA9","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.macos_theme_based_on_the_system_wide_light_and_dark_mode_ui_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.4","in_progress":false,"latest_version":"v1.4","release_summary":null,"release_url":"https://github.com/JuanMTech/macOS-Theme/releases/v1.4","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"macOS Theme - Based on the system-wide light and dark mode UI update","supported_features":23},"last_changed":"2025-06-07T23:30:18.944925+00:00","last_reported":"2025-06-07T23:30:18.944925+00:00","last_updated":"2025-06-07T23:30:18.944925+00:00","context":{"id":"01JX6BP5P00FDM6Z9C0GWXCFG6","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.openai_whisper_api_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.1.0","in_progress":false,"latest_version":"v1.1.0","release_summary":null,"release_url":"https://github.com/einToast/openai_stt_ha/releases/v1.1.0","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/openai_stt/icon.png","friendly_name":"OpenAI Whisper API update","supported_features":23},"last_changed":"2025-06-07T23:47:03.581314+00:00","last_reported":"2025-06-07T23:47:03.581314+00:00","last_updated":"2025-06-07T23:47:03.581314+00:00","context":{"id":"01JX6CMTRXVT3XZ2SZCY0Y3859","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.status_card_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v2.11","in_progress":false,"latest_version":"v2.11","release_summary":null,"release_url":"https://github.com/xBourner/status-card/releases/v2.11","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"status-card update","supported_features":23},"last_changed":"2025-06-07T23:30:18.945158+00:00","last_reported":"2025-06-07T23:30:18.945158+00:00","last_updated":"2025-06-07T23:30:18.945158+00:00","context":{"id":"01JX6BP5P1EKM9PVCVVWATCYD6","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.hacs_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"2.0.5","in_progress":false,"latest_version":"2.0.5","release_summary":null,"release_url":"https://github.com/hacs/integration/releases/2.0.5","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/hacs/icon.png","friendly_name":"HACS update","supported_features":23},"last_changed":"2025-06-07T23:47:03.581487+00:00","last_reported":"2025-06-07T23:47:03.581487+00:00","last_updated":"2025-06-07T23:47:03.581487+00:00","context":{"id":"01JX6CMTRXXM7A3ZFDRGT8ZZKS","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.lovelace_html_card_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.0.0","in_progress":false,"latest_version":"v1.0.0","release_summary":null,"release_url":"https://github.com/PiotrMachowski/lovelace-html-card/releases/v1.0.0","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"Lovelace Html Card update","supported_features":23},"last_changed":"2025-06-07T23:30:18.945396+00:00","last_reported":"2025-06-07T23:30:18.945396+00:00","last_updated":"2025-06-07T23:30:18.945396+00:00","context":{"id":"01JX6BP5P124MKV78J60FE6AAA","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.macos_theme_based_on_the_system_wide_light_and_dark_mode_ui_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.4","in_progress":false,"latest_version":"v1.4","release_summary":null,"release_url":"https://github.com/JuanMTech/macOS-Theme/releases/v1.4","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"macOS Theme - Based on the system-wide light and dark mode UI update","supported_features":23},"last_changed":"2025-06-07T23:47:03.581652+00:00","last_reported":"2025-06-07T23:47:03.581652+00:00","last_updated":"2025-06-07T23:47:03.581652+00:00","context":{"id":"01JX6CMTRXYPBBA9NT3VEVVJ51","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.google_home_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.13.0","in_progress":false,"latest_version":"v1.13.0","release_summary":null,"release_url":"https://github.com/leikoilja/ha-google-home/releases/v1.13.0","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/google_home/icon.png","friendly_name":"Google Home update","supported_features":23},"last_changed":"2025-06-07T23:30:18.946611+00:00","last_reported":"2025-06-07T23:30:18.946611+00:00","last_updated":"2025-06-07T23:30:18.946611+00:00","context":{"id":"01JX6BP5P26YW4JB1D86JWKTMH","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.card_mod_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v3.4.4","in_progress":false,"latest_version":"v3.4.4","release_summary":null,"release_url":"https://github.com/thomasloven/lovelace-card-mod/releases/v3.4.4","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"card-mod update","supported_features":23},"last_changed":"2025-06-07T23:47:03.581814+00:00","last_reported":"2025-06-07T23:47:03.581814+00:00","last_updated":"2025-06-07T23:47:03.581814+00:00","context":{"id":"01JX6CMTRX6STG1FB7ZMFRX1M9","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"update.hacs_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"2.0.5","in_progress":false,"latest_version":"2.0.5","release_summary":null,"release_url":"https://github.com/hacs/integration/releases/2.0.5","skipped_version":null,"title":null,"update_percentage":null,"entity_picture":"https://brands.home-assistant.io/_/hacs/icon.png","friendly_name":"HACS update","supported_features":23},"last_changed":"2025-06-07T23:30:18.946864+00:00","last_reported":"2025-06-07T23:30:18.946864+00:00","last_updated":"2025-06-07T23:30:18.946864+00:00","context":{"id":"01JX6BP5P2BZTSQM4FDSX8E91B","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"update.lovelace_html_card_update","state":"off","attributes":{"auto_update":false,"display_precision":0,"installed_version":"v1.0.0","in_progress":false,"latest_version":"v1.0.0","release_summary":null,"release_url":"https://github.com/PiotrMachowski/lovelace-html-card/releases/v1.0.0","skipped_version":null,"title":null,"update_percentage":null,"friendly_name":"Lovelace Html Card update","supported_features":23},"last_changed":"2025-06-07T23:47:03.582096+00:00","last_reported":"2025-06-07T23:47:03.582096+00:00","last_updated":"2025-06-07T23:47:03.582096+00:00","context":{"id":"01JX6CMTRY626J56B7DQ0C7PHN","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"tts.piper","state":"unknown","attributes":{"friendly_name":"piper"},"last_changed":"2025-06-07T23:30:18.950336+00:00","last_reported":"2025-06-07T23:30:18.950336+00:00","last_updated":"2025-06-07T23:30:18.950336+00:00","context":{"id":"01JX6BP5P6SS4W0GC30T04RYM8","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.claude","state":"unknown","attributes":{"friendly_name":"Claude","supported_features":1},"last_changed":"2025-06-07T23:47:03.585779+00:00","last_reported":"2025-06-07T23:47:03.585779+00:00","last_updated":"2025-06-07T23:47:03.585779+00:00","context":{"id":"01JX6CMTS1NSENPD2RYGY0Z8KF","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
-      "state": {"entity_id":"conversation.claude","state":"unknown","attributes":{"friendly_name":"Claude","supported_features":1},"last_changed":"2025-06-07T23:30:19.082104+00:00","last_reported":"2025-06-07T23:30:19.082104+00:00","last_updated":"2025-06-07T23:30:19.082104+00:00","context":{"id":"01JX6BP5TA7Z51Q3CW0T170RN4","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.piper","state":"unknown","attributes":{"friendly_name":"piper"},"last_changed":"2025-06-07T23:47:03.588982+00:00","last_reported":"2025-06-07T23:47:03.588982+00:00","last_updated":"2025-06-07T23:47:03.588982+00:00","context":{"id":"01JX6CMTS4T5RYAYEV8W9FK71K","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-06-07T23:30:20.597659+00:00"
+      "last_seen": "2025-06-07T23:47:06.187251+00:00"
     },
     {
       "state": {"entity_id":"person.marco","state":"not_home","attributes":{"editable":true,"id":"marco","device_trackers":["device_tracker.mbxxvii","device_tracker.mbxxvii_macair"],"latitude":52.52389881635807,"longitude":13.39468594067379,"gps_accuracy":35,"source":"device_tracker.mbxxvii_macair","user_id":"a866c36c3563470b8bbd5ccc1483e12b","entity_picture":"/api/image/serve/b056a5f46e5531be5cb3f9cbc9d1c0a1/512x512","friendly_name":"Marco"},"last_changed":"2025-06-02T02:10:56.251999+00:00","last_reported":"2025-06-02T02:10:56.251999+00:00","last_updated":"2025-06-02T02:10:56.251999+00:00","context":{"id":"01JWQ6FZ3V2GV19EY66YGHHJ45","parent_id":null,"user_id":null}},

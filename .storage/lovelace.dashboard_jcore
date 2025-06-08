@@ -73,7 +73,7 @@
                             "name": "Force Off",
                             "icon": "mdi:power-off",
                             "card_mod": {
-                              "style": "ha-card {\n  background-color: #ff2843;\n}  \n"
+                              "style": "ha-card {\n  background-color: #fffff;\n}  \n"
                             }
                           }
                         ]
