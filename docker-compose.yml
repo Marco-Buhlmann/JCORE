@@ -181,6 +181,7 @@ services:
   npm:
     container_name: jcore_npm
     image: jc21/nginx-proxy-manager:2.11.1
+    network_mode: host
     restart: unless-stopped
     ports:
       - "80:80"
