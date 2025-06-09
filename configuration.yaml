@@ -4,8 +4,7 @@
 #                                                                                                      |
 #-------------------------------------------------------------------------------------------------------
 
-
-# Enable reverse proxy support
+# Reverse proxy support
 http:
   use_x_forwarded_for: true
   trusted_proxies:
@@ -17,17 +16,37 @@ http:
     - 192.168.0.0/16
     - 10.0.0.0/8
 
-# Loads default set of integrations. Do not remove.
+# Load defaults
 default_config:
 
-# Load frontend themes from the themes folder
+# Frontend custom config
 frontend:
   themes: !include_dir_merge_named themes
   extra_module_url:
     - /mnt/docker-data/jcore/config/www/community/lovelace-card-mod/card-mod.js
     - /local/grafana-persistent.js
+
+# Lovelace configuration (fixed - removed duplicate)
 lovelace:
   mode: yaml
+  resources:
+    - url: /local/addon-iframe-card.js
+      type: module
+  dashboards:
+    mac-dashboard:
+      mode: yaml
+      title: macOS Dashboard
+      icon: mdi:apple
+      show_in_sidebar: true
+      filename: mac-dashboard.yaml
+
+# Panel iframe for Grafana
+panel_iframe:
+  grafana_dashboard:
+    title: "Grafana Dashboard"
+    url: "https://grafana.dreammachine.casa/d/98ce52e0-7ac8-4e03-8555-1919155bdd9b/custom-panels?orgId=1&from=2025-06-08T18:45:59.297Z&to=2025-06-09T00:45:59.297Z&timezone=browser&viewPanel=panel-1&theme=dark&kiosk=1"
+    require_admin: false
+    icon: mdi:chart-line
 
 # HACS integrations dashboard
 hacs:
@@ -36,22 +55,14 @@ hacs:
 homeassistant:
   packages: !include_dir_named packages
   allowlist_external_dirs:
+  allowlist_external_urls:
+    - https://grafana.dreammachine.casa/*
+    - https://grafana.dreammachine.casa/public-dashboards/*
 
 # Automations
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-
-# Custom Dashboard
-lovelace:
-  mode: storage
-  dashboards:
-    mac-dashboard:
-      mode: yaml
-      title: macOS Dashboard
-      icon: mdi:apple
-      show_in_sidebar: true
-      filename: mac-dashboard.yaml
 
 # MariaDB
 recorder:
@@ -68,7 +79,7 @@ recorder:
     entities:
       - sun.sun
 
-# InfluxDB Configuration
+# InfluxDB
 influxdb:
   host: 127.0.0.1 
   port: 8086
@@ -79,6 +90,17 @@ influxdb:
   default_measurement: state
   ssl: false
   verify_ssl: false
+
+# Prometheus metrics endpoint
+prometheus:
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - sun
+    entities:
+      - sensor.living_room_temperature
+      - sensor.front_door_battery_level
 
 # Input text helpers
 input_text:
