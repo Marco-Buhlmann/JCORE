@@ -40,14 +40,6 @@ lovelace:
       show_in_sidebar: true
       filename: mac-dashboard.yaml
 
-# Panel iframe for Grafana
-panel_iframe:
-  grafana_dashboard:
-    title: "Grafana Dashboard"
-    url: "https://grafana.dreammachine.casa/d/98ce52e0-7ac8-4e03-8555-1919155bdd9b/custom-panels?orgId=1&from=2025-06-08T18:45:59.297Z&to=2025-06-09T00:45:59.297Z&timezone=browser&viewPanel=panel-1&theme=dark&kiosk=1"
-    require_admin: false
-    icon: mdi:chart-line
-
 # HACS integrations dashboard
 hacs:
   token: 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
