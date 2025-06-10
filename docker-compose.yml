@@ -4,6 +4,8 @@
 #                                                                                                      |
 #-------------------------------------------------------------------------------------------------------
 
+version: '3.9'
+
 services:
 
   mariadb:
@@ -45,6 +47,8 @@ services:
     restart: unless-stopped
     volumes:
       - /opt/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /mnt/docker-data/jcore/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /mnt/docker-data/jcore/config/prometheus/ha.token:/etc/prometheus/ha.token:ro
 
   jia-loki:
     container_name: jcore_loki
@@ -69,15 +73,16 @@ services:
       retries: 3
 
   cadvisor:
+    container_name: jcore_cadvisor
     image: gcr.io/cadvisor/cadvisor:latest
+    restart: unless-stopped
     ports:
-      - "8081:8080"  #
+      - "8081:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    restart: unless-stopped
 
   homeassistant:
     container_name: jcore_ha
@@ -148,6 +153,22 @@ services:
       - --uri
       - tcp://0.0.0.0:10200
 
+  faster-whisper:
+    container_name: jcore_whisper
+    image: lscr.io/linuxserver/faster-whisper:latest
+    restart: unless-stopped
+    ports:
+      - "19550:19550"
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Etc/UTC"
+      WHISPER_MODEL: "medium-int8"
+      WHISPER_LANG: "en"
+      WHISPER_BEAM: "5"
+    volumes:
+      - ./faster-whisper:/config
+
   terminal:
     container_name: jcore_terminal
     image: tsl0922/ttyd:latest
@@ -183,14 +204,14 @@ services:
     image: jc21/nginx-proxy-manager:2.11.1
     network_mode: host
     restart: unless-stopped
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     ports:
       - "80:80"
       - "81:81"
       - "443:443"
       - "4443:4443"
-    dns:
-      - 1.1.1.1 
-      - 8.8.8.8 
     volumes:
       - ./npm/data:/data
       - ./npm/letsencrypt:/etc/letsencrypt
@@ -210,18 +231,20 @@ services:
     restart: unless-stopped
     ports:
       - "8082:8081"
+    networks:
+      - proxy
 
   grafana:
-    image: grafana/grafana:latest
     container_name: jcore_grafana
+    image: grafana/grafana:latest
     restart: unless-stopped
     ports:
       - "3002:3000"
-    
     volumes:
       - grafana-storage:/var/lib/grafana
       - ./grafana-provisioning:/etc/grafana/provisioning
-    
+    depends_on:
+      - influxdb
     environment:
       GF_SECURITY_ADMIN_USER: "mbxxvii"
       GF_SECURITY_ADMIN_PASSWORD: "mb415%"
@@ -229,15 +252,14 @@ services:
       GF_SERVER_DOMAIN: "grafana.dreammachine.casa"
       GF_SERVER_ROOT_URL: "https://grafana.dreammachine.casa"
       GF_SERVER_SERVE_FROM_SUB_PATH: "false"
-      GF_RENDERING_SERVER_URL: "http://grafana-renderer:8081"
-    
-      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: "*"
-      GF_PLUGINS_ENABLE_ALPHA: "true"
-
-      GF_FEATURE_UPLOAD_PLUGIN_ENABLED: "true"
-
-    depends_on:
-      - influxdb
+      GF_RENDERING_SERVER_URL: "http://jcore_grafana_rdr:8081"
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
+      GF_COOKIE_SAMESITE: "none"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_NAME: "Main Org."
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
+    networks:
+      - proxy
 
 networks:
   proxy:
