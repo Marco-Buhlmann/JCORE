@@ -70,6 +70,7 @@ recorder:
       - sensor.date*
     entities:
       - sun.sun
+      - sensor.jia_sat_1_jia_volume
 
 # InfluxDB
 influxdb:
@@ -152,14 +153,31 @@ binary_sensor:
     device_class: connectivity
     scan_interval: 60
 
-# Template Sensors
+# Sensor Templates
 template:
-  - sensor:
-      - name: "Hetzner Server Simple Status"
-        state: "{{ states('sensor.hetzner_server_direct') }}"
-        icon: >
-          {% if states('sensor.hetzner_server_direct') == 'running' %}
-            mdi:server
-          {% else %}
-            mdi:server-off
-          {% endif %}
+  sensor:
+    - name: "Hetzner Server #1 Status"
+      state: "{{ states('sensor.hetzner_server_direct') | capitalize }}"
+      icon: >-
+        {% if is_state('sensor.hetzner_server_direct','running') %}
+          mdi:server-network
+        {% else %}
+          mdi:server-off
+        {% endif %}
+
+    - name: "Hetzner Server Simple Status"
+      state: "{{ states('sensor.hetzner_server_direct') }}"
+      icon: >-
+        {% if states('sensor.hetzner_server_direct') == 'running' %}
+          mdi:server
+        {% else %}
+          mdi:server-off
+        {% endif %}
+
+    - name: "Metrics Server Status"
+      state: >-
+        {% if is_state('binary_sensor.metrics_endpoint_running','on') %}
+          Running
+        {% else %}
+          Down
+        {% endif %}
