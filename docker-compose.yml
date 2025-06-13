@@ -8,6 +8,29 @@ version: '3.9'
 
 services:
 
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx_grafana
+    restart: unless-stopped
+    ports:
+      - "8080:80"      
+      - "8443:443"     
+    volumes:
+      - /var/lib/nginx-conf:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/www/html:/var/www/html
+    
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:2.12.3
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - CF_API_EMAIL=marco@3cubed.vc
+      - CF_API_KEY= d3e09e987a02fd0fd3eeae182b09224f9bde5
+    volumes:
+      - /mnt/docker-data/jcore/config/data:/data
+      - /etc/letsencrypt:/etc/letsencrypt
+
   mariadb:
     container_name: jcore_mariadb
     image: mariadb:10.11
@@ -153,22 +176,6 @@ services:
       - --uri
       - tcp://0.0.0.0:10200
 
-  faster-whisper:
-    container_name: jcore_whisper
-    image: lscr.io/linuxserver/faster-whisper:latest
-    restart: unless-stopped
-    ports:
-      - "19550:19550"
-    environment:
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "Etc/UTC"
-      WHISPER_MODEL: "medium-int8"
-      WHISPER_LANG: "en"
-      WHISPER_BEAM: "5"
-    volumes:
-      - ./faster-whisper:/config
-
   terminal:
     container_name: jcore_terminal
     image: tsl0922/ttyd:latest
@@ -198,23 +205,6 @@ services:
     command:
       - --root
       - /srv
-
-  npm:
-    container_name: jcore_npm
-    image: jc21/nginx-proxy-manager:2.11.1
-    network_mode: host
-    restart: unless-stopped
-    dns:
-      - 1.1.1.1
-      - 8.8.8.8
-    ports:
-      - "80:80"
-      - "81:81"
-      - "443:443"
-      - "4443:4443"
-    volumes:
-      - ./npm/data:/data
-      - ./npm/letsencrypt:/etc/letsencrypt
 
   uptime-kuma:
     container_name: jcore_kuma
@@ -260,6 +250,17 @@ services:
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
     networks:
       - proxy
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot_grafana
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/html:/var/www/html
+    entrypoint: /bin/sh -c
+    command: >
+      "trap exit TERM;
+       while :; do sleep 12h & wait $${!}; certbot renew --webroot -w /var/www/html --quiet; done"
 
 networks:
   proxy:
