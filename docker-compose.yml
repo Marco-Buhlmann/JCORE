@@ -109,7 +109,6 @@ services:
   homeassistant:
     container_name: jcore_ha
     image: homeassistant/home-assistant:stable
-    network_mode: host
     restart: unless-stopped
     networks:
       - jcore_proxy   
