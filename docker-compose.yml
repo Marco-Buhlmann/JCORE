@@ -13,8 +13,7 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy
-    ports:
-      - "80:80"     
+    ports: 
       - "81:81"    
       - "443:443"
     environment:
