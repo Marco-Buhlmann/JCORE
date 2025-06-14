@@ -60,6 +60,164 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+#-------------------------------------------------------------------------------------------------------
+#                                        VOICE ASSISTANT CONFIG                                        |
+#-------------------------------------------------------------------------------------------------------
+
+# Wyoming Protocol Support
+wyoming:
+
+# Voice Assistant Pipeline
+assist_pipeline:
+
+# Speech-to-Text (Whisper via Wyoming)
+stt:
+  - platform: wyoming
+    host: jcore_whisper
+    port: 10300
+    name: "Whisper STT"
+
+# Wake Word Detection (OpenWakeWord via Wyoming)
+wake_word:
+  - platform: wyoming
+    host: jcore_openwakeword
+    port: 10400
+    name: "OpenWakeWord"
+
+# Text-to-Speech (Piper - already configured via container)
+tts:
+  - platform: wyoming
+    host: jcore_wyoming
+    port: 10200
+    name: "Piper TTS"
+
+# Voice Assistant Configuration
+voice_assistant:
+  - name: "JIA Satellite 1 Voice Pipeline"
+    stt_engine: wyoming_whisper
+    tts_engine: wyoming_piper
+    wake_word_engine: wyoming_openwakeword
+    conversation_agent: conversation.home_assistant
+    vad:
+      silence_seconds: 2
+      volume_multiplier: 2.0
+      noise_suppression_level: 2
+
+# Enhanced conversation intents
+conversation:
+  intents:
+    JIALightControl:
+      - "turn {on_off} [the] {name} [light]"
+      - "switch {on_off} [the] {name}"
+      - "{on_off} [the] {name} [light]"
+    JIAServerControl:
+      - "shutdown [the] hetzner server"
+      - "restart [the] hetzner server" 
+      - "power {action} [the] server"
+      - "server {action}"
+    JIASystemStatus:
+      - "what is [the] status of {name}"
+      - "how is [the] {name} doing"
+      - "check [the] {name}"
+      - "system status"
+    JIAVolumeControl:
+      - "set volume to {level}"
+      - "volume {level}"
+      - "make it {louder_quieter}"
+
+# Intent scripts for JIA-SAT-1 commands
+intent_script:
+  JIALightControl:
+    speech:
+      text: >
+        {% if on_off == "on" %}
+          Turning on {{ name }}
+        {% else %}
+          Turning off {{ name }}
+        {% endif %}
+    action:
+      - service: "light.turn_{{ on_off }}"
+        target:
+          entity_id: "light.{{ name | replace(' ', '_') | lower }}"
+
+  JIAServerControl:
+    speech:
+      text: >
+        {% if action == "shutdown" or "shutdown" in trigger.slots.text %}
+          Shutting down Hetzner server
+        {% elif action == "restart" or "restart" in trigger.slots.text %}
+          Restarting Hetzner server
+        {% elif "off" in action %}
+          Powering off Hetzner server
+        {% elif "on" in action %}
+          Powering on Hetzner server
+        {% endif %}
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ 'shutdown' in trigger.slots.text }}"
+            sequence:
+              - service: rest_command.hetzner_shutdown_server
+                data:
+                  server_id: "{{ states('input_text.hetzner_server_id') }}"
+                  api_token: "{{ states('input_text.hetzner_api_token') }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ 'power off' in trigger.slots.text or 'poweroff' in trigger.slots.text }}"
+            sequence:
+              - service: rest_command.hetzner_poweroff_server
+                data:
+                  server_id: "{{ states('input_text.hetzner_server_id') }}"
+                  api_token: "{{ states('input_text.hetzner_api_token') }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ 'power on' in trigger.slots.text or 'poweron' in trigger.slots.text }}"
+            sequence:
+              - service: rest_command.hetzner_poweron_server
+                data:
+                  server_id: "{{ states('input_text.hetzner_server_id') }}"
+                  api_token: "{{ states('input_text.hetzner_api_token') }}"
+
+  JIASystemStatus:
+    speech:
+      text: >
+        {% if name == "server" or name == "hetzner" %}
+          Hetzner server status is {{ states('sensor.hetzner_server_simple_status') }}
+        {% elif name == "voice" or name == "voice system" %}
+          Voice pipeline status is {{ states('sensor.voice_pipeline_status') }}
+        {% else %}
+          System is running normally. Voice pipeline is {{ states('sensor.voice_pipeline_status') }}.
+          Server status is {{ states('sensor.hetzner_server_simple_status') }}.
+        {% endif %}
+    action: []
+
+  JIAVolumeControl:
+    speech:
+      text: >
+        {% if level is defined %}
+          Setting volume to {{ level }}
+        {% elif louder_quieter == "louder" %}
+          Increasing volume
+        {% elif louder_quieter == "quieter" %}
+          Decreasing volume
+        {% endif %}
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ level is defined }}"
+            sequence:
+              - service: input_number.set_value
+                target:
+                  entity_id: input_number.voice_volume
+                data:
+                  value: "{{ level | int }}"
+
+#-------------------------------------------------------------------------------------------------------
+#                                           DATABASE CONFIG                                            |
+#-------------------------------------------------------------------------------------------------------
+
 # MariaDB
 recorder:
   db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@jcore_mariadb:3306/JCORE?charset=utf8mb4
@@ -101,6 +259,10 @@ prometheus:
       - sensor.living_room_temperature
       - sensor.front_door_battery_level
 
+#-------------------------------------------------------------------------------------------------------
+#                                           INPUT HELPERS                                              |
+#-------------------------------------------------------------------------------------------------------
+
 # Input text helpers
 input_text:
   hetzner_server_id:
@@ -111,6 +273,63 @@ input_text:
     name: Hetzner API Token  
     initial: !secret hetzner_api_token
     mode: password
+
+# Voice Assistant Input Helpers
+input_select:
+  voice_wake_word:
+    name: "Active Wake Word"
+    options:
+      - "alexa"
+      - "hey_jarvis"
+      - "ok_nabu"
+    initial: "alexa"
+
+  jia_sat_1_voice_mode:
+    name: "JIA SAT 1 Voice Mode"
+    options:
+      - "Always Listening"
+      - "Push to Talk"
+      - "Wake Word Only"
+      - "Disabled"
+    initial: "Wake Word Only"
+
+input_number:
+  voice_volume:
+    name: "Voice Assistant Volume"
+    min: 0
+    max: 100
+    step: 5
+    initial: 75
+    unit_of_measurement: "%"
+    icon: mdi:volume-high
+
+  wake_word_threshold:
+    name: "Wake Word Sensitivity"
+    min: 0.1
+    max: 1.0
+    step: 0.1
+    initial: 0.5
+    icon: mdi:ear-hearing
+
+input_boolean:
+  voice_assistant_enabled:
+    name: "Voice Assistant Enabled"
+    initial: true
+    icon: mdi:microphone
+
+  jia_sat_1_auto_respond:
+    name: "JIA SAT 1 Auto Response"
+    initial: true
+    icon: mdi:robot-outline
+
+  jia_sat_1_server_control:
+    name: "JIA SAT 1 Server Control Enabled"
+    initial: false  # Disabled by default for safety
+    icon: mdi:server-security
+
+#-------------------------------------------------------------------------------------------------------
+#                                           REST COMMANDS                                              |
+#-------------------------------------------------------------------------------------------------------
 
 # Rest Commands
 rest_command:
@@ -138,6 +357,10 @@ rest_command:
       Content-Type: "application/json"
     payload: '{}'
 
+#-------------------------------------------------------------------------------------------------------
+#                                              SENSORS                                                 |
+#-------------------------------------------------------------------------------------------------------
+
 # Sensors
 sensor:
   - platform: rest
@@ -150,6 +373,43 @@ sensor:
       - server
     scan_interval: 60
 
+  # Voice System Monitoring Sensors
+  - platform: rest
+    name: "Whisper Service Status"
+    resource: "http://jcore_whisper:10300/"
+    method: GET
+    value_template: >
+      {% if value_json is defined %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+    scan_interval: 60
+
+  - platform: rest
+    name: "OpenWakeWord Service Status"
+    resource: "http://jcore_openwakeword:10400/"
+    method: GET
+    value_template: >
+      {% if value_json is defined %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+    scan_interval: 60
+
+  - platform: rest
+    name: "Piper Service Status"
+    resource: "http://jcore_wyoming:10200/"
+    method: GET
+    value_template: >
+      {% if value_json is defined %}
+        Online
+      {% else %}
+        Offline
+      {% endif %}
+    scan_interval: 60
+
 binary_sensor:
   - platform: rest
     name: "Metrics Endpoint Running"
@@ -158,6 +418,10 @@ binary_sensor:
     value_template: "{{ value | length > 0 }}"
     device_class: connectivity
     scan_interval: 60
+
+#-------------------------------------------------------------------------------------------------------
+#                                           SENSOR TEMPLATES                                           |
+#-------------------------------------------------------------------------------------------------------
 
 # Sensor Templates
 template:
@@ -186,4 +450,92 @@ template:
           Running
         {% else %}
           Down
+        {% endif %}
+
+    # Voice Pipeline Status Templates
+    - name: "Voice Pipeline Status"
+      state: >
+        {% set whisper = states('sensor.whisper_service_status') %}
+        {% set wake = states('sensor.openwakeword_service_status') %}
+        {% set piper = states('sensor.piper_service_status') %}
+        {% if whisper == 'Online' and wake == 'Online' and piper == 'Online' %}
+          Fully Operational
+        {% elif whisper == 'Online' and piper == 'Online' %}
+          Ready (No Wake Word)
+        {% elif whisper == 'Online' %}
+          STT Only
+        {% elif piper == 'Online' %}
+          TTS Only
+        {% else %}
+          Offline
+        {% endif %}
+      icon: >
+        {% if states('sensor.voice_pipeline_status') == 'Fully Operational' %}
+          mdi:microphone
+        {% elif 'Ready' in states('sensor.voice_pipeline_status') %}
+          mdi:microphone-outline
+        {% else %}
+          mdi:microphone-off
+        {% endif %}
+      attributes:
+        whisper_status: "{{ states('sensor.whisper_service_status') }}"
+        wake_word_status: "{{ states('sensor.openwakeword_service_status') }}"
+        piper_status: "{{ states('sensor.piper_service_status') }}"
+
+    - name: "Voice System Health"
+      state: >
+        {% set services = [
+          states('sensor.whisper_service_status'),
+          states('sensor.openwakeword_service_status'),
+          states('sensor.piper_service_status')
+        ] %}
+        {% set online_count = services | select('eq', 'Online') | list | length %}
+        {{ (online_count / 3 * 100) | round(0) }}%
+      unit_of_measurement: "%"
+      icon: >
+        {% set health = states('sensor.voice_system_health') | int %}
+        {% if health == 100 %}
+          mdi:heart
+        {% elif health >= 66 %}
+          mdi:heart-half
+        {% elif health >= 33 %}
+          mdi:heart-outline
+        {% else %}
+          mdi:heart-broken
+        {% endif %}
+
+    - name: "JIA SAT 1 Status"
+      state: >
+        {% if states('binary_sensor.jia_sat_1_status') == 'on' %}
+          Online
+        {% else %}
+          Offline
+        {% endif %}
+      icon: >
+        {% if states('binary_sensor.jia_sat_1_status') == 'on' %}
+          mdi:satellite-variant
+        {% else %}
+          mdi:satellite-off
+        {% endif %}
+
+    - name: "JIA SAT 1 Voice Status"
+      state: >
+        {% if states('switch.jia_sat_1_voice_assistant') == 'on' %}
+          {% if states('sensor.voice_pipeline_status') == 'Fully Operational' %}
+            Ready
+          {% else %}
+            Limited
+          {% endif %}
+        {% else %}
+          Disabled
+        {% endif %}
+      icon: >
+        {% if states('switch.jia_sat_1_voice_assistant') == 'on' %}
+          {% if states('sensor.voice_pipeline_status') == 'Fully Operational' %}
+            mdi:microphone
+          {% else %}
+            mdi:microphone-outline
+          {% endif %}
+        {% else %}
+          mdi:microphone-off
         {% endif %}
