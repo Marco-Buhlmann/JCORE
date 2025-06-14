@@ -129,6 +129,9 @@ services:
     depends_on:
       - mariadb
       - influxdb
+    dns:
+     - 1.1.1.1
+     - 8.8.8.8
 
   esphome:
     container_name: jcore_esp
