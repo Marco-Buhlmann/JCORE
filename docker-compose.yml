@@ -233,10 +233,10 @@ services:
     container_name: jcore_grafana_rdr
     image: grafana/grafana-image-renderer:latest
     restart: unless-stopped
+    networks:
+      - jcore_proxy     
     ports:
       - "8082:8081"
-    networks:
-      - proxy
 
   grafana:
     container_name: jcore_grafana
