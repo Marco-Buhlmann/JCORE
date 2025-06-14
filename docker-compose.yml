@@ -117,8 +117,7 @@ services:
     container_name: jcore_ha
     image: homeassistant/home-assistant:stable
     restart: unless-stopped
-    networks:
-      - jcore_proxy   
+    network_mode: host   
     expose:
       - "8123"
     environment:
