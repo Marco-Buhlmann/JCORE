@@ -280,7 +280,7 @@ services:
        while :; do sleep 12h & wait $${!}; certbot renew --webroot -w /var/www/html --quiet; done"
 
 networks:
-  proxy:
+  jcore_proxy:
     driver: bridge
 
 volumes:
