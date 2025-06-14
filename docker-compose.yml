@@ -15,17 +15,15 @@ services:
       - jcore_proxy
     ports: 
       - "81:81"      # NPM Admin Interface
-      - "443:443"    # HTTPS only (no port 80 needed for DNS challenge)
+      - "443:443"    # HTTPS only
     environment:
       - CF_API_EMAIL=marco@3cubed.vc
       - CF_API_KEY=d3e09e987a02fd0fd3eeae182b09224f9bde5
-      # Optional: Set these for better DNS challenge handling
       - DISABLE_IPV6=true
       - DB_SQLITE_FILE=/data/database.sqlite
     volumes:
       - /mnt/docker-data/jcore/nginx-proxy-manager:/data
       - /etc/letsencrypt:/etc/letsencrypt
-    # Ensure NPM has proper DNS resolution
     dns:
       - 1.1.1.1
       - 8.8.8.8
@@ -160,7 +158,7 @@ services:
     networks:
       - jcore_proxy    
     ports:
-      - "1883:1883"    # MQTT - keep external for IoT devices
+      - "1883:1883"    # MQTT 
       - "9001:9001"    # WebSocket
     volumes:
       - ./mosquitto/config:/mosquitto/config
@@ -273,9 +271,6 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_NAME: "Main Org."
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
-
-  # Remove certbot - not needed with DNS challenge
-  # certbot handles this automatically through NPM
 
 networks:
   jcore_proxy:
