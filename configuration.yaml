@@ -57,37 +57,23 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 #-------------------------------------------------------------------------------------------------------
-#                                    VOICE ASSISTANT CONFIG (MODERN)                                  |
+#                                         BASIC CONVERSATION                                           |
 #-------------------------------------------------------------------------------------------------------
 
-# Wyoming integration (this replaces the old platform-based config)
-wyoming:
-  host: "5.9.20.78"
-  port: 10300
-  protocol: "tcp"
-
-# Voice Assistant Pipeline (modern format)
-assist_pipeline:
-  - name: "JIA Voice Pipeline"
-    conversation_engine: "homeassistant"
-    language: "en"
-    
-# Simple conversation for testing
+# Simple conversation (no voice integration - just for testing)
 conversation:
   intents:
-    VoiceTest:
-      - "test voice"
-      - "hello jia"
-      - "voice test"
+    BasicTest:
+      - "test system"
+      - "hello"
     ServerStatus:
-      - "what is the server status"
-      - "check the server"
       - "server status"
+      - "check server"
 
 intent_script:
-  VoiceTest:
+  BasicTest:
     speech:
-      text: "Voice system is working! Remote Wyoming services are connected."
+      text: "System is responding normally."
     action: []
       
   ServerStatus:
