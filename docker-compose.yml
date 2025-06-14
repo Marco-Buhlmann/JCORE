@@ -15,10 +15,10 @@ services:
       - jcore_proxy
     ports: 
       - "81:81"    
-      - "443:443"
+      - "8443:443"
     environment:
       - CF_API_EMAIL=marco@3cubed.vc
-      - CF_API_KEY= d3e09e987a02fd0fd3eeae182b09224f9bde5
+      - CF_API_KEY=d3e09e987a02fd0fd3eeae182b09224f9bde5
     volumes:
       - /mnt/docker-data/jcore/config/data:/data
       - /etc/letsencrypt:/etc/letsencrypt
@@ -64,10 +64,9 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy   
-    expose:
-      - "9090"
+    ports:
+      - "9090:9090"
     volumes:
-      - /opt/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - /mnt/docker-data/jcore/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - /mnt/docker-data/jcore/config/prometheus/ha.token:/etc/prometheus/ha.token:ro
 
@@ -155,7 +154,7 @@ services:
       - jcore_proxy    
     ports:
       - "1883:1883"
-      - "9002:9001"
+      - "9001:9001"
     volumes:
       - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
