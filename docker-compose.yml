@@ -210,8 +210,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy
-    expose:   
-      - "80"
+    ports:
+      - "8080:80"
     environment:
       FB_BASEURL: "/"
       HOME: "/config"
