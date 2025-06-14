@@ -13,6 +13,10 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy
+    ports:
+      - "80:80"     
+      - "81:81"    
+      - "443:443"
     environment:
       - CF_API_EMAIL=marco@3cubed.vc
       - CF_API_KEY= d3e09e987a02fd0fd3eeae182b09224f9bde5
