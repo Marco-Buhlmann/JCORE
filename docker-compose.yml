@@ -64,8 +64,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy   
-    ports:
-      - "9090:9090"
+    expose:
+      - "9090"
     volumes:
       - /mnt/docker-data/jcore/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - /mnt/docker-data/jcore/config/prometheus/ha.token:/etc/prometheus/ha.token:ro
