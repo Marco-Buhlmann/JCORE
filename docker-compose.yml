@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------------------------------
 #                                                                                                      |
 #                                           JCORE COMPOSE                                              |
-#                                                                                                      |
+#                                     (Cloudflare DNS Challenge)                                       |
 #-------------------------------------------------------------------------------------------------------
 
 version: '3.9'
@@ -14,14 +14,21 @@ services:
     networks:
       - jcore_proxy
     ports: 
-      - "81:81"    
-      - "8443:443"
+      - "81:81"      # NPM Admin Interface
+      - "443:443"    # HTTPS only (no port 80 needed for DNS challenge)
     environment:
       - CF_API_EMAIL=marco@3cubed.vc
       - CF_API_KEY=d3e09e987a02fd0fd3eeae182b09224f9bde5
+      # Optional: Set these for better DNS challenge handling
+      - DISABLE_IPV6=true
+      - DB_SQLITE_FILE=/data/database.sqlite
     volumes:
-      - /mnt/docker-data/jcore/config/data:/data
+      - /mnt/docker-data/jcore/nginx-proxy-manager:/data
       - /etc/letsencrypt:/etc/letsencrypt
+    # Ensure NPM has proper DNS resolution
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
 
   mariadb:
     container_name: jcore_mariadb
@@ -36,8 +43,8 @@ services:
       MYSQL_PASSWORD: "6wk44!ez#MS2Qhhw"
     volumes:
       - ./mariadb:/var/lib/mysql
-    ports:
-      - "3307:3306"
+    expose:
+      - "3306"
 
   influxdb:
     container_name: jcore_influxdb
@@ -45,8 +52,8 @@ services:
     networks:
       - jcore_proxy
     restart: unless-stopped
-    ports:
-      - "8086:8086"
+    expose:
+      - "8086"
     volumes:
       - influxdb-storage:/var/lib/influxdb2
       - influxdb-config:/etc/influxdb2
@@ -82,9 +89,9 @@ services:
       - "-config.expand-env=true"
     networks:
       - jcore_proxy   
-    ports:
-      - "3100:3100"
-      - "9095:9095"
+    expose:
+      - "3100"
+      - "9095"
     volumes:
       - /mnt/docker-data/homeassistant/loki/config/config.yaml:/etc/loki/config.yaml
       - /mnt/docker-data/homeassistant/loki/data:/loki/data
@@ -100,8 +107,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy    
-    ports:
-      - "8081:8080"
+    expose:
+      - "8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -114,8 +121,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy   
-    ports:
-      - "8123:8123"
+    expose:
+      - "8123"
     environment:
       TZ: "Etc/UTC"
     volumes:
@@ -137,8 +144,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     networks:
       - jcore_proxy   
-    ports:
-      - "6052:6052"
+    expose:
+      - "6052"
     command: >
       dashboard /config
       --address 0.0.0.0
@@ -153,8 +160,8 @@ services:
     networks:
       - jcore_proxy    
     ports:
-      - "1883:1883"
-      - "9002:9001"
+      - "1883:1883"    # MQTT - keep external for IoT devices
+      - "9001:9001"    # WebSocket
     volumes:
       - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
@@ -176,8 +183,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy    
-    ports:
-      - "10200:10200"
+    expose:
+      - "10200"
     volumes:
       - ./piper-data:/data
     command:
@@ -192,8 +199,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy    
-    ports:
-      - "7681:7681"
+    expose:
+      - "7681"
     volumes:
       - ./config:/config
     command:
@@ -208,8 +215,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     environment:
       FB_BASEURL: "/"
       HOME: "/config"
@@ -226,8 +233,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy    
-    ports:
-      - "3001:3001"
+    expose:
+      - "3001"
     volumes:
       - uptime-kuma-data:/app/data
 
@@ -237,8 +244,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy     
-    ports:
-      - "8082:8081"
+    expose:
+      - "8081"
 
   grafana:
     container_name: jcore_grafana
@@ -246,8 +253,8 @@ services:
     restart: unless-stopped
     networks:
       - jcore_proxy    
-    ports:
-      - "3002:3000"
+    expose:
+      - "3000"
     volumes:
       - grafana-storage:/var/lib/grafana
       - ./grafana-provisioning:/etc/grafana/provisioning
@@ -267,18 +274,8 @@ services:
       GF_AUTH_ANONYMOUS_ORG_NAME: "Main Org."
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot_grafana
-    networks:
-      - jcore_proxy    
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/www/html:/var/www/html
-    entrypoint: /bin/sh -c
-    command: >
-      "trap exit TERM;
-       while :; do sleep 12h & wait $${!}; certbot renew --webroot -w /var/www/html --quiet; done"
+  # Remove certbot - not needed with DNS challenge
+  # certbot handles this automatically through NPM
 
 networks:
   jcore_proxy:
