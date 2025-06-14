@@ -13,8 +13,12 @@ http:
     - 172.0.0.0/8
     - 172.18.0.3  
     - 172.18.0.0/16
+    - 172.20.0.0/16 
     - 192.168.0.0/16
     - 10.0.0.0/8
+  cors_allowed_origins:
+    - https://ha.dreammachine.casa
+    - https://jcore.dreammachine.casa
 
 # Load defaults
 default_config:
@@ -58,7 +62,7 @@ scene: !include scenes.yaml
 
 # MariaDB
 recorder:
-  db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@127.0.0.1:3306/JCORE?charset=utf8
+  db_url: mysql://mbxxvii:6wk44!ez#MS2Qhhw@jcore_mariadb:3306/JCORE?charset=utf8mb4
   purge_keep_days: 10
   commit_interval: 5
   exclude:
@@ -74,7 +78,7 @@ recorder:
 
 # InfluxDB
 influxdb:
-  host: 127.0.0.1 
+  host: jcore_influxdb
   port: 8086
   api_version: 2
   token: yKetXhtpyszZ7DLg4omRT7nr96InN6SSzgbQG5k9iyhGdP3ZMoks3U00Hvz134c7b7iYfEMTGLqNHLEgGOEpWw==
@@ -86,6 +90,8 @@ influxdb:
 
 # Prometheus metrics endpoint
 prometheus:
+  namespace: hass
+  requires_auth: false 
   include:
     domains:
       - sensor
