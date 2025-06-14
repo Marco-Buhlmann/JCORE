@@ -73,21 +73,21 @@ assist_pipeline:
 # Speech-to-Text (Whisper on remote server)
 stt:
   - platform: wyoming
-    host: !secret wyoming_server_ip  # Add this to your secrets.yaml
+    host: !secret wyoming_server_ip
     port: 10300
     name: "Remote Whisper STT"
 
 # Wake Word Detection (OpenWakeWord on remote server)
 wake_word:
   - platform: wyoming
-    host: !secret wyoming_server_ip  # Add this to your secrets.yaml
+    host: !secret wyoming_server_ip
     port: 10400
     name: "Remote OpenWakeWord"
 
 # Text-to-Speech (Piper on remote server)
 tts:
   - platform: wyoming
-    host: !secret wyoming_server_ip  # Add this to your secrets.yaml
+    host: !secret wyoming_server_ip
     port: 10200
     name: "Remote Piper TTS"
 
@@ -206,7 +206,6 @@ intent_script:
         {% elif name == "voice" or name == "voice system" %}
           Voice pipeline status is {{ states('sensor.distributed_voice_pipeline_status') }}.
           System health is {{ states('sensor.distributed_voice_system_health') }}.
-          Network latency is {{ states('sensor.distributed_voice_latency') }} milliseconds.
         {% else %}
           System is running normally. Voice pipeline is {{ states('sensor.distributed_voice_pipeline_status') }}.
           Server status is {{ states('sensor.hetzner_server_simple_status') }}.
@@ -234,7 +233,7 @@ intent_script:
                 target:
                   entity_id: input_number.voice_volume
                 data:
-                  value: "{{ level | int }}"
+                  value: "{{ level | int(75) }}"
 
   JIATestCommands:
     speech:
@@ -244,7 +243,6 @@ intent_script:
           All services are running on remote server. System health is {{ states('sensor.distributed_voice_system_health') }}.
         {% else %}
           Voice system test successful. All distributed services are {{ states('sensor.distributed_voice_pipeline_status') | lower }}.
-          Response latency is {{ states('sensor.distributed_voice_latency') }} milliseconds.
         {% endif %}
     action: []
 
@@ -307,6 +305,11 @@ input_text:
     name: Hetzner API Token  
     initial: !secret hetzner_api_token
     mode: password
+  wyoming_server_ip:
+    name: "Wyoming Server IP"
+    initial: !secret wyoming_server_ip
+    pattern: "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+    mode: text
 
 # Voice Assistant Input Helpers
 input_select:
@@ -421,45 +424,48 @@ sensor:
       - server
     scan_interval: 60
 
-  # Distributed Voice System Monitoring Sensors
+  # Simplified Voice System Monitoring Sensors (using static IP from secrets)
   - platform: rest
     name: "Remote Whisper Service Status"
-    resource: "http://{{ states('input_text.wyoming_server_ip') }}:10300/"
+    resource_template: "http://{{ states('input_text.wyoming_server_ip') if states('input_text.wyoming_server_ip') not in ['unknown', 'unavailable', ''] else '127.0.0.1' }}:10300/"
     method: GET
     value_template: >
-      {% if value_json is defined %}
+      {% if value_json is defined and value_json %}
         Online
       {% else %}
         Offline
       {% endif %}
-    scan_interval: 30
+    scan_interval: 60
     timeout: 10
+    verify_ssl: false
 
   - platform: rest
     name: "Remote OpenWakeWord Service Status"
-    resource: "http://{{ states('input_text.wyoming_server_ip') }}:10400/"
+    resource_template: "http://{{ states('input_text.wyoming_server_ip') if states('input_text.wyoming_server_ip') not in ['unknown', 'unavailable', ''] else '127.0.0.1' }}:10400/"
     method: GET
     value_template: >
-      {% if value_json is defined %}
+      {% if value_json is defined and value_json %}
         Online
       {% else %}
         Offline
       {% endif %}
-    scan_interval: 30
+    scan_interval: 60
     timeout: 10
+    verify_ssl: false
 
   - platform: rest
     name: "Remote Piper Service Status"
-    resource: "http://{{ states('input_text.wyoming_server_ip') }}:10200/"
+    resource_template: "http://{{ states('input_text.wyoming_server_ip') if states('input_text.wyoming_server_ip') not in ['unknown', 'unavailable', ''] else '127.0.0.1' }}:10200/"
     method: GET
     value_template: >
-      {% if value_json is defined %}
+      {% if value_json is defined and value_json %}
         Online
       {% else %}
         Offline
       {% endif %}
-    scan_interval: 30
+    scan_interval: 60
     timeout: 10
+    verify_ssl: false
 
 binary_sensor:
   - platform: rest
@@ -472,12 +478,13 @@ binary_sensor:
 
   - platform: rest
     name: "Wyoming Server Reachable"
-    resource: "http://{{ states('input_text.wyoming_server_ip') }}:8080/"
+    resource_template: "http://{{ states('input_text.wyoming_server_ip') if states('input_text.wyoming_server_ip') not in ['unknown', 'unavailable', ''] else '127.0.0.1' }}:8080/"
     method: GET
-    value_template: "{{ value | length > 0 }}"
+    value_template: "{{ (value | length > 0) if value is defined else false }}"
     device_class: connectivity
     scan_interval: 60
     timeout: 5
+    verify_ssl: false
 
 #-------------------------------------------------------------------------------------------------------
 #                                           SENSOR TEMPLATES                                           |
@@ -512,7 +519,7 @@ template:
           Down
         {% endif %}
 
-    # Distributed Voice Pipeline Status Templates
+    # Simplified Distributed Voice Pipeline Status Templates (with better error handling)
     - name: "Distributed Voice Pipeline Status"
       state: >
         {% set whisper = states('sensor.remote_whisper_service_status') %}
@@ -552,10 +559,15 @@ template:
           states('sensor.remote_piper_service_status')
         ] %}
         {% set online_count = services | select('eq', 'Online') | list | length %}
-        {{ (online_count / 3 * 100) | round(0) }}%
+        {% if online_count >= 0 %}
+          {{ (online_count / 3 * 100) | round(0) }}%
+        {% else %}
+          0%
+        {% endif %}
       unit_of_measurement: "%"
       icon: >
-        {% set health = states('sensor.distributed_voice_system_health') | int %}
+        {% set health_str = states('sensor.distributed_voice_system_health') | regex_replace('%', '') %}
+        {% set health = health_str | int(0) %}
         {% if health == 100 %}
           mdi:heart
         {% elif health >= 66 %}
@@ -565,33 +577,6 @@ template:
         {% else %}
           mdi:heart-broken
         {% endif %}
-
-    - name: "Distributed Voice Latency"
-      state: >
-        {% set start = now() %}
-        {% set response = states('sensor.remote_whisper_service_status') %}
-        {% set end = now() %}
-        {{ ((end - start).total_seconds() * 1000) | round(0) }}
-      unit_of_measurement: "ms"
-      icon: >
-        {% set latency = states('sensor.distributed_voice_latency') | int %}
-        {% if latency < 200 %}
-          mdi:speedometer
-        {% elif latency < 500 %}
-          mdi:speedometer-medium
-        {% else %}
-          mdi:speedometer-slow
-        {% endif %}
-      attributes:
-        threshold: "{{ states('input_number.voice_latency_threshold') }}"
-        status: >
-          {% set latency = states('sensor.distributed_voice_latency') | int %}
-          {% set threshold = states('input_number.voice_latency_threshold') | int %}
-          {% if latency < threshold %}
-            Good
-          {% else %}
-            High
-          {% endif %}
 
     - name: "JIA SAT 1 Status"
       state: >
