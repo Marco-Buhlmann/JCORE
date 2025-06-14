@@ -44,10 +44,6 @@ lovelace:
       show_in_sidebar: true
       filename: mac-dashboard.yaml
 
-# HACS integrations dashboard
-hacs:
-  token: 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
-
 homeassistant:
   packages: !include_dir_named packages
   allowlist_external_dirs:
@@ -61,45 +57,22 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 #-------------------------------------------------------------------------------------------------------
-#                                    MINIMAL VOICE ASSISTANT CONFIG                                    |
+#                                    VOICE ASSISTANT CONFIG (MODERN)                                  |
 #-------------------------------------------------------------------------------------------------------
 
-# Wyoming Protocol Support
+# Wyoming integration (this replaces the old platform-based config)
 wyoming:
+  host: "5.9.20.78"
+  port: 10300
+  protocol: "tcp"
 
-# Voice Assistant Pipeline
+# Voice Assistant Pipeline (modern format)
 assist_pipeline:
-
-# Speech-to-Text (Whisper on remote server)
-stt:
-  - platform: wyoming
-    host: "5.9.20.78"
-    port: 10300
-    name: "Remote Whisper STT"
-
-# Wake Word Detection (OpenWakeWord on remote server)
-wake_word:
-  - platform: wyoming
-    host: "5.9.20.78"
-    port: 10400
-    name: "Remote OpenWakeWord"
-
-# Text-to-Speech (Piper on remote server)
-tts:
-  - platform: wyoming
-    host: "5.9.20.78"
-    port: 10200
-    name: "Remote Piper TTS"
-
-# Voice Assistant Configuration
-voice_assistant:
-  - name: "JIA Voice Assistant"
-    stt_engine: remote_whisper_stt
-    tts_engine: remote_piper_tts
-    wake_word_engine: remote_openwakeword
-    conversation_agent: conversation.home_assistant
-
-# Basic conversation intents
+  - name: "JIA Voice Pipeline"
+    conversation_engine: "homeassistant"
+    language: "en"
+    
+# Simple conversation for testing
 conversation:
   intents:
     VoiceTest:
@@ -114,12 +87,12 @@ conversation:
 intent_script:
   VoiceTest:
     speech:
-      text: "Voice system is working! Remote Wyoming services are connected and responding."
+      text: "Voice system is working! Remote Wyoming services are connected."
     action: []
       
   ServerStatus:
     speech:
-      text: "Hetzner server status is {{ states('sensor.hetzner_server_simple_status') }}. Metrics server is {{ states('sensor.metrics_server_status') | lower }}."
+      text: "Hetzner server is {{ states('sensor.hetzner_server_simple_status') }}. Metrics server is {{ states('sensor.metrics_server_status') | lower }}."
     action: []
 
 #-------------------------------------------------------------------------------------------------------
