@@ -27,13 +27,13 @@ services:
     dns:
       - 1.1.1.1
       - 8.8.8.8
-
+      
   mariadb:
     container_name: jcore_mariadb
     image: mariadb:10.11
+    restart: unless-stopped
     networks:
       - jcore_proxy
-    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: "mb415%"
       MYSQL_DATABASE: "JCORE"
@@ -44,18 +44,18 @@ services:
     expose:
       - "3306"
     ports:
-      - "3306:3306"      
+      - "3306:3306"
 
   influxdb:
     container_name: jcore_influxdb
     image: influxdb:2.7
+    restart: unless-stopped
     networks:
       - jcore_proxy
-    restart: unless-stopped
     expose:
       - "8086"
-     ports:
-      - "8086:8086"      
+    ports:
+      - "8086:8086"
     volumes:
       - influxdb-storage:/var/lib/influxdb2
       - influxdb-config:/etc/influxdb2
