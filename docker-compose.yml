@@ -126,11 +126,11 @@ services:
     image: homeassistant/home-assistant:stable
     restart: unless-stopped
     networks:
-      - jcore_proxy 
+      - jcore_proxy
     expose:
       - "8123"
-     ports:
-      - "8123:8123"      
+    ports:
+      - "8123:8123"
     environment:
       TZ: "Etc/UTC"
     volumes:
@@ -140,8 +140,8 @@ services:
       - mariadb
       - influxdb
     dns:
-     - 1.1.1.1
-     - 8.8.8.8
+      - 1.1.1.1
+      - 8.8.8.8
 
   esphome:
     container_name: jcore_esp
